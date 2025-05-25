@@ -2,6 +2,10 @@
 
 A Node.js backend service that scrapes and aggregates mountain bike race information from various sources.
 
+## Current Sources
+
+-   SI Entries
+
 ## Features
 
 -   Scrapes race information from SI Entries
