@@ -1,3 +1,10 @@
+# IDE
 .vscode
+
+# Node
 node_modules
 dist
+
+# Project files
+todo.md
+.env
