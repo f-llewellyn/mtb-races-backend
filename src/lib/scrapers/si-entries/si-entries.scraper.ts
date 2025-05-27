@@ -1,5 +1,6 @@
 import puppeteer from "puppeteer";
-import { TRace, TRaceRaw } from "../../../types/race.type.js";
+import { TRaceInsert } from "../../../db/schema.js";
+import { TRaceRaw } from "../../../types/race.type.js";
 import { hashString } from "../../utils/stringToMD5.js";
 import { RaceTypes } from "../../../enums/RaceTypes.enum.js";
 import { SiEntriesRow } from "../../../types/siEntires.type.js";
@@ -16,7 +17,7 @@ const mapType = (type: string) => {
 	return siEntriesEventMap[type as keyof typeof siEntriesEventMap] || "";
 };
 
-export const scrapeSIEntries = async (): Promise<TRace[]> => {
+export const scrapeSIEntries = async (): Promise<TRaceInsert[]> => {
 	let browser;
 	try {
 		browser = await puppeteer.launch({ headless: true });

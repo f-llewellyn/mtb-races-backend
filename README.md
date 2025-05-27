@@ -81,7 +81,7 @@ Returns a list of upcoming mountain bike races.
 
 ### GET `/api/races/scrape`
 
-Triggers a new scrape of race data from SI Entries.
+Triggers a new scrape of race data from SI Entries and saves to a databse.
 
 ### GET `/health`
 
@@ -107,6 +107,7 @@ src/
   ├── lib/          # Shared libraries
   │   └── scrapers/ # Web scraping implementations
   │   └── utils/    # Utility functions
+  ├── db/           # Database configuration
   ├── types/        # TypeScript type definitions
   ├── enums/        # Shared enums
 ```
