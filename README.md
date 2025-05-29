@@ -9,9 +9,18 @@ A Node.js backend service that scrapes and aggregates mountain bike race informa
 ## Features
 
 -   Scrapes race information from SI Entries
--   RESTful API endpoints for race data
--   TypeScript support
--   Express.js server
+-   Exposes aggregated race data through RESTful API endpoints-
+
+## Technologies Used
+
+-   TypeScript
+-   Node.js
+-   Express.js
+-   Docker
+-   PostgreSQL
+-   Vitest
+-   Drizzle ORM
+-   Puppeteer
 
 ## Prerequisites
 
@@ -51,6 +60,14 @@ pnpm dev
 ```bash
 pnpm build
 pnpm start
+```
+
+## Running Tests
+
+To run tests, use the following command:
+
+```bash
+pnpm test
 ```
 
 ## Database Migrations

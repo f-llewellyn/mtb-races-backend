@@ -1,0 +1,2898 @@
+<html xmlns="https://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="content-language" content="en-GB" />
+
+		<title>SiEntries - Events List</title>
+		<meta
+			name="description"
+			content="SiEntries is an Online Entries and Memberships System designed to simplify entering and administering any type of event which uses pre-entries."
+		/>
+		<meta name="copyright" content="SiEntries Ltd." />
+		<meta name="author" content="SiEntries Ltd." />
+		<meta name="robots" content="all" />
+	</head>
+	<body id="js">
+		<div id="page_header">
+			<div class="auto_margin_header">
+				<a
+					href="https://www.sientries.co.uk/index.php"
+					title="Click to go to the SiEntries Events List"
+					id="sientries_logo"
+					><strong>Si</strong>Entries<span class="smaller"
+						>Online Entries System</span
+					></a
+				>
+				<div id="nav">
+					<ul>
+						<li>
+							<span class="menu_item"
+								><a
+									href="https://www.sientries.co.uk/index.php?page=L"
+									title="Display a list of all current events"
+									><i
+										class="fa fa-list"
+										aria-hidden="true"
+									></i>
+									Events List</a
+								></span
+							>
+						</li>
+						<li>
+							<span class="menu_item"
+								><a
+									href="https://www.sientries.co.uk/index.php?page=M"
+									title="Display a map of all current events"
+									><i
+										class="fa fa-map-marker-alt"
+										aria-hidden="true"
+									></i>
+									Events Map</a
+								></span
+							>
+						</li>
+						<li>
+							<span class="menu_item"
+								><a
+									href="https://www.sientries.co.uk/membership.php"
+									title="Display a list of all current memberships"
+									><i
+										class="fa fa-users"
+										aria-hidden="true"
+									></i>
+									Memberships</a
+								></span
+							>
+						</li>
+						<li>
+							<span class="menu_item"
+								><a
+									href="https://www.sientries.co.uk/new_event.php"
+									title="Find out how to add your event or membership to SiEntries"
+									><i
+										class="fa fa-plus-circle"
+										aria-hidden="true"
+									></i>
+									Add Your Event</a
+								></span
+							>
+						</li>
+						<li>
+							<span class="menu_item"
+								><a
+									href="https://www.sientries.co.uk/help.php"
+									title="View help and tips on using SiEntries"
+									><i
+										class="fa fa-question-circle"
+										aria-hidden="true"
+									></i>
+									Help</a
+								></span
+							>
+						</li>
+					</ul>
+				</div>
+				<div id="header_follow">
+					<div id="header_follow_block">
+						<div id="header_follow_text">
+							Follow
+							<span id="header_follow_large">SiEntries</span
+							><span id="header_follow_small">us</span>
+						</div>
+						<div id="header_follow_links">
+							<a
+								href="https://twitter.com/SiEntries"
+								target="_blank"
+								title="Follow us on Twitter"
+								><span class="header_follow_icon"
+									><i
+										class="fab fa-twitter"
+										aria-hidden="true"
+									></i></span
+							></a>
+							<a
+								href="https://www.facebook.com/SiEntries/"
+								target="_blank"
+								title="Follow us on Facebook"
+								><span class="header_follow_icon"
+									><i
+										class="fab fa-facebook"
+										aria-hidden="true"
+									></i></span
+							></a>
+							<a
+								href="https://www.instagram.com/sientries/"
+								target="_blank"
+								title="Follow us on Instagram"
+								><span class="header_follow_icon"
+									><i
+										class="fab fa-instagram"
+										aria-hidden="true"
+									></i></span
+							></a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="header_follow_colour"></div>
+			<div class="clear"></div>
+		</div>
+
+		<div id="container">
+			<div
+				class="screen-bg-image"
+				style="
+					background-image: url('https://www.sientries.co.uk/images/header_slides/C2.jpg');
+				"
+			>
+				<div class="auto_margin_header">
+					<div class="header-caption">
+						<h2>
+							<span style="color: #ffffff"
+								><span class="large_text"
+									>Find your perfect event</span
+								></span
+							>
+						</h2>
+						<div class="cap_buttons">
+							<a
+								href="https://www.sientries.co.uk/index.php?page=L&amp;af=et_C_CX:Y;et_C_MB:Y;et_C_ED:Y;et_C_TQ:Y"
+								class="cap_button orange_bg"
+								>Off-Road Cycling</a
+							>
+							<a
+								href="https://www.sientries.co.uk/index.php?page=L&amp;af=eg_R:Y"
+								class="cap_button red_bg"
+								>Running &amp; Walking</a
+							>
+							<a
+								href="https://www.sientries.co.uk/index.php?page=L&amp;af=eg_W:Y"
+								class="cap_button blue_bg"
+								>Watersports</a
+							>
+							<a
+								href="https://www.sientries.co.uk/index.php?page=L&amp;af=eg_M:Y"
+								class="cap_button purple_bg"
+								>Multisport</a
+							>
+						</div>
+						<a
+							href="https://www.sientries.co.uk/about_sientries.php?page=L"
+							class="cap_about_button"
+							>About SiEntries</a
+						>
+					</div>
+				</div>
+			</div>
+
+			<div class="auto_margin_container">
+				<div id="container_a">
+					<div
+						class="panel-left-header panel-left-header-public"
+						id="leftOptions"
+					>
+						<i class="fa fa-bars menu-icon" aria-hidden="true"></i>
+						SiEntries Options
+						<i class="fa fa-chevron-down" aria-hidden="true"></i>
+					</div>
+					<div
+						class="panel-left-detail"
+						id="leftOptionsT"
+						style="display: none"
+					>
+						<ul class="menu">
+							<li>
+								<a
+									href="https://www.sientries.co.uk/index.php?page=L"
+									title="Displays a list of all current events"
+									>Events List</a
+								>
+							</li>
+							<li>
+								<a
+									href="https://www.sientries.co.uk/index.php?page=M"
+									title="Displays a map of all current events"
+									>Events Map</a
+								>
+							</li>
+							<li>
+								<a
+									href="https://www.sientries.co.uk/membership.php"
+									title="Displays a list of all current memberships"
+									>Memberships List</a
+								>
+							</li>
+							<li>
+								<a
+									href="https://www.sientries.co.uk/new_event.php"
+									title="Find out how to add your event or membership to SiEntries"
+									>Add Your Event / Membership</a
+								>
+							</li>
+							<li>
+								<a
+									href="https://www.sientries.co.uk/help.php"
+									title="View help and tips on using SiEntries"
+									>Help</a
+								>
+							</li>
+						</ul>
+					</div>
+
+					<div
+						class="panel-left-header panel-left-header-public"
+						id="leftNav"
+					>
+						<i class="fa fa-user menu-icon" aria-hidden="true"></i>
+						My Details
+						<i class="fa fa-chevron-down" aria-hidden="true"></i>
+					</div>
+					<div class="panel-left-detail" id="leftNavT">
+						<div class="myinfobox">
+							<span class="userinf">Finn Llewellyn (922437)</span>
+						</div>
+						<ul class="menu">
+							<li>
+								<a
+									href="https://www.sientries.co.uk/competitors/view_entries.php"
+									title="View and change your existing entries and memberships"
+									>My Entries / Memberships</a
+								>
+							</li>
+							<li>
+								<a
+									href="https://www.sientries.co.uk/competitors/view_details.php"
+									title="View and change your personal details"
+									>Update My Details</a
+								>
+							</li>
+							<li>
+								<a
+									href="https://www.sientries.co.uk/competitors/change_password.php"
+									title="Change the Password you use for logging into SiEntries"
+									>Change My Password</a
+								>
+							</li>
+							<li>
+								<a
+									href="https://www.sientries.co.uk/competitors/message_history.php"
+									title="View any email and SMS messages recently sent to you by the SiEntries System, as well as any messages about your upcoming entries and memberships"
+									>Message History</a
+								>
+							</li>
+							<li>
+								<a
+									href="https://www.sientries.co.uk/login/logout.php"
+									title="Log out of SiEntries"
+									>Log Out</a
+								>
+							</li>
+						</ul>
+					</div>
+
+					<div class="panel-left-padding"></div>
+					<div
+						class="panel-left-header panel-left-header-public"
+						id="leftFilter"
+					>
+						<i class="fa fa-search" aria-hidden="true"></i> Filter
+						Events
+						<i class="fa fa-chevron-down" aria-hidden="true"></i>
+					</div>
+					<div class="panel-left-clean" id="leftFilterT">
+						<div class="panel-left-clean-padding">
+							<div class="index_button_div">
+								<a
+									href="https://www.sientries.co.uk/anytime"
+									title="Displays a list of all anytime Events"
+									><div
+										class="button button-small index_anytime"
+									>
+										Anytime Events List
+									</div></a
+								>
+							</div>
+							<div class="index_button_div">
+								<a
+									href="https://www.sientries.co.uk/orienteering"
+									title="Displays a list of all British Orienteering events"
+									><div
+										class="button button-small index_orienteering"
+									>
+										British Orienteering List
+									</div></a
+								>
+							</div>
+							<hr />
+							<form
+								method="get"
+								action="https://www.sientries.co.uk/index.php"
+								id="filter-form"
+								name="filter-form"
+								class="panel-form"
+							>
+								<div><label for="ename">Event Name</label></div>
+								<div class="type-input">
+									<input
+										type="text"
+										name="ename"
+										id="ename"
+										value=""
+										size="24"
+										maxlength="40"
+										autocomplete="ename"
+										title="To search for a specific event enter all or part of the event name here."
+										onfocus="idx_ename_focus()"
+										onblur="idx_ename_blur()"
+										class="inactive"
+									/>
+								</div>
+								<div>Event Date</div>
+								<div class="type-input">
+									<label for="efrom"></label
+									><input
+										type="text"
+										name="efrom"
+										id="efrom"
+										value=""
+										size="13"
+										maxlength="13"
+										autocomplete="efrom"
+										title="To search for events on or after a specific date enter from date here."
+										onfocus="idx_efrom_focus()"
+										onchange="idx_efrom_change()"
+										class="inactive hasDatepicker"
+									/><label for="eto"></label
+									><input
+										type="text"
+										name="eto"
+										id="eto"
+										value=""
+										size="13"
+										maxlength="13"
+										autocomplete="off"
+										title="To search for events on or before a specific date enter from date here."
+										onfocus="idx_eto_focus()"
+										onchange="idx_eto_change()"
+										class="inactive hasDatepicker"
+									/>
+								</div>
+								<div>Specific Location</div>
+								<div class="type-input">
+									<label for="edist"></label
+									><input
+										type="text"
+										name="edist"
+										id="edist"
+										value=""
+										size="3"
+										maxlength="5"
+										autocomplete="edist"
+										title="To find events passing within a given distance of a location or post code then please enter the mileage here."
+										onfocus="idx_edist_focus()"
+										onblur="idx_edist_blur()"
+										class="inactive"
+									/><label for="elocn"></label
+									><input
+										type="text"
+										name="elocn"
+										id="elocn"
+										value=""
+										size="19"
+										maxlength="40"
+										autocomplete="off"
+										title="To find events passing within a given distance of a location or post code then please enter the location (e.g. 'Salisbury, Hampshire') or a post code (e.g. 'SP1 2EJ') here."
+										onfocus="idx_elocn_focus()"
+										onblur="idx_elocn_blur()"
+										class="inactive"
+									/>
+								</div>
+								<div class="clear"></div>
+
+								<div class="sub_toggler dropdown_reveal">
+									Event Type Filter
+									<i
+										class="fa fa-chevron-down down"
+										aria-hidden="true"
+									></i>
+								</div>
+								<div class="sub_toggle_box toggle_initial_show">
+									<div class="toggle_padding">
+										<div class="etg_wrap">
+											<div class="filter_tickbox">
+												<div
+													class="etg_tick type_event_group"
+												>
+													<label for="eg_R"></label
+													><input
+														type="checkbox"
+														name="eg_R"
+														id="eg_R"
+														class="form-checkbox"
+														value="Y"
+														onclick="idx_event_group_set('R');"
+														title="Tick this box if you want to show Walking / Running events."
+													/>
+												</div>
+												<div
+													class="etg_reveal dropdown_reveal filter_expandable"
+												>
+													<div class="type-text">
+														<span class="text_eg_R"
+															>Walking /
+															Running</span
+														>
+													</div>
+													<div class="type-dropdown">
+														<i
+															class="fa fa-chevron-down"
+															aria-hidden="true"
+														></i>
+													</div>
+												</div>
+											</div>
+											<div class="etg_hidden_content">
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_R_AL"
+																id="et_R_AL"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('R');"
+																title="Tick this box if you want to show Athletics Meet events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_R_AL"
+																>Athletics
+																Meet</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_R_CA"
+																id="et_R_CA"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('R');"
+																title="Tick this box if you want to show Canicross events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_R_CA"
+																>Canicross</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_R_FR"
+																id="et_R_FR"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('R');"
+																title="Tick this box if you want to show Fell / Hill Race events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_R_FR"
+																>Fell / Hill
+																Race</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_R_MM"
+																id="et_R_MM"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('R');"
+																title="Tick this box if you want to show Mountain Marathon events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_R_MM"
+																>Mountain
+																Marathon</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_R_OR"
+																id="et_R_OR"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('R');"
+																title="Tick this box if you want to show Orienteering events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_R_OR"
+																>Orienteering</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_R_RR"
+																id="et_R_RR"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('R');"
+																title="Tick this box if you want to show Road Race events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_R_RR"
+																>Road
+																Race</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_R_WR"
+																id="et_R_WR"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('R');"
+																title="Tick this box if you want to show Running / Walking events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_R_WR"
+																>Running /
+																Walking</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_R_TR"
+																id="et_R_TR"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('R');"
+																title="Tick this box if you want to show Trail Race events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_R_TR"
+																>Trail
+																Race</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_R_UL"
+																id="et_R_UL"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('R');"
+																title="Tick this box if you want to show Ultra Running events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_R_UL"
+																>Ultra
+																Running</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_R_LD"
+																id="et_R_LD"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('R');"
+																title="Tick this box if you want to show Walking events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_R_LD"
+																>Walking</label
+															>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="etg_wrap">
+											<div class="filter_tickbox">
+												<div
+													class="etg_tick type_event_group"
+												>
+													<label for="eg_C"></label
+													><input
+														type="checkbox"
+														name="eg_C"
+														id="eg_C"
+														class="form-checkbox"
+														value="Y"
+														onclick="idx_event_group_set('C');"
+														title="Tick this box if you want to show Cycling events."
+													/>
+												</div>
+												<div
+													class="etg_reveal dropdown_reveal filter_expandable"
+												>
+													<div class="type-text">
+														<span class="text_eg_C"
+															>Cycling</span
+														>
+													</div>
+													<div class="type-dropdown">
+														<i
+															class="fa fa-chevron-down down"
+															aria-hidden="true"
+														></i>
+													</div>
+												</div>
+											</div>
+											<div
+												class="etg_hidden_content toggle_initial_show"
+											>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_C_CB"
+																id="et_C_CB"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('C');"
+																title="Tick this box if you want to show Bikepacking events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_C_CB"
+																>Bikepacking</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_C_CR"
+																id="et_C_CR"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('C');"
+																title="Tick this box if you want to show Cycle Race events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_C_CR"
+																>Cycle
+																Race</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_C_CY"
+																id="et_C_CY"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('C');"
+																title="Tick this box if you want to show Cycling events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_C_CY"
+																>Cycling</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_C_CX"
+																id="et_C_CX"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('C');"
+																title="Tick this box if you want to show Cyclo-cross events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_C_CX"
+																>Cyclo-cross</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_C_CS"
+																id="et_C_CS"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('C');"
+																title="Tick this box if you want to show Cyclosportive events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_C_CS"
+																>Cyclosportive</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_C_GR"
+																id="et_C_GR"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('C');"
+																title="Tick this box if you want to show Gravel events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_C_GR"
+																>Gravel</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_C_MB"
+																id="et_C_MB"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('C');"
+																checked="checked"
+																title="Tick this box if you want to show Mountain Bike events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_C_MB"
+																>Mountain
+																Bike</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_C_ED"
+																id="et_C_ED"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('C');"
+																checked="checked"
+																title="Tick this box if you want to show MTB Enduro events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_C_ED"
+																>MTB
+																Enduro</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_C_TQ"
+																id="et_C_TQ"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('C');"
+																checked="checked"
+																title="Tick this box if you want to show MTB Orienteering events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_C_TQ"
+																>MTB
+																Orienteering</label
+															>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="etg_wrap">
+											<div class="filter_tickbox">
+												<div
+													class="etg_tick type_event_group"
+												>
+													<label for="eg_W"></label
+													><input
+														type="checkbox"
+														name="eg_W"
+														id="eg_W"
+														class="form-checkbox"
+														value="Y"
+														onclick="idx_event_group_set('W');"
+														title="Tick this box if you want to show Water Sports events."
+													/>
+												</div>
+												<div
+													class="etg_reveal dropdown_reveal filter_expandable"
+												>
+													<div class="type-text">
+														<span class="text_eg_W"
+															>Water Sports</span
+														>
+													</div>
+													<div class="type-dropdown">
+														<i
+															class="fa fa-chevron-down"
+															aria-hidden="true"
+														></i>
+													</div>
+												</div>
+											</div>
+											<div class="etg_hidden_content">
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_W_KY"
+																id="et_W_KY"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('W');"
+																title="Tick this box if you want to show Kayaking / Canoeing events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_W_KY"
+																>Kayaking /
+																Canoeing</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_W_RW"
+																id="et_W_RW"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('W');"
+																title="Tick this box if you want to show Rowing events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_W_RW"
+																>Rowing</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_W_SL"
+																id="et_W_SL"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('W');"
+																title="Tick this box if you want to show Sailing events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_W_SL"
+																>Sailing</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_W_SW"
+																id="et_W_SW"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('W');"
+																title="Tick this box if you want to show Swimming events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_W_SW"
+																>Swimming</label
+															>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="etg_wrap">
+											<div class="filter_tickbox">
+												<div
+													class="etg_tick type_event_group"
+												>
+													<label for="eg_M"></label
+													><input
+														type="checkbox"
+														name="eg_M"
+														id="eg_M"
+														class="form-checkbox"
+														value="Y"
+														onclick="idx_event_group_set('M');"
+														title="Tick this box if you want to show Multisport events."
+													/>
+												</div>
+												<div
+													class="etg_reveal dropdown_reveal filter_expandable"
+												>
+													<div class="type-text">
+														<span class="text_eg_M"
+															>Multisport</span
+														>
+													</div>
+													<div class="type-dropdown">
+														<i
+															class="fa fa-chevron-down"
+															aria-hidden="true"
+														></i>
+													</div>
+												</div>
+											</div>
+											<div class="etg_hidden_content">
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_M_AR"
+																id="et_M_AR"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('M');"
+																title="Tick this box if you want to show Adventure Race events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_M_AR"
+																>Adventure
+																Race</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_M_TA"
+																id="et_M_TA"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('M');"
+																title="Tick this box if you want to show Duathlon / Triathlon events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_M_TA"
+																>Duathlon /
+																Triathlon</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_M_SR"
+																id="et_M_SR"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('M');"
+																title="Tick this box if you want to show SwimRun events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_M_SR"
+																>SwimRun</label
+															>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="etg_wrap">
+											<div class="filter_tickbox">
+												<div
+													class="etg_tick type_event_group"
+												>
+													<label for="eg_O"></label
+													><input
+														type="checkbox"
+														name="eg_O"
+														id="eg_O"
+														class="form-checkbox"
+														value="Y"
+														onclick="idx_event_group_set('O');"
+														title="Tick this box if you want to show Other events."
+													/>
+												</div>
+												<div
+													class="etg_reveal dropdown_reveal filter_expandable"
+												>
+													<div class="type-text">
+														<span class="text_eg_O"
+															>Other</span
+														>
+													</div>
+													<div class="type-dropdown">
+														<i
+															class="fa fa-chevron-down"
+															aria-hidden="true"
+														></i>
+													</div>
+												</div>
+											</div>
+											<div class="etg_hidden_content">
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_O_VT"
+																id="et_O_VT"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('O');"
+																title="Tick this box if you want to show Anytime events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_O_VT"
+																>Anytime</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_O_CH"
+																id="et_O_CH"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('O');"
+																title="Tick this box if you want to show Challenge events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_O_CH"
+																>Challenge</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_O_WK"
+																id="et_O_WK"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('O');"
+																title="Tick this box if you want to show Course / Workshop events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_O_WK"
+																>Course /
+																Workshop</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_O_MT"
+																id="et_O_MT"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('O');"
+																title="Tick this box if you want to show Motorcycle events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_O_MT"
+																>Motorcycle</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_O_SC"
+																id="et_O_SC"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('O');"
+																title="Tick this box if you want to show Social events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_O_SC"
+																>Social</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="et_O_TK"
+																id="et_O_TK"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_event_type_set('O');"
+																title="Tick this box if you want to show Talk events."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="et_O_TK"
+																>Talk</label
+															>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="clear"></div>
+
+								<div class="sub_toggler dropdown_reveal">
+									Location Filter
+									<i
+										class="fa fa-chevron-down"
+										aria-hidden="true"
+									></i>
+								</div>
+								<div class="sub_toggle_box locations">
+									<div class="toggle_padding">
+										<div class="etg_wrap">
+											<div class="filter_tickbox">
+												<div
+													class="etg_tick type-options"
+												>
+													<label for="co_1"></label
+													><input
+														type="checkbox"
+														name="co_1"
+														id="co_1"
+														class="form-checkbox"
+														value="Y"
+														onclick="idx_country_set('1');"
+														title="Tick this box if you want to show events located in England."
+													/>
+												</div>
+												<div
+													class="etg_reveal dropdown_reveal filter_expandable"
+												>
+													<div class="type-text">
+														<span class="co_1"
+															>England</span
+														>
+													</div>
+													<div class="type-dropdown">
+														<i
+															class="fa fa-chevron-down"
+															aria-hidden="true"
+														></i>
+													</div>
+												</div>
+											</div>
+											<div class="etg_hidden_content">
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="rg_1_1"
+																id="rg_1_1"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_region_set('1');"
+																title="Tick this box if you want to show located in South West."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="rg_1_1"
+																>South
+																West</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="rg_1_2"
+																id="rg_1_2"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_region_set('1');"
+																title="Tick this box if you want to show located in South East."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="rg_1_2"
+																>South
+																East</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="rg_1_3"
+																id="rg_1_3"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_region_set('1');"
+																title="Tick this box if you want to show located in London."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="rg_1_3"
+																>London</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="rg_1_4"
+																id="rg_1_4"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_region_set('1');"
+																title="Tick this box if you want to show located in East of England."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="rg_1_4"
+																>East of
+																England</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="rg_1_5"
+																id="rg_1_5"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_region_set('1');"
+																title="Tick this box if you want to show located in East Midlands."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="rg_1_5"
+																>East
+																Midlands</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="rg_1_6"
+																id="rg_1_6"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_region_set('1');"
+																title="Tick this box if you want to show located in West Midlands."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="rg_1_6"
+																>West
+																Midlands</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="rg_1_7"
+																id="rg_1_7"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_region_set('1');"
+																title="Tick this box if you want to show located in Yorkshire &amp; Humber."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="rg_1_7"
+																>Yorkshire &amp;
+																Humber</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="rg_1_8"
+																id="rg_1_8"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_region_set('1');"
+																title="Tick this box if you want to show located in North West."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="rg_1_8"
+																>North
+																West</label
+															>
+														</div>
+													</div>
+												</div>
+												<div class="toggle_padding">
+													<div class="filter_tickbox">
+														<div
+															class="type_event_group"
+														>
+															<input
+																type="checkbox"
+																name="rg_1_9"
+																id="rg_1_9"
+																class="form-checkbox"
+																value="Y"
+																onclick="idx_region_set('1');"
+																title="Tick this box if you want to show located in North East."
+															/>
+														</div>
+														<div class="type-text">
+															<label for="rg_1_9"
+																>North
+																East</label
+															>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="etg_wrap">
+											<div class="filter_tickbox">
+												<div
+													class="etg_tick type-options"
+												>
+													<label for="co_2"></label
+													><input
+														type="checkbox"
+														name="co_2"
+														id="co_2"
+														class="form-checkbox"
+														value="Y"
+														onclick="idx_country_set('2');"
+														title="Tick this box if you want to show events located in Scotland."
+													/>
+												</div>
+												<div
+													class="etg_reveal dropdown_reveal"
+												>
+													<div class="type-text">
+														<span class="co_2"
+															>Scotland</span
+														>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="etg_wrap">
+											<div class="filter_tickbox">
+												<div
+													class="etg_tick type-options"
+												>
+													<label for="co_3"></label
+													><input
+														type="checkbox"
+														name="co_3"
+														id="co_3"
+														class="form-checkbox"
+														value="Y"
+														onclick="idx_country_set('3');"
+														title="Tick this box if you want to show events located in Wales."
+													/>
+												</div>
+												<div
+													class="etg_reveal dropdown_reveal"
+												>
+													<div class="type-text">
+														<span class="co_3"
+															>Wales</span
+														>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="etg_wrap">
+											<div class="filter_tickbox">
+												<div
+													class="etg_tick type-options"
+												>
+													<label for="co_4"></label
+													><input
+														type="checkbox"
+														name="co_4"
+														id="co_4"
+														class="form-checkbox"
+														value="Y"
+														onclick="idx_country_set('4');"
+														title="Tick this box if you want to show events located in Northern Ireland."
+													/>
+												</div>
+												<div
+													class="etg_reveal dropdown_reveal"
+												>
+													<div class="type-text">
+														<span class="co_4"
+															>Northern
+															Ireland</span
+														>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="etg_wrap">
+											<div class="filter_tickbox">
+												<div
+													class="etg_tick type-options"
+												>
+													<label for="co_5"></label
+													><input
+														type="checkbox"
+														name="co_5"
+														id="co_5"
+														class="form-checkbox"
+														value="Y"
+														onclick="idx_country_set('5');"
+														title="Tick this box if you want to show events located in Republic of Ireland."
+													/>
+												</div>
+												<div
+													class="etg_reveal dropdown_reveal"
+												>
+													<div class="type-text">
+														<span class="co_5"
+															>Republic of
+															Ireland</span
+														>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="etg_wrap">
+											<div class="filter_tickbox">
+												<div
+													class="etg_tick type-options"
+												>
+													<label for="co_7"></label
+													><input
+														type="checkbox"
+														name="co_7"
+														id="co_7"
+														class="form-checkbox"
+														value="Y"
+														onclick="idx_country_set('7');"
+														title="Tick this box if you want to show events located in Isle of Man."
+													/>
+												</div>
+												<div
+													class="etg_reveal dropdown_reveal"
+												>
+													<div class="type-text">
+														<span class="co_7"
+															>Isle of Man</span
+														>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="etg_wrap">
+											<div class="filter_tickbox">
+												<div
+													class="etg_tick type-options"
+												>
+													<label for="co_8"></label
+													><input
+														type="checkbox"
+														name="co_8"
+														id="co_8"
+														class="form-checkbox"
+														value="Y"
+														onclick="idx_country_set('8');"
+														title="Tick this box if you want to show events located in Channel Islands."
+													/>
+												</div>
+												<div
+													class="etg_reveal dropdown_reveal"
+												>
+													<div class="type-text">
+														<span class="co_8"
+															>Channel
+															Islands</span
+														>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="etg_wrap">
+											<div class="filter_tickbox">
+												<div
+													class="etg_tick type-options"
+												>
+													<label for="co_6"></label
+													><input
+														type="checkbox"
+														name="co_6"
+														id="co_6"
+														class="form-checkbox"
+														value="Y"
+														onclick="idx_country_set('6');"
+														title="Tick this box if you want to show events located in Other / Non-Geographic."
+													/>
+												</div>
+												<div
+													class="etg_reveal dropdown_reveal"
+												>
+													<div class="type-text">
+														<span class="co_6"
+															>Other /
+															Non-Geographic</span
+														>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="clear"></div>
+
+								<div class="type-tickbox-wrap">
+									<div class="type-tickbox">
+										<input
+											type="checkbox"
+											name="only_open"
+											id="only_open"
+											class="form-checkbox"
+											value="Y"
+											title="Tick this box if you want to show events that are currently open for entries."
+										/>
+									</div>
+									<div class="type-ticklabel">
+										<label for="only_open"
+											>Only Show Open Events</label
+										>
+									</div>
+									<div class="clear"></div>
+									<div class="type-tickbox">
+										<input
+											type="checkbox"
+											name="save_prefs"
+											id="save_prefs"
+											class="form-checkbox"
+											value="Y"
+											title="If you want to save your filter preferences for next time you visit SiEntries then please tick this box. Doing so will create a cookie on your device, so please see our Privacy Policy for more information about our use of cookies."
+										/>
+									</div>
+									<div class="type-ticklabel">
+										<label for="save_prefs"
+											>Save Filter to My Profile<span
+												class="help_icon"
+												><a
+													href="https://www.sientries.co.uk/cookies.php?help_text_id=2-4"
+													title="View the Cookies Policy which applies to using SiEntries"
+													target="_blank"
+													><i
+														class="fas fa-question-circle"
+														aria-hidden="true"
+													></i></a></span
+										></label>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<div class="reset-wrap" id="reset-wrap">
+									<div class="button-reset" id="button-reset">
+										<a
+											href="javascript: idx_reset_filter('H', 'L', true, 'P');"
+											><span class="reset-text"
+												>RESET FILTER</span
+											><i
+												class="fas fa-redo"
+												aria-hidden="true"
+											></i
+										></a>
+									</div>
+								</div>
+								<div class="find-wrap" id="find-wrap">
+									<a
+										href="javascript: idx_set_filter('H', 'L', true, 'B');"
+										><div
+											class="button button-find button-transfer"
+										>
+											FILTER EVENTS
+											<i
+												class="fas"
+												aria-hidden="true"
+											></i></div
+									></a>
+								</div>
+								<div
+									class="find-wrap clear-wrap"
+									id="clear-wrap"
+								>
+									<a
+										href="javascript: idx_reset_filter('H', 'L', true, 'R');"
+										><div
+											class="button button-find button-cancel"
+										>
+											Show All
+											<i
+												class="fas"
+												aria-hidden="true"
+											></i></div
+									></a>
+								</div>
+								<div
+									data-lastpass-icon-root=""
+									style="
+										position: relative !important;
+										height: 0px !important;
+										width: 0px !important;
+										float: left !important;
+									"
+								></div>
+								<div
+									data-lastpass-icon-root=""
+									style="
+										position: relative !important;
+										height: 0px !important;
+										width: 0px !important;
+										float: left !important;
+									"
+								></div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<div id="container_b">
+					<div id="container_bp">
+						<div class="clear"></div>
+						<div id="container_d">
+							<div id="container_dp">
+								<div class="events_list_header">
+									<div class="elh_left">
+										<h1>
+											<span
+												class="event_count_events"
+												id="event_count_events"
+												>58 Events</span
+											><span
+												class="event_total_events"
+												id="event_total_events"
+												><span class="js-code"
+													><a
+														href="javascript: idx_reset_filter('H', 'L', false, 'S');"
+														>Show<span
+															class="no_small"
+														>
+															all</span
+														>
+														765
+														<i
+															class="fas fa-redo"
+															aria-hidden="true"
+														></i></a></span
+												><span class="no-js-code"
+													><a
+														href="https://www.sientries.co.uk/index.php?page=L&amp;all=Y"
+														>Show<span
+															class="no_small"
+														>
+															all</span
+														>
+														765
+														<i
+															class="fas fa-redo"
+															aria-hidden="true"
+														></i></a></span
+											></span>
+										</h1>
+									</div>
+									<div class="elh_right">
+										<div class="left">
+											<div class="elh_text_list selected">
+												<a
+													href="https://www.sientries.co.uk/index.php?page=L"
+													title="Displays a list of all current events"
+													>LIST</a
+												>
+											</div>
+											<div class="map_list_switch">
+												<div
+													class="list_icon mls_icon selected"
+												>
+													<a
+														href="https://www.sientries.co.uk/index.php?page=L"
+														title="Displays a list of all current events"
+														><i
+															class="fa fa-list"
+															aria-hidden="true"
+														></i
+													></a>
+												</div>
+											</div>
+										</div>
+										<div class="left">
+											<div class="elh_text_map">
+												<a
+													href="https://www.sientries.co.uk/index.php?page=M"
+													title="Displays a map of all current events"
+													>MAP</a
+												>
+											</div>
+											<div class="map_list_switch">
+												<div class="map_icon mls_icon">
+													<a
+														href="https://www.sientries.co.uk/index.php?page=M"
+														title="Displays a map of all current events"
+														><i
+															class="fa fa-map-marker-alt"
+															aria-hidden="true"
+														></i
+													></a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="clear"></div>
+
+								<div id="index_table">
+									<div class="month_breaker">
+										May <span>2025</span>
+									</div>
+									<div class="month_wrap">
+										<div class="event_table_item">
+											<div class="eti_wrap">
+												<div
+													class="eti_date ets_forward"
+												>
+													<span class="eti_day"
+														>Sat</span
+													>
+													<span class="eti_num"
+														>31</span
+													>
+													<span class="eti_month"
+														>May</span
+													>
+												</div>
+												<div
+													class="eti_type etp_cycling"
+												>
+													<img
+														src="https://www.sientries.co.uk/images/event_icons/ed.svg?ver=2"
+														alt="MTB Enduro"
+														title="MTB Enduro"
+														width="24"
+														height="26"
+													/>
+												</div>
+												<div class="eti_type eti_map">
+													<img
+														src="https://www.sientries.co.uk/images/region_icons/10.svg"
+														alt="Scotland"
+														title="Scotland"
+														height="28"
+													/>
+												</div>
+												<div class="eti_title">
+													<a
+														href="https://www.sientries.co.uk/event.php?elid=Y&amp;event_id=15520"
+														title="So where the old SES concluded, the new SES begins, with our series kicking off on legendary trails across the valley, kept running sweet by the Tweed Valley Trail Association. Join us for four rounds of racing at some of Scotland’s favourite shred spots"
+														>Scottish Enduro Series
+														R1 - Tweed Valley</a
+													>
+													<div
+														class="eti_reveal dropdown_reveal"
+													>
+														<i
+															class="fa fa-chevron-down"
+															aria-hidden="true"
+														></i>
+													</div>
+												</div>
+												<div class="eti_status">
+													<a
+														href="https://www.sientries.co.uk/event.php?elid=Y&amp;event_id=15520"
+														title="Entries Open - Scottish Enduro Series R1 - Tweed Valley"
+														><div
+															class="eti_button button-forward"
+														>
+															<span
+																class="eti_link_text"
+																>Entries
+																Open</span
+															>
+														</div></a
+													>
+												</div>
+											</div>
+											<div class="eti_hidden_content">
+												<div class="eti_hc_padding">
+													<div>
+														So where the old SES
+														concluded, the new SES
+														begins, with our series
+														kicking off on legendary
+														trails across the
+														valley, kept running
+														sweet by the Tweed
+														Valley Trail
+														Association. Join us for
+														four rounds of racing at
+														some of Scotland’s
+														favourite shred spots
+													</div>
+													<div class="eth_link">
+														<a
+															href="https://www.sientries.co.uk/event.php?elid=Y&amp;event_id=15520"
+															title="Scottish Enduro Series R1 - Tweed Valley"
+															>FIND OUT MORE<span
+																class="no_small"
+															>
+																AND ENTER</span
+															>
+															»</a
+														><a
+															href="https://ses-mtb.co.uk/"
+															target="_blank"
+															><img
+																src="https://www.sientries.co.uk/images/social_icons/website.svg"
+																alt="Website"
+																title="Website"
+																class="socialicon"
+																width="24"
+																height="24" /></a
+														><a
+															href="https://instagram.com/scottishenduro"
+															target="_blank"
+															><img
+																src="https://www.sientries.co.uk/images/social_icons/instagram.svg"
+																alt="Instagram"
+																title="Instagram"
+																class="socialicon"
+																width="24"
+																height="24" /></a
+														><a
+															href="https://www.facebook.com/scottishenduro"
+															target="_blank"
+															><img
+																src="https://www.sientries.co.uk/images/social_icons/facebook.svg"
+																alt="Facebook"
+																title="Facebook"
+																class="socialicon"
+																width="24"
+																height="24"
+														/></a>
+													</div>
+													<div class="center">
+														<div
+															class="button eth_button button-forward"
+														>
+															<a
+																href="https://www.sientries.co.uk/event.php?elid=Y&amp;event_id=15520"
+																title="Entries Open - Scottish Enduro Series R1 - Tweed Valley"
+																><span
+																	class="eti_link_text"
+																	>Entries
+																	Open</span
+																></a
+															>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="month_breaker">
+										June <span>2025</span>
+									</div>
+									<div class="month_wrap">
+										<div class="event_table_item">
+											<div class="eti_wrap">
+												<div class="eti_date ets_edit">
+													<span class="eti_day"
+														>Sun</span
+													>
+													<span class="eti_num"
+														>1</span
+													>
+													<span class="eti_month"
+														>Jun</span
+													>
+												</div>
+												<div
+													class="eti_type etp_cycling"
+												>
+													<img
+														src="https://www.sientries.co.uk/images/event_icons/mb.svg?ver=2"
+														alt="Mountain Bike"
+														title="Mountain Bike"
+														width="24"
+														height="26"
+													/>
+												</div>
+												<div class="eti_type eti_map">
+													<img
+														src="https://www.sientries.co.uk/images/region_icons/7.svg"
+														alt="Yorkshire &amp; Humber"
+														title="Yorkshire &amp; Humber"
+														height="28"
+													/>
+												</div>
+												<div class="eti_title">
+													<a
+														href="https://www.sientries.co.uk/event.php?elid=Y&amp;event_id=14673"
+														title="Mountain bike challenge event taking place within the stunning 12,000 acres of the private Birdsall Estates. The route features singletrack, forest descents, natural trails and even a medieval village. 4 routes to approx. 25km, 40km, 65km &amp; 80km."
+														>Yorkshire Mountain Bike
+														Marathon</a
+													>
+													<div
+														class="eti_reveal dropdown_reveal"
+													>
+														<i
+															class="fa fa-chevron-down"
+															aria-hidden="true"
+														></i>
+													</div>
+												</div>
+												<div class="eti_status">
+													<a
+														href="https://www.sientries.co.uk/event.php?elid=Y&amp;event_id=14673"
+														title="Entries Closed - Yorkshire Mountain Bike Marathon"
+														><div
+															class="eti_button button-edit"
+														>
+															<span
+																class="eti_link_text"
+																>Entries
+																Closed</span
+															>
+														</div></a
+													>
+												</div>
+											</div>
+											<div class="eti_hidden_content">
+												<div class="eti_hc_padding">
+													<div>
+														Mountain bike challenge
+														event taking place
+														within the stunning
+														12,000 acres of the
+														private Birdsall
+														Estates. The route
+														features singletrack,
+														forest descents, natural
+														trails and even a
+														medieval village. 4
+														routes to approx. 25km,
+														40km, 65km &amp; 80km.
+													</div>
+													<div class="eth_link">
+														<a
+															href="https://www.sientries.co.uk/event.php?elid=Y&amp;event_id=14673"
+															title="Yorkshire Mountain Bike Marathon"
+															>FIND OUT MORE »</a
+														><a
+															href="https://www.yorkshiremountainbikemarathon.co.uk/"
+															target="_blank"
+															><img
+																src="https://www.sientries.co.uk/images/social_icons/website.svg"
+																alt="Website"
+																title="Website"
+																class="socialicon"
+																width="24"
+																height="24" /></a
+														><a
+															href="https://twitter.com/NorthernRide"
+															target="_blank"
+															><img
+																src="https://www.sientries.co.uk/images/social_icons/twitter.svg"
+																alt="Twitter"
+																title="Twitter"
+																class="socialicon"
+																width="24"
+																height="24" /></a
+														><a
+															href="https://instagram.com/northernride"
+															target="_blank"
+															><img
+																src="https://www.sientries.co.uk/images/social_icons/instagram.svg"
+																alt="Instagram"
+																title="Instagram"
+																class="socialicon"
+																width="24"
+																height="24" /></a
+														><a
+															href="https://www.facebook.com/Yorkshiremountainbikemarathon"
+															target="_blank"
+															><img
+																src="https://www.sientries.co.uk/images/social_icons/facebook.svg"
+																alt="Facebook"
+																title="Facebook"
+																class="socialicon"
+																width="24"
+																height="24"
+														/></a>
+													</div>
+													<div class="center">
+														<div
+															class="button eth_button button-edit"
+														>
+															<a
+																href="https://www.sientries.co.uk/event.php?elid=Y&amp;event_id=14673"
+																title="Entries Closed - Yorkshire Mountain Bike Marathon"
+																><span
+																	class="eti_link_text"
+																	>Entries
+																	Closed</span
+																></a
+															>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="month_breaker">
+											March <span>2026</span>
+										</div>
+										<div class="month_wrap">
+											<div class="event_table_item">
+												<div class="eti_wrap">
+													<div
+														class="eti_date ets_forward"
+													>
+														<span class="eti_day"
+															>Sat</span
+														>
+														<span class="eti_num"
+															>28</span
+														>
+														<span class="eti_month"
+															>Mar</span
+														>
+													</div>
+													<div
+														class="eti_type etp_cycling"
+													>
+														<img
+															src="https://www.sientries.co.uk/images/event_icons/ed.svg?ver=2"
+															alt="MTB Enduro"
+															title="MTB Enduro"
+															width="24"
+															height="26"
+														/>
+													</div>
+													<div
+														class="eti_type eti_map"
+													>
+														<img
+															src="https://www.sientries.co.uk/images/region_icons/10.svg"
+															alt="Scotland"
+															title="Scotland"
+															height="28"
+														/>
+													</div>
+													<div class="eti_title">
+														<a
+															href="https://www.sientries.co.uk/event.php?elid=Y&amp;event_id=15402"
+															title="MacAvalanche will be a bike season opener for us and hitting the slopes of Aonach Mòr on Saturday 28th of March! Riders will hurtle through the snow, descending over 900m at a rapid rate!"
+															>MacAvalanche</a
+														>
+														<div
+															class="eti_reveal dropdown_reveal"
+														>
+															<i
+																class="fa fa-chevron-down"
+																aria-hidden="true"
+															></i>
+														</div>
+													</div>
+													<div class="eti_status">
+														<a
+															href="https://www.sientries.co.uk/event.php?elid=Y&amp;event_id=15402"
+															title="Entries Open - MacAvalanche"
+															><div
+																class="eti_button button-forward"
+															>
+																<span
+																	class="eti_link_text"
+																	>Entries
+																	Open</span
+																>
+															</div></a
+														>
+													</div>
+												</div>
+												<div class="eti_hidden_content">
+													<div class="eti_hc_padding">
+														<div>
+															MacAvalanche will be
+															a bike season opener
+															for us and hitting
+															the slopes of Aonach
+															Mòr on Saturday 28th
+															of March! Riders
+															will hurtle through
+															the snow, descending
+															over 900m at a rapid
+															rate!
+														</div>
+														<div class="eth_link">
+															<a
+																href="https://www.sientries.co.uk/event.php?elid=Y&amp;event_id=15402"
+																title="MacAvalanche"
+																>FIND OUT
+																MORE<span
+																	class="no_small"
+																>
+																	AND
+																	ENTER</span
+																>
+																»</a
+															><a
+																href="https://www.nevisrange.co.uk/"
+																target="_blank"
+																><img
+																	src="https://www.sientries.co.uk/images/social_icons/website.svg"
+																	alt="Website"
+																	title="Website"
+																	class="socialicon"
+																	width="24"
+																	height="24" /></a
+															><a
+																href="https://twitter.com/Thenevisrange"
+																target="_blank"
+																><img
+																	src="https://www.sientries.co.uk/images/social_icons/twitter.svg"
+																	alt="Twitter"
+																	title="Twitter"
+																	class="socialicon"
+																	width="24"
+																	height="24" /></a
+															><a
+																href="https://instagram.com/nevisrange"
+																target="_blank"
+																><img
+																	src="https://www.sientries.co.uk/images/social_icons/instagram.svg"
+																	alt="Instagram"
+																	title="Instagram"
+																	class="socialicon"
+																	width="24"
+																	height="24" /></a
+															><a
+																href="https://www.facebook.com/nevisrange"
+																target="_blank"
+																><img
+																	src="https://www.sientries.co.uk/images/social_icons/facebook.svg"
+																	alt="Facebook"
+																	title="Facebook"
+																	class="socialicon"
+																	width="24"
+																	height="24"
+															/></a>
+														</div>
+														<div class="center">
+															<div
+																class="button eth_button button-forward"
+															>
+																<a
+																	href="https://www.sientries.co.uk/event.php?elid=Y&amp;event_id=15402"
+																	title="Entries Open - MacAvalanche"
+																	><span
+																		class="eti_link_text"
+																		>Entries
+																		Open</span
+																	></a
+																>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="event_table_item">
+											<div class="eti_wrap">
+												<div
+													class="eti_date ets_backward"
+												>
+													<span class="eti_day"
+														>Sat</span
+													>
+													<span class="eti_num"
+														>9</span
+													>
+													<span class="eti_month"
+														>May</span
+													>
+												</div>
+												<div
+													class="eti_type etp_cycling"
+												>
+													<img
+														src="https://www.sientries.co.uk/images/event_icons/ed.svg?ver=2"
+														alt="MTB Enduro"
+														title="MTB Enduro"
+														width="24"
+														height="26"
+													/>
+												</div>
+												<div class="eti_type eti_map">
+													<img
+														src="https://www.sientries.co.uk/images/region_icons/9.svg"
+														alt="North East"
+														title="North East"
+														height="28"
+													/>
+												</div>
+												<div class="eti_title">
+													<a
+														href="https://www.sientries.co.uk/event.php?elid=Y&amp;event_id=15704"
+														title="Non competitive Enduro weekender in Hamsterley forest.  Bikes, brews, good food and good times with good people in the heart of the forest.  All in aid of  Great North Air Ambulance."
+														>Hamsterley Beast
+														Funduro 3</a
+													>
+													<div
+														class="eti_reveal dropdown_reveal"
+													>
+														<i
+															class="fa fa-chevron-down"
+															aria-hidden="true"
+														></i>
+													</div>
+												</div>
+												<div class="eti_status">
+													<a
+														href="https://www.sientries.co.uk/event.php?elid=Y&amp;event_id=15704"
+														title="Opens 04/10 at 19:00 - Hamsterley Beast Funduro 3"
+														><div
+															class="eti_button button-backward"
+														>
+															<span
+																class="eti_link_text"
+																>Opens 04/10 at
+																19:00</span
+															>
+														</div></a
+													>
+												</div>
+											</div>
+											<div class="eti_hidden_content">
+												<div class="eti_hc_padding">
+													<div>
+														Non competitive Enduro
+														weekender in Hamsterley
+														forest. Bikes, brews,
+														good food and good times
+														with good people in the
+														heart of the forest. All
+														in aid of Great North
+														Air Ambulance.
+													</div>
+													<div class="eth_link">
+														<a
+															href="https://www.sientries.co.uk/event.php?elid=Y&amp;event_id=15704"
+															title="Hamsterley Beast Funduro 3"
+															>FIND OUT MORE »</a
+														><a
+															href="http://hamsterleybeast.com"
+															target="_blank"
+															><img
+																src="https://www.sientries.co.uk/images/social_icons/website.svg"
+																alt="Website"
+																title="Website"
+																class="socialicon"
+																width="24"
+																height="24" /></a
+														><a
+															href="https://instagram.com/hamsterleybeast"
+															target="_blank"
+															><img
+																src="https://www.sientries.co.uk/images/social_icons/instagram.svg"
+																alt="Instagram"
+																title="Instagram"
+																class="socialicon"
+																width="24"
+																height="24" /></a
+														><a
+															href="https://www.facebook.com/HamsterleyBeast"
+															target="_blank"
+															><img
+																src="https://www.sientries.co.uk/images/social_icons/facebook.svg"
+																alt="Facebook"
+																title="Facebook"
+																class="socialicon"
+																width="24"
+																height="24"
+														/></a>
+													</div>
+													<div class="center">
+														<div
+															class="button eth_button button-backward"
+														>
+															<a
+																href="https://www.sientries.co.uk/event.php?elid=Y&amp;event_id=15704"
+																title="Opens 04/10 at 19:00 - Hamsterley Beast Funduro 3"
+																><span
+																	class="eti_link_text"
+																	>Opens 04/10
+																	at
+																	19:00</span
+																></a
+															>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="event_table_item altbg">
+											<div class="eti_wrap">
+												<div
+													class="eti_date ets_backward"
+												>
+													<span class="eti_day"
+														>Sun</span
+													>
+													<span class="eti_num"
+														>10</span
+													>
+													<span class="eti_month"
+														>May</span
+													>
+												</div>
+												<div
+													class="eti_type etp_cycling"
+												>
+													<img
+														src="https://www.sientries.co.uk/images/event_icons/mb.svg?ver=2"
+														alt="Mountain Bike"
+														title="Mountain Bike"
+														width="24"
+														height="26"
+													/>
+												</div>
+												<div class="eti_type eti_map">
+													<img
+														src="https://www.sientries.co.uk/images/region_icons/9.svg"
+														alt="North East"
+														title="North East"
+														height="28"
+													/>
+												</div>
+												<div class="eti_title">
+													<a
+														href="https://www.sientries.co.uk/event.php?elid=Y&amp;event_id=15705"
+														title="Two stage Time Trial Mtb event for young riders at Hamsterley Forest."
+														>Hammers Jam</a
+													>
+													<div
+														class="eti_reveal dropdown_reveal"
+													>
+														<i
+															class="fa fa-chevron-down"
+															aria-hidden="true"
+														></i>
+													</div>
+												</div>
+												<div class="eti_status">
+													<a
+														href="https://www.sientries.co.uk/event.php?elid=Y&amp;event_id=15705"
+														title="Opens 04/10 at 19:00 - Hammers Jam"
+														><div
+															class="eti_button button-backward"
+														>
+															<span
+																class="eti_link_text"
+																>Opens 04/10 at
+																19:00</span
+															>
+														</div></a
+													>
+												</div>
+											</div>
+											<div class="eti_hidden_content">
+												<div class="eti_hc_padding">
+													<div>
+														Two stage Time Trial Mtb
+														event for young riders
+														at Hamsterley Forest.
+													</div>
+													<div class="eth_link">
+														<a
+															href="https://www.sientries.co.uk/event.php?elid=Y&amp;event_id=15705"
+															title="Hammers Jam"
+															>FIND OUT MORE »</a
+														><a
+															href="http://hamsterleybeast.com"
+															target="_blank"
+															><img
+																src="https://www.sientries.co.uk/images/social_icons/website.svg"
+																alt="Website"
+																title="Website"
+																class="socialicon"
+																width="24"
+																height="24" /></a
+														><a
+															href="https://instagram.com/hamsterleybeast"
+															target="_blank"
+															><img
+																src="https://www.sientries.co.uk/images/social_icons/instagram.svg"
+																alt="Instagram"
+																title="Instagram"
+																class="socialicon"
+																width="24"
+																height="24" /></a
+														><a
+															href="https://www.facebook.com/HamsterleyBeast"
+															target="_blank"
+															><img
+																src="https://www.sientries.co.uk/images/social_icons/facebook.svg"
+																alt="Facebook"
+																title="Facebook"
+																class="socialicon"
+																width="24"
+																height="24"
+														/></a>
+													</div>
+													<div class="center">
+														<div
+															class="button eth_button button-backward"
+														>
+															<a
+																href="https://www.sientries.co.uk/event.php?elid=Y&amp;event_id=15705"
+																title="Opens 04/10 at 19:00 - Hammers Jam"
+																><span
+																	class="eti_link_text"
+																	>Opens 04/10
+																	at
+																	19:00</span
+																></a
+															>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="event_table_item">
+											<div class="eti_wrap">
+												<div
+													class="eti_date ets_backward"
+												>
+													<span class="eti_day"
+														>Sat</span
+													>
+													<span class="eti_num"
+														>16</span
+													>
+													<span class="eti_month"
+														>May</span
+													>
+												</div>
+												<div
+													class="eti_type etp_cycling"
+												>
+													<img
+														src="https://www.sientries.co.uk/images/event_icons/ed.svg?ver=2"
+														alt="MTB Enduro"
+														title="MTB Enduro"
+														width="24"
+														height="26"
+													/>
+												</div>
+												<div class="eti_type eti_map">
+													<img
+														src="https://www.sientries.co.uk/images/region_icons/7.svg"
+														alt="Yorkshire &amp; Humber"
+														title="Yorkshire &amp; Humber"
+														height="28"
+													/>
+												</div>
+												<div class="eti_title">
+													<a
+														href="https://www.sientries.co.uk/event.php?elid=Y&amp;event_id=15602"
+														title="This Event is in the process of being set up on SiEntries. Please check back again soon for more details."
+														>Boltby Bash Enduro</a
+													>
+													<div
+														class="eti_reveal dropdown_reveal"
+													>
+														<i
+															class="fa fa-chevron-down"
+															aria-hidden="true"
+														></i>
+													</div>
+												</div>
+												<div class="eti_status">
+													<a
+														href="https://www.sientries.co.uk/event.php?elid=Y&amp;event_id=15602"
+														title="Not Yet Open - Boltby Bash Enduro"
+														><div
+															class="eti_button button-backward"
+														>
+															<span
+																class="eti_link_text"
+																>Not Yet
+																Open</span
+															>
+														</div></a
+													>
+												</div>
+											</div>
+											<div class="eti_hidden_content">
+												<div class="eti_hc_padding">
+													<div>
+														This Event is in the
+														process of being set up
+														on SiEntries. Please
+														check back again soon
+														for more details.
+													</div>
+													<div class="center">
+														<div
+															class="button eth_button button-backward"
+														>
+															<a
+																href="https://www.sientries.co.uk/event.php?elid=Y&amp;event_id=15602"
+																title="Not Yet Open - Boltby Bash Enduro"
+																><span
+																	class="eti_link_text"
+																	>Not Yet
+																	Open</span
+																></a
+															>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="clear"></div>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="clear"></div>
+
+				<div id="page_footer">
+					<div id="footer_bar"></div>
+
+					<div class="auto_margin_footer">
+						<div id="footerLeft">
+							<a
+								href="https://www.sientries.co.uk/index.php"
+								title="Click to go to the SiEntries Events List"
+								id="sientries_logo_footer"
+								><strong>Si</strong>Entries
+								<span class="smaller"
+									>Online Entries System</span
+								></a
+							>
+						</div>
+
+						<div id="footerRight">
+							<ul class="footerMenu">
+								<li>
+									<a
+										href="https://www.sientries.co.uk/index.php"
+										title="Displays a list of all current events"
+										><i
+											class="fa fa-home"
+											aria-hidden="true"
+										></i>
+										Home</a
+									>
+								</li>
+								<li>
+									<a
+										href="https://www.sientries.co.uk/help.php"
+										title="View help and tips on using SiEntries"
+										><i
+											class="fa fa-question-circle"
+											aria-hidden="true"
+										></i>
+										Help</a
+									>
+								</li>
+								<li>
+									<a
+										href="https://www.sientries.co.uk/terms.php"
+										title="View the website Terms of Use which apply to SiEntries"
+										><i
+											class="fa fa-align-left"
+											aria-hidden="true"
+										></i>
+										Terms</a
+									>
+								</li>
+								<li>
+									<a
+										href="https://www.sientries.co.uk/privacy.php"
+										title="View the Privacy Policy which applies to using SiEntries"
+										><i
+											class="fa fa-lock"
+											aria-hidden="true"
+										></i>
+										Privacy</a
+									>
+								</li>
+								<li>
+									<a
+										href="https://www.sientries.co.uk/cookies.php"
+										title="View the Cookies Policy which applies to using SiEntries"
+										><i
+											class="fa fa-life-ring"
+											aria-hidden="true"
+										></i>
+										Cookies</a
+									>
+								</li>
+							</ul>
+							<div class="copyright">
+								<a
+									href="https://www.sientries.co.uk/about_sientries.php"
+									title="Find out who we are and what we do"
+									>About SiEntries
+									<i class="far fa-registered"></i
+								></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div
+			id="ui-datepicker-div"
+			class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"
+		></div>
+		<div
+			data-lastpass-root=""
+			style="
+				position: absolute !important;
+				top: 0px !important;
+				left: 0px !important;
+				height: 0px !important;
+				width: 0px !important;
+			"
+		></div>
+	</body>
+</html>

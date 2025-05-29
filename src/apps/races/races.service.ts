@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { scrapeSIEntries } from "../../lib/scrapers/si-entries/si-entries.scraper.js";
+import { scrapeSIEntries } from "../../lib/scrapers/si-entries/si-entries-scraper.js";
 import { db } from "../../db/index.js";
 import { racesTable } from "../../db/schema.js";
 import { inArray, sql } from "drizzle-orm";
