@@ -11,17 +11,6 @@ A Node.js backend service that scrapes and aggregates mountain bike race informa
 -   Scrapes race information from SI Entries
 -   Exposes aggregated race data through RESTful API endpoints-
 
-## Technologies Used
-
--   TypeScript
--   Node.js
--   Express.js
--   Docker
--   PostgreSQL
--   Vitest
--   Drizzle ORM
--   Puppeteer
-
 ## Prerequisites
 
 -   Node.js (v24)
@@ -108,11 +97,13 @@ Health check endpoint.
 
 The project uses:
 
--   TypeScript for type safety
--   Express.js for the web server
--   Puppeteer for web scraping
--   Nodemon for development auto-reload
--   Drizzle for database migrations
+-   TypeScript
+-   Node.js
+-   Express.js
+-   PostgreSQL
+-   Docker
+-   Vitest
+-   Puppeteer
 
 ## Project Structure
 
