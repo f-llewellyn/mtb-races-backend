@@ -1,136 +1,138 @@
-# MTB Races Backend
+# 🚵‍♂️ MTB Races Backend
 
-A Node.js backend service that scrapes and aggregates mountain bike race information from various sources.
+> A lightning-fast Node.js backend service that scrapes and aggregates mountain bike race information from across the web.
 
-## Current Sources
+[![Node.js](https://img.shields.io/badge/Node.js-v24-green.svg)](https://nodejs.org/) [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/) [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Ready-336791.svg)](https://www.postgresql.org/)
 
--   SI Entries
+## 🎯 Current Sources
 
-## Features
+-   **SI Entries**
 
--   Scrapes race information from SI Entries
--   Exposes aggregated race data through RESTful API endpoints-
+## ✨ Features
 
-## Prerequisites
+-   🕷️ **Smart Web Scraping** - Automated race information extraction from SI Entries
+-   🚀 **RESTful API** - Clean, fast endpoints for aggregated race data
+-   🧪 **Comprehensive Testing** - Extensive test suite with Vitest
+-   🐳 **Docker Ready** - Containerized development and testing environments
 
--   Node.js (v24)
--   pnpm package manager
+## 🛠 Prerequisites
 
-## Setup
+-   **Node.js** v24+
+-   **pnpm** package manager
+-   **Docker** & Docker Compose
 
-1. Clone the repository
+## 🚀 Quick Start
 
-2. Generate `.env` file from `.sample.env`
+### 1. Clone & Configure
 
 ```bash
+git clone <repository-url>
+cd mtb-races-backend
+
+# Generate environment file
 cp .sample.env .env
 ```
 
-3. Install dependencies:
+### 2. Install Dependencies
 
 ```bash
 pnpm install
 ```
 
-4. Create Docker container for PostgreSQL:
+### 3. Spin Up Database
 
 ```bash
 docker compose -f docker-compose-develop.yml up
 ```
 
-5. Start the development server:
+### 4. Launch Development Server
 
 ```bash
 pnpm dev
 ```
 
-6. For production, build and start:
+### 5. Production Build
 
 ```bash
 pnpm build
 pnpm start
 ```
 
-## Running Tests
+## 🧪 Running Tests
 
-1. First create a docker container for the test the following command:
+### Setup Test Environment
 
 ```bash
+# Start test database
 docker compose -f docker-compose-test.yml up
-```
 
-1. Then create a `.env.test` file from `.sample.env`, ensuring to set the `DATABASE_URL` to point to the test database:
-
-```bash
+# Create test environment file
 cp .sample.env .env.test
 ```
 
-3. Then run the tests using:
+### Run Test Suite
 
 ```bash
 pnpm test
 ```
 
-#### NOTE: All migrations will be applied to the test database automatically when running tests.
+> 💡 **Note:** Migrations are automatically applied to the test database when running tests.
 
-## Database Migrations
+## 🗄️ Database Management
 
-To generate a migration after updating the DB schema, run:
+### Generate New Migration
 
 ```bash
 pnpm migrate-generate
 ```
 
-After checking the generated migration in the `drizzle` folder, apply the migration by running:
+### Apply Migrations
 
 ```bash
+# Manual application
 pnpm migrate-up
-```
 
-OR run the dev server which will automatically apply the migrations:
-
-```bash
+# Or start dev server (auto-applies migrations)
 pnpm dev
 ```
 
-## API Endpoints
+## 🛣️ API Endpoints
 
-### GET `/api/races`
+| Endpoint            | Method | Description                                |
+| ------------------- | ------ | ------------------------------------------ |
+| `/api/races`        | GET    | 📋 Fetch upcoming mountain bike races      |
+| `/api/races/scrape` | GET    | 🔄 Trigger fresh scrape of SI Entries data |
+| `/health`           | GET    | ❤️ Service health check                    |
 
-Returns a list of upcoming mountain bike races.
+## 🏗️ Tech Stack
 
-### GET `/api/races/scrape`
+| Category             | Technology           |
+| -------------------- | -------------------- |
+| **Runtime**          | Node.js + TypeScript |
+| **Framework**        | Express.js           |
+| **Database**         | PostgreSQL           |
+| **Testing**          | Vitest               |
+| **Scraping**         | Puppeteer            |
+| **Containerization** | Docker               |
 
-Triggers a new scrape of race data from SI Entries and saves to a databse.
-
-### GET `/health`
-
-Health check endpoint.
-
-## Development
-
-The project uses:
-
--   TypeScript
--   Node.js
--   Express.js
--   PostgreSQL
--   Docker
--   Vitest
--   Puppeteer
-
-## Project Structure
+## 📁 Project Architecture
 
 ```
 src/
-  ├── index.ts      # Application entry point
-  ├── apps/         # Feature modules
-  │   └── races/    # Race-related endpoints and services
-  ├── lib/          # Shared libraries
-  │   └── scrapers/ # Web scraping implementations
-  │   └── utils/    # Utility functions
-  ├── db/           # Database configuration
-  ├── types/        # TypeScript type definitions
-  ├── enums/        # Shared enums
-test/               # Test files mirroring src structure
+  ├── 🚀 index.ts          # Application entry point
+  ├── 📱 apps/             # Feature modules
+  │   └── races/           # Race endpoints & services
+  ├── 📚 lib/              # Shared libraries
+  │   ├── scrapers/        # Web scraping implementations
+  │   └── utils/           # Utility functions
+  ├── 🗄️ db/               # Database configuration
+  ├── 🏷️ types/            # TypeScript definitions
+  └── 📋 enums/            # Shared enumerations
+test/                      # 🧪 Test suite (mirrors src/)
 ```
+
+---
+
+<div align="center">
+  <p><strong>Built with ❤️ for the mountain biking community</strong></p>
+</div>
