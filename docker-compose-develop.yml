@@ -1,9 +1,10 @@
 version: "3.8"
 
+name: mtb-races-backend-develop
 services:
     postgres:
         image: postgres:16
-        container_name: mtb-races-db
+        container_name: mtb-races-backend-develop-db
         environment:
             POSTGRES_USER: postgres
             POSTGRES_PASSWORD: postgres

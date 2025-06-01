@@ -1,7 +1,9 @@
 import express from "express";
 import apiRouter from "./router.js";
+import { getEnvs } from "./lib/utils/getEnvs.js";
 
-const app = express();
+getEnvs();
+export const app = express();
 const port = process.env.PORT || 3000;
 
 app.get("/", (_, res) => {
