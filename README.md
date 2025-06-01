@@ -53,11 +53,25 @@ pnpm start
 
 ## Running Tests
 
-To run tests, use the following command:
+1. First create a docker container for the test the following command:
+
+```bash
+docker compose -f docker-compose-test.yml up
+```
+
+1. Then create a `.env.test` file from `.sample.env`, ensuring to set the `DATABASE_URL` to point to the test database:
+
+```bash
+cp .sample.env .env.test
+```
+
+3. Then run the tests using:
 
 ```bash
 pnpm test
 ```
+
+#### NOTE: All migrations will be applied to the test database automatically when running tests.
 
 ## Database Migrations
 
@@ -118,4 +132,5 @@ src/
   ├── db/           # Database configuration
   ├── types/        # TypeScript type definitions
   ├── enums/        # Shared enums
+test/               # Test files mirroring src structure
 ```
