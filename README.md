@@ -83,14 +83,14 @@ pnpm test
 ### Generate New Migration
 
 ```bash
-pnpm migrate-generate
+pnpm migrate:generate
 ```
 
 ### Apply Migrations
 
 ```bash
 # Manual application
-pnpm migrate-up
+pnpm migrate:up
 
 # Or start dev server (auto-applies migrations)
 pnpm dev
