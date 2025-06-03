@@ -1,1 +1,0 @@
-ALTER TABLE "races" ADD CONSTRAINT "races_hashedId_unique" UNIQUE("hashedId");

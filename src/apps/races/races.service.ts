@@ -29,11 +29,14 @@ export const scrapeRaces = async (req: Request, res: Response) => {
 		.values(races)
 		.onConflictDoUpdate({
 			target: racesTable.hashedId,
-			set: { date: sql`excluded.date` },
+			set: {
+				date: sql`excluded.date`,
+				location: sql`excluded.location`,
+				detailsUrl: sql`excluded.details_url`,
+			},
 		});
 
-	res.status(201);
-	res.json(races);
+	res.status(201).send();
 };
 
 async function getAllRaces() {

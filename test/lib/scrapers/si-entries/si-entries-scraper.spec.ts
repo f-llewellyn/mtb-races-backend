@@ -5,7 +5,7 @@ import puppeteer from "puppeteer";
 import {
 	sIEntriesExtractFromDOM,
 	mapRawEvents,
-} from "../../../../src/lib/scrapers/si-entries/si-entries-scraper";
+} from "../../../../src/lib/scrapers/si-entries/si-entries-scraper.js";
 
 describe("Unit - SI Entries Scraper", () => {
 	it("Should return all races in raw format", async () => {

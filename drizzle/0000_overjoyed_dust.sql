@@ -3,7 +3,10 @@ CREATE TABLE "races" (
 	"name" varchar(255) NOT NULL,
 	"type" varchar(255),
 	"location" varchar(255),
-	"detailsUrl" varchar(255),
+	"details_url" varchar(255),
 	"date" date NOT NULL,
-	"hashedId" varchar(255) NOT NULL
+	"hashed_id" varchar(255) NOT NULL,
+	"created_at" timestamp DEFAULT now() NOT NULL,
+	"updated_at" timestamp DEFAULT now() NOT NULL,
+	CONSTRAINT "races_hashedId_unique" UNIQUE("hashed_id")
 );

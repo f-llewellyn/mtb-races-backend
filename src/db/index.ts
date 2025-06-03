@@ -9,7 +9,7 @@ if (process.env.NODE_ENV === "test") {
 
 try {
 	const dbURL = process.env.DATABASE_URL!;
-	db = drizzle(dbURL);
+	db = drizzle({ connection: dbURL, casing: "snake_case" });
 } catch (error) {
 	console.error("Error connecting to DB", error);
 }

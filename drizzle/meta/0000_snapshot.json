@@ -1,5 +1,5 @@
 {
-  "id": "414c2d1b-6968-4b0a-894f-e83e9bd5a809",
+  "id": "23b2df62-7a01-4394-a388-388c916f5856",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -43,8 +43,8 @@
           "primaryKey": false,
           "notNull": false
         },
-        "detailsUrl": {
-          "name": "detailsUrl",
+        "details_url": {
+          "name": "details_url",
           "type": "varchar(255)",
           "primaryKey": false,
           "notNull": false
@@ -55,17 +55,39 @@
           "primaryKey": false,
           "notNull": true
         },
-        "hashedId": {
-          "name": "hashedId",
+        "hashed_id": {
+          "name": "hashed_id",
           "type": "varchar(255)",
           "primaryKey": false,
           "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
         }
       },
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
+      "uniqueConstraints": {
+        "races_hashedId_unique": {
+          "name": "races_hashedId_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "hashed_id"
+          ]
+        }
+      },
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false

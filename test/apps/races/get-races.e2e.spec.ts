@@ -1,8 +1,7 @@
-import { afterEach, describe, expect, it } from "vitest";
 import request from "supertest";
-import { app } from "../../../src/index";
-import { db } from "../../../src/db";
-import { racesTable } from "../../../src/db/schema";
+import { app } from "../../../src/index.js";
+import { db } from "../../../src/db/index.js";
+import { racesTable } from "../../../src/db/schema.js";
 
 describe("E2E - Get Races", () => {
 	afterEach(async () => {
