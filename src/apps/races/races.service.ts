@@ -1,28 +1,14 @@
-import { Request, Response } from "express";
 import { scrapeSIEntries } from "../../lib/scrapers/si-entries/si-entries-scraper.js";
 import { db } from "../../db/index.js";
-import { racesTable } from "../../db/schema.js";
-import { inArray, sql } from "drizzle-orm";
+import { racesTable, TRace } from "../../db/schema.js";
+import { sql } from "drizzle-orm";
 
-export const getRaces = async (req: Request, res: Response) => {
-	const races = await getAllRaces();
-	res.status(200);
-	return res.json(races);
+export const getRaces = async (): Promise<TRace[]> => {
+	return await getAllRaces();
 };
 
-export const scrapeRaces = async (req: Request, res: Response) => {
+export const scrapeRaces = async (): Promise<void> => {
 	const races = await scrapeSIEntries();
-	const raceHashedIds = races.map((race) => race.hashedId);
-
-	const existingRaces = await getAllRaces();
-
-	const raceIdsToDelete = existingRaces
-		.filter((race) => {
-			return !raceHashedIds.includes(race.hashedId);
-		})
-		.map((race) => race.id);
-
-	await db.delete(racesTable).where(inArray(racesTable.id, raceIdsToDelete));
 
 	await db
 		.insert(racesTable)
@@ -35,8 +21,6 @@ export const scrapeRaces = async (req: Request, res: Response) => {
 				detailsUrl: sql`excluded.details_url`,
 			},
 		});
-
-	res.status(201).send();
 };
 
 async function getAllRaces() {

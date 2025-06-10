@@ -97,7 +97,9 @@ export function mapRawEvents(rawEvents: TRaceRaw[]) {
 					type: typeText ? mapType(typeText) : null,
 					location: locationText,
 					detailsUrl: url,
-					hashedId: hashString(titleText),
+					hashedId: hashString(
+						titleText.replaceAll(" ", "").toLowerCase()
+					),
 				},
 			];
 		}
