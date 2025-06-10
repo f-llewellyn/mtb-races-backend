@@ -21,4 +21,5 @@ export const racesTable = pgTable("races", {
 		.notNull(),
 });
 
+export type TRace = typeof racesTable.$inferSelect;
 export type TRaceInsert = typeof racesTable.$inferInsert;

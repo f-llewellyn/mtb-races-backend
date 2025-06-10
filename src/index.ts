@@ -1,20 +1,9 @@
-import express from "express";
-import apiRouter from "./router.js";
-import { getEnvs } from "./lib/utils/getEnvs.js";
+import { config } from "./config.js";
+import { createApp } from "./lib/utils/createApp.js";
 
-getEnvs();
-export const app = express();
-const port = process.env.PORT || 3000;
+const app = await createApp();
 
-app.get("/", (_, res) => {
-	res.send("Hello World");
-});
-
-app.get("/health", (_, res) => {
-	res.send();
-});
-
-app.use("/api", apiRouter);
+const port = config.PORT || 3000;
 
 app.listen(port, () => {
 	console.log(`Server is running on port ${port}`);
