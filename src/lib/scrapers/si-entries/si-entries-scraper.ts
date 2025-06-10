@@ -1,7 +1,7 @@
 import puppeteer from "puppeteer";
 import { TRaceInsert } from "../../../db/schema.js";
 import { TRaceRaw } from "../../../types/race.type.js";
-import { hashString } from "../../utils/stringToMD5.js";
+import { hashRace } from "../../utils/stringToMD5.js";
 import { RaceTypes } from "../../../enums/RaceTypes.enum.js";
 import { SiEntriesRow } from "../../../types/siEntries.type.js";
 const siEntiresMTBUrl =
@@ -90,6 +90,8 @@ export function mapRawEvents(rawEvents: TRaceRaw[]) {
 				return [];
 			}
 
+			const date = new Date(dateText);
+
 			return [
 				{
 					name: titleText,
@@ -97,9 +99,7 @@ export function mapRawEvents(rawEvents: TRaceRaw[]) {
 					type: typeText ? mapType(typeText) : null,
 					location: locationText,
 					detailsUrl: url,
-					hashedId: hashString(
-						titleText.replaceAll(" ", "").toLowerCase()
-					),
+					hashedId: hashRace(titleText, date),
 				},
 			];
 		}
