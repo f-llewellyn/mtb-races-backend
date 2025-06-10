@@ -98,11 +98,16 @@ pnpm dev
 
 ## 🛣️ API Endpoints
 
-| Endpoint            | Method | Description                                |
-| ------------------- | ------ | ------------------------------------------ |
-| `/api/races`        | GET    | 📋 Fetch upcoming mountain bike races      |
-| `/api/races/scrape` | GET    | 🔄 Trigger fresh scrape of SI Entries data |
-| `/health`           | GET    | ❤️ Service health check                    |
+| Endpoint     | Method | Description                           |
+| ------------ | ------ | ------------------------------------- |
+| `/api/races` | GET    | 📋 Fetch upcoming mountain bike races |
+| `/health`    | GET    | ❤️ Service health check               |
+
+## ⚒️ Jobs
+
+| Queue Name         | Schedule           | Description                     |
+| ------------------ | ------------------ | ------------------------------- |
+| `SI_SCRAPER_QUEUE` | 00:00 every monday | 📋 Scrape races from SI Entries |
 
 ## 🏗️ Tech Stack
 
@@ -111,6 +116,7 @@ pnpm dev
 | **Runtime**          | Node.js + TypeScript |
 | **Framework**        | Express.js           |
 | **Database**         | PostgreSQL           |
+| **Scheduling**       | pg-boss              |
 | **Testing**          | Vitest               |
 | **Scraping**         | Puppeteer            |
 | **Containerization** | Docker               |
@@ -132,7 +138,3 @@ test/                      # 🧪 Test suite (mirrors src/)
 ```
 
 ---
-
-<div align="center">
-  <p><strong>Built with ❤️ for the mountain biking community</strong></p>
-</div>
