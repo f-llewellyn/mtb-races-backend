@@ -10,9 +10,24 @@
 		"build": "tsc",
 		"test": "vitest",
 		"migrate:generate": "pnpm drizzle-kit generate",
-		"migrate:up": "pnpm drizzle-kit migrate"
+		"migrate:up": "pnpm drizzle-kit migrate",
+		"prepare": "husky"
 	},
-	"keywords": [],
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx,json,css,scss,md}": [
+			"prettier --write",
+			"eslint --fix"
+		]
+	},
+	"keywords": [
+		"mtb",
+		"mountain bike"
+	],
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
@@ -29,13 +44,20 @@
 		"@types/pg": "^8.15.2",
 		"@types/supertest": "^6.0.3",
 		"drizzle-kit": "^0.31.1",
+		"eslint": "^9.29.0",
+		"eslint-config-prettier": "^10.1.5",
+		"eslint-plugin-prettier": "^5.4.1",
+		"globals": "^16.2.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.1.2",
 		"nodemon": "^3.1.10",
+		"prettier": "3.5.3",
 		"supertest": "^7.1.1",
 		"ts-node": "^10.9.2",
 		"tsx": "^4.19.4",
 		"typescript": "^5.3.3",
+		"typescript-eslint": "^8.34.0",
 		"vitest": "^3.1.4"
 	},
 	"packageManager": "pnpm@9.6.0+sha512.38dc6fba8dba35b39340b9700112c2fe1e12f10b17134715a4aa98ccf7bb035e76fd981cf0bb384dfa98f8d6af5481c2bef2f4266a24bfa20c34eb7147ce0b5e"
 }
-

@@ -1,6 +1,6 @@
-import { z } from "zod";
+import { z } from 'zod';
 
-const envFile = process.env.NODE_ENV === "test" ? ".env.test" : ".env";
+const envFile = process.env.NODE_ENV === 'test' ? '.env.test' : '.env';
 process.loadEnvFile(envFile);
 
 const configSchema = z.object({

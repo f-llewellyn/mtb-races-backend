@@ -4,9 +4,9 @@ import {
 	pgTable,
 	timestamp,
 	varchar,
-} from "drizzle-orm/pg-core";
+} from 'drizzle-orm/pg-core';
 
-export const racesTable = pgTable("races", {
+export const racesTable = pgTable('races', {
 	id: integer().primaryKey().generatedByDefaultAsIdentity(),
 	name: varchar({ length: 255 }).notNull(),
 	type: varchar({ length: 255 }),
