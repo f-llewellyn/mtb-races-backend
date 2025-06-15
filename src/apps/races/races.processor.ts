@@ -1,12 +1,11 @@
-import { SI_SCRAPE_QUEUE } from "../../constants/queueNames.js";
+import { SI_SCRAPE_QUEUE } from '../../constants/queueNames.js';
 import {
 	createQueue,
-	sendJob,
 	addWorker,
 	scheduleJob,
 	failJob,
-} from "../../lib/queues/queues.js";
-import { scrapeRaces } from "./races.service.js";
+} from '../../lib/queues/queues.js';
+import { scrapeRaces } from './races.service.js';
 
 export async function SiEntriesScrapeProcessor() {
 	await createQueue(SI_SCRAPE_QUEUE);
@@ -21,5 +20,5 @@ export async function SiEntriesScrapeProcessor() {
 		}
 	});
 	// Runs every at 00:00 UTC every Monday
-	await scheduleJob(SI_SCRAPE_QUEUE, "0 0 * * 1", {});
+	await scheduleJob(SI_SCRAPE_QUEUE, '0 0 * * 1', {});
 }
