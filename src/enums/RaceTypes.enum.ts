@@ -1,5 +1,5 @@
 export enum RaceTypes {
-	XC = "XC",
-	Enduro = "Enduro",
-	Downhill = "Downhill",
+	XC = 'XC',
+	Enduro = 'Enduro',
+	Downhill = 'Downhill',
 }

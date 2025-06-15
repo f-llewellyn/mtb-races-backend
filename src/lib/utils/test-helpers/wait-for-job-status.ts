@@ -1,11 +1,11 @@
-import PgBoss, { JobWithMetadata } from "pg-boss";
+import PgBoss, { JobWithMetadata } from 'pg-boss';
 
 export async function waitForJobStatus(
 	boss: PgBoss,
 	queue: string,
 	jobId: string | null,
-	jobStatus: JobWithMetadata["state"],
-	timeout?: number
+	jobStatus: JobWithMetadata['state'],
+	timeout?: number,
 ): Promise<boolean> {
 	return vi.waitUntil(
 		async () => {
@@ -15,6 +15,6 @@ export async function waitForJobStatus(
 		},
 		{
 			timeout: timeout ?? 10000,
-		}
+		},
 	);
 }
