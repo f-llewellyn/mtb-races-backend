@@ -5,7 +5,9 @@ import puppeteer from 'puppeteer';
 import {
 	sIEntriesExtractFromDOM,
 	mapRawEvents,
-} from '../../../../src/lib/scrapers/si-entries/si-entries-scraper.js';
+} from '../../../../src/lib/scrapers/si-entries/si-entries-scraper.ts';
+import { RaceTypes } from '../../../../src/enums/RaceTypes.enum.ts';
+import { Sources } from '../../../../src/enums/Sources.enum.ts';
 
 describe('Unit - SI Entries Scraper', () => {
 	it('Should return all races in raw format', async () => {
@@ -14,7 +16,7 @@ describe('Unit - SI Entries Scraper', () => {
 			'utf-8',
 		);
 
-		const browser = await puppeteer.launch({ headless: true });
+		const browser = await puppeteer.launch({ headless: false });
 		const page = await browser.newPage();
 
 		await page.setContent(html);
@@ -26,42 +28,42 @@ describe('Unit - SI Entries Scraper', () => {
 				dateText: 'Sat 31 May 2025',
 				locationText: 'Scotland',
 				titleText: 'Scottish Enduro SeriesR1 - Tweed Valley',
-				typeText: null,
+				typeText: 'MTB Enduro',
 				url: 'https://www.sientries.co.uk/event.php?elid=Y&event_id=15520',
 			}),
 			expect.objectContaining({
 				dateText: 'Sun 1 Jun 2025',
 				locationText: 'Yorkshire & Humber',
 				titleText: 'Yorkshire Mountain BikeMarathon',
-				typeText: null,
+				typeText: 'Mountain Bike',
 				url: 'https://www.sientries.co.uk/event.php?elid=Y&event_id=14673',
 			}),
 			expect.objectContaining({
 				dateText: 'Sat 28 Mar 2025',
 				locationText: 'Scotland',
 				titleText: 'MacAvalanche',
-				typeText: null,
+				typeText: 'MTB Enduro',
 				url: 'https://www.sientries.co.uk/event.php?elid=Y&event_id=15402',
 			}),
 			expect.objectContaining({
 				dateText: 'Sat 9 May 2025',
 				locationText: 'North East',
 				titleText: 'Hamsterley BeastFunduro 3',
-				typeText: null,
+				typeText: 'MTB Enduro',
 				url: 'https://www.sientries.co.uk/event.php?elid=Y&event_id=15704',
 			}),
 			expect.objectContaining({
 				dateText: 'Sun 10 May 2025',
 				locationText: 'North East',
 				titleText: 'Hammers Jam',
-				typeText: null,
+				typeText: 'Mountain Bike',
 				url: 'https://www.sientries.co.uk/event.php?elid=Y&event_id=15705',
 			}),
 			expect.objectContaining({
 				dateText: 'Sat 16 May 2025',
 				locationText: 'Yorkshire & Humber',
 				titleText: 'Boltby Bash Enduro',
-				typeText: null,
+				typeText: 'MTB Enduro',
 				url: 'https://www.sientries.co.uk/event.php?elid=Y&event_id=15602',
 			}),
 		]);
@@ -81,7 +83,7 @@ describe('Unit - SI Entries Scraper', () => {
 				dateText: 'Sat 31 May 2025',
 				locationText: 'Scotland',
 				titleText: 'Race 1',
-				typeText: null,
+				typeText: 'Mountain Bike',
 				url: 'https://www.sientries.co.uk/event.php?elid=Y&event_id=15520',
 			},
 			{
@@ -102,7 +104,7 @@ describe('Unit - SI Entries Scraper', () => {
 				dateText: 'Thu 4 July 2025',
 				locationText: null,
 				titleText: 'Race 4',
-				typeText: null,
+				typeText: 'MTB Enduro',
 				url: null,
 			},
 		];
@@ -114,18 +116,20 @@ describe('Unit - SI Entries Scraper', () => {
 				date: '2025-05-30T23:00:00.000Z',
 				detailsUrl:
 					'https://www.sientries.co.uk/event.php?elid=Y&event_id=15520',
-				hashedId: '39e8836d7bd1cb0c46a70f0f1f6d6016',
+				hashedId: '9bdfe6ae081d454a2a10e59940d65e9a',
 				location: 'Scotland',
 				name: 'Race 1',
-				type: null,
+				type: RaceTypes.XC,
+				source: Sources.SI_ENTRIES,
 			}),
 			expect.objectContaining({
 				date: '2025-07-03T23:00:00.000Z',
 				detailsUrl: null,
-				hashedId: 'cbf72fd9fcf74fe65216edfbd1f68023',
+				hashedId: 'ae10d8dc454c103305f8607deb90e956',
 				location: null,
 				name: 'Race 4',
-				type: null,
+				type: RaceTypes.Enduro,
+				source: Sources.SI_ENTRIES,
 			}),
 		]);
 	});

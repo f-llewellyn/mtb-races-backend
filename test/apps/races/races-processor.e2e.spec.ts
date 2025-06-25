@@ -1,12 +1,14 @@
 import { MockInstance } from 'vitest';
 import PgBoss from 'pg-boss';
-import { db } from '../../../src/db/index.js';
-import { racesTable } from '../../../src/db/schema.js';
-import { config } from '../../../src/config.js';
-import { SI_SCRAPE_QUEUE } from '../../../src/constants/queueNames.js';
-import { createApp } from '../../../src/lib/utils/createApp.js';
-import { waitForJobStatus } from '../../../src/lib/utils/test-helpers/wait-for-job-status.js';
-import * as siEntriesScraperModule from '../../../src/lib/scrapers/si-entries/si-entries-scraper.js';
+import { db } from '../../../src/db/index.ts';
+import { racesTable } from '../../../src/db/schema.ts';
+import { config } from '../../../src/config.ts';
+import { SI_SCRAPE_QUEUE } from '../../../src/constants/queueNames.ts';
+import { createApp } from '../../../src/lib/utils/createApp.ts';
+import { waitForJobStatus } from '../../../src/lib/utils/test-helpers/wait-for-job-status.ts';
+import * as siEntriesScraperModule from '../../../src/lib/scrapers/si-entries/si-entries-scraper.ts';
+import { RaceTypes } from '../../../src/enums/RaceTypes.enum.ts';
+import { Sources } from '../../../src/enums/Sources.enum.ts';
 
 describe('E2E - Races Processor', async () => {
 	await createApp();
@@ -79,6 +81,8 @@ describe('E2E - Races Processor', async () => {
 					hashedId: '39e8836d7bd1cb0c46a70f0f1f6d6016',
 					location: 'Chesterfield',
 					detailsUrl: 'https://races.com/race1',
+					type: RaceTypes.XC,
+					source: Sources.SI_ENTRIES,
 				},
 				{
 					name: 'Race 2',
@@ -86,6 +90,8 @@ describe('E2E - Races Processor', async () => {
 					hashedId: '516d5f5393ffb53c12f058b9cdca7dd0',
 					location: 'Chesterfield',
 					detailsUrl: 'https://races.com/race2',
+					type: RaceTypes.Enduro,
+					source: Sources.SI_ENTRIES,
 				},
 			]);
 		});
@@ -106,6 +112,8 @@ describe('E2E - Races Processor', async () => {
 				hashedId: '39e8836d7bd1cb0c46a70f0f1f6d6016',
 				location: 'Chesterfield',
 				detailsUrl: 'https://races.com/race1',
+				type: RaceTypes.XC,
+				source: Sources.SI_ENTRIES,
 			}),
 			expect.objectContaining({
 				name: 'Race 2',
@@ -113,6 +121,8 @@ describe('E2E - Races Processor', async () => {
 				hashedId: '516d5f5393ffb53c12f058b9cdca7dd0',
 				location: 'Chesterfield',
 				detailsUrl: 'https://races.com/race2',
+				type: RaceTypes.Enduro,
+				source: Sources.SI_ENTRIES,
 			}),
 		]);
 	});
@@ -125,6 +135,8 @@ describe('E2E - Races Processor', async () => {
 				hashedId: '39e8836d7bd1cb0c46a70f0f1f6d6016',
 				location: 'Chesterfield',
 				detailsUrl: 'https://races.com/race1',
+				type: RaceTypes.Enduro,
+				source: Sources.SI_ENTRIES,
 			},
 		]);
 
@@ -136,6 +148,8 @@ describe('E2E - Races Processor', async () => {
 					hashedId: '39e8836d7bd1cb0c46a70f0f1f6d6016',
 					location: 'High Wycombe',
 					detailsUrl: 'https://races.com/race1#new',
+					type: RaceTypes.Enduro,
+					source: Sources.SI_ENTRIES,
 				},
 			]);
 		});
@@ -153,6 +167,8 @@ describe('E2E - Races Processor', async () => {
 				hashedId: '39e8836d7bd1cb0c46a70f0f1f6d6016',
 				location: 'High Wycombe',
 				detailsUrl: 'https://races.com/race1#new',
+				type: RaceTypes.Enduro,
+				source: Sources.SI_ENTRIES,
 			}),
 		]);
 	});

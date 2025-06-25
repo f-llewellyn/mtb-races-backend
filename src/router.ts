@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import racesRouter from './apps/races/races.api.js';
+import racesRouter from './apps/races/races.api.ts';
 
 const router = Router();
 

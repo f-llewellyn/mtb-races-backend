@@ -1,9 +1,10 @@
 import puppeteer from 'puppeteer';
-import { TRaceInsert } from '../../../db/schema.js';
-import { TRaceRaw } from '../../../types/race.type.js';
-import { hashRace } from '../../utils/stringToMD5.js';
-import { RaceTypes } from '../../../enums/RaceTypes.enum.js';
-import { SiEntriesRow } from '../../../types/siEntries.type.js';
+import { TRaceInsert } from '../../../db/schema.ts';
+import { TRaceRaw } from '../../../types/race.type.ts';
+import { hashRace } from '../../utils/stringToMD5.ts';
+import { RaceTypes } from '../../../enums/RaceTypes.enum.ts';
+import { SiEntriesRow } from '../../../types/siEntries.type.ts';
+import { Sources } from '../../../enums/Sources.enum.ts';
 const siEntiresMTBUrl =
 	'https://www.sientries.co.uk/index.php?page=L&af=et_C_MB:Y;et_C_ED:Y;et_C_TQ:Y';
 
@@ -20,8 +21,9 @@ const mapType = (type: string) => {
 export const scrapeSIEntries = async (): Promise<TRaceInsert[]> => {
 	let browser;
 	try {
-		browser = await puppeteer.launch({ headless: true });
+		browser = await puppeteer.launch({ headless: false });
 		const page = await browser.newPage();
+		await page.setViewport({ width: 680, height: 468 });
 
 		await page.goto(siEntiresMTBUrl, {
 			waitUntil: 'networkidle2',
@@ -75,8 +77,9 @@ export function sIEntriesExtractFromDOM() {
 				.replace(/[\n\r]/gm, ' ')
 				.trim()} ${year}`,
 			typeText:
-				element.querySelector('.etp_cycling')?.getAttribute('title') ??
-				null,
+				element
+					.querySelector('.etp_cycling img')
+					?.getAttribute('title') ?? null,
 			locationText:
 				element.querySelector('.eti_map img')?.getAttribute('alt') ??
 				null,
@@ -100,6 +103,7 @@ export function mapRawEvents(rawEvents: TRaceRaw[]) {
 					location: locationText,
 					detailsUrl: url,
 					hashedId: hashRace(titleText, date),
+					source: Sources.SI_ENTRIES,
 				},
 			];
 		},

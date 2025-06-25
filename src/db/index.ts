@@ -1,6 +1,6 @@
 import { drizzle } from 'drizzle-orm/node-postgres';
 
-import { config } from '../config.js';
+import { config } from '../config.ts';
 
 export let db: ReturnType<typeof drizzle>;
 

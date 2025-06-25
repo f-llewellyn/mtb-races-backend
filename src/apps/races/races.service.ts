@@ -1,6 +1,6 @@
-import { scrapeSIEntries } from '../../lib/scrapers/si-entries/si-entries-scraper.js';
-import { db } from '../../db/index.js';
-import { racesTable, TRace } from '../../db/schema.js';
+import { scrapeSIEntries } from '../../lib/scrapers/si-entries/si-entries-scraper.ts';
+import { db } from '../../db/index.ts';
+import { racesTable, TRace } from '../../db/schema.ts';
 import { desc, sql } from 'drizzle-orm';
 
 export const getRaces = async (): Promise<TRace[]> => {

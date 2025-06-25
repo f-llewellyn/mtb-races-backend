@@ -9,7 +9,9 @@
 		"esModuleInterop": true,
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true,
-		"types": ["vitest/globals"]
+		"types": ["vitest/globals"],
+		"noEmit": true,
+		"allowImportingTsExtensions": true
 	},
 	"include": ["src", "test"],
 	"exclude": ["node_modules"]

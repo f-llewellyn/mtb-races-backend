@@ -1,8 +1,8 @@
 import request from 'supertest';
 import { Express } from 'express';
-import { db } from '../../../src/db/index.js';
-import { racesTable } from '../../../src/db/schema.js';
-import { createApp } from '../../../src/lib/utils/createApp.js';
+import { db } from '../../../src/db/index.ts';
+import { racesTable } from '../../../src/db/schema.ts';
+import { createApp } from '../../../src/lib/utils/createApp.ts';
 
 describe('E2E - Get Races', () => {
 	let app: Express;

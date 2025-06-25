@@ -1,11 +1,11 @@
-import { SI_SCRAPE_QUEUE } from '../../constants/queueNames.js';
+import { SI_SCRAPE_QUEUE } from '../../constants/queueNames.ts';
 import {
 	createQueue,
 	addWorker,
 	scheduleJob,
 	failJob,
-} from '../../lib/queues/queues.js';
-import { scrapeRaces } from './races.service.js';
+} from '../../lib/queues/queues.ts';
+import { scrapeRaces } from './races.service.ts';
 
 export async function SiEntriesScrapeProcessor() {
 	await createQueue(SI_SCRAPE_QUEUE);

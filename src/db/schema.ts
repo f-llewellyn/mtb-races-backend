@@ -1,19 +1,26 @@
 import {
 	date,
 	integer,
+	pgEnum,
 	pgTable,
 	timestamp,
 	varchar,
 } from 'drizzle-orm/pg-core';
+import { RaceTypes } from '../enums/RaceTypes.enum.ts';
+import { Sources } from '../enums/Sources.enum.ts';
+
+export const raceTypesEnum = pgEnum('race_types', RaceTypes);
+export const sourcesEnum = pgEnum('sources', Sources);
 
 export const racesTable = pgTable('races', {
 	id: integer().primaryKey().generatedByDefaultAsIdentity(),
 	name: varchar({ length: 255 }).notNull(),
-	type: varchar({ length: 255 }),
+	type: raceTypesEnum(),
 	location: varchar({ length: 255 }),
 	detailsUrl: varchar({ length: 255 }),
 	date: date().notNull(),
 	hashedId: varchar({ length: 255 }).unique().notNull(),
+	source: sourcesEnum(),
 	createdAt: timestamp().defaultNow().notNull(),
 	updatedAt: timestamp()
 		.defaultNow()
