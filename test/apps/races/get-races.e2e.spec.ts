@@ -1,9 +1,15 @@
 import request from 'supertest';
-import { app } from '../../../src/index.js';
+import { Express } from 'express';
 import { db } from '../../../src/db/index.js';
 import { racesTable } from '../../../src/db/schema.js';
+import { createApp } from '../../../src/lib/utils/createApp.js';
 
 describe('E2E - Get Races', () => {
+	let app: Express;
+	beforeEach(async () => {
+		app = await createApp();
+	});
+
 	afterEach(async () => {
 		await db.delete(racesTable);
 	});
