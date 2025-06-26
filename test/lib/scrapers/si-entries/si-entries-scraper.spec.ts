@@ -16,7 +16,7 @@ describe('Unit - SI Entries Scraper', () => {
 			'utf-8',
 		);
 
-		const browser = await puppeteer.launch({ headless: false });
+		const browser = await puppeteer.launch({ headless: true });
 		const page = await browser.newPage();
 
 		await page.setContent(html);

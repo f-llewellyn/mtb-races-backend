@@ -5,6 +5,7 @@ import {
 	scheduleJob,
 	failJob,
 } from '../../lib/queues/queues.ts';
+import { revalidateFrontendTag } from '../revalidate/revalidate.service.ts';
 import { scrapeRaces } from './races.service.ts';
 
 export async function SiEntriesScrapeProcessor() {
@@ -13,6 +14,7 @@ export async function SiEntriesScrapeProcessor() {
 		console.log(`Started job ${job.id}`);
 		try {
 			await scrapeRaces();
+			await revalidateFrontendTag('races');
 			console.log(`Finished job ${job.id}`);
 		} catch (error) {
 			console.error(`Job ${job.id} failed`, error);

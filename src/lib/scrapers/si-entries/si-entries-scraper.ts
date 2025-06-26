@@ -21,9 +21,8 @@ const mapType = (type: string) => {
 export const scrapeSIEntries = async (): Promise<TRaceInsert[]> => {
 	let browser;
 	try {
-		browser = await puppeteer.launch({ headless: false });
+		browser = await puppeteer.launch({ headless: true });
 		const page = await browser.newPage();
-		await page.setViewport({ width: 680, height: 468 });
 
 		await page.goto(siEntiresMTBUrl, {
 			waitUntil: 'networkidle2',
