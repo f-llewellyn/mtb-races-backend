@@ -32,6 +32,13 @@ jobs:
             - name: 'Install Dependencies'
               run: pnpm install
 
+            - name: 'Create env file'
+              run: |
+                  touch .env.test
+                  echo DATABASE_URL=$DATABASE_URL
+                  echo FRONTEND_BASE_URL=$FRONTEND_BASE_URL
+                  echo PORT=$PORT
+
             - name: 'Run tests'
               run: pnpm vitest --coverage.enabled true
 
