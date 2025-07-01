@@ -10,7 +10,7 @@ jobs:
     test:
         runs-on: ubuntu-latest
         permissions:
-            contents: read
+            pull-requests: write
         steps:
             - name: Checkout
               uses: actions/checkout@v4
@@ -55,4 +55,3 @@ jobs:
               uses: davelosert/vitest-coverage-report-action@v2
               with:
                   file-coverage-mode: all
-                  comment-on: commit
