@@ -46,7 +46,7 @@ jobs:
                   echo PORT=$PORT
 
             - name: 'Run Tests'
-              run: pnpm vitest --coverage.enabled true --reporter=json
+              run: pnpm vitest --coverage.enabled true
 
             - name: 'Report Coverage'
               if: always()

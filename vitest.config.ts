@@ -15,6 +15,7 @@ export default defineConfig({
 			thresholds: {
 				lines: 100,
 			},
+			reporter: ['text', 'json-summary', 'json'],
 			reportOnFailure: true,
 		},
 	},
