@@ -11,5 +11,11 @@ export default defineConfig({
 				singleThread: true,
 			},
 		},
+		coverage: {
+			thresholds: {
+				lines: 100,
+			},
+			reportOnFailure: true,
+		},
 	},
 });
