@@ -1,0 +1,149 @@
+{
+	"total": {
+		"lines": { "total": 313, "covered": 242, "skipped": 0, "pct": 77.31 },
+		"statements": {
+			"total": 313,
+			"covered": 242,
+			"skipped": 0,
+			"pct": 77.31
+		},
+		"functions": { "total": 25, "covered": 22, "skipped": 0, "pct": 88 },
+		"branches": { "total": 41, "covered": 35, "skipped": 0, "pct": 85.36 },
+		"branchesTrue": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 }
+	},
+	"C:\\Users\\llewe\\Documents\\web\\projects\\mtb-races\\mtb-races-backend\\src\\config.ts": {
+		"lines": { "total": 9, "covered": 9, "skipped": 0, "pct": 100 },
+		"functions": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 },
+		"statements": { "total": 9, "covered": 9, "skipped": 0, "pct": 100 },
+		"branches": { "total": 1, "covered": 0, "skipped": 0, "pct": 0 }
+	},
+	"C:\\Users\\llewe\\Documents\\web\\projects\\mtb-races\\mtb-races-backend\\src\\router.ts": {
+		"lines": { "total": 5, "covered": 5, "skipped": 0, "pct": 100 },
+		"functions": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 },
+		"statements": { "total": 5, "covered": 5, "skipped": 0, "pct": 100 },
+		"branches": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 }
+	},
+	"C:\\Users\\llewe\\Documents\\web\\projects\\mtb-races\\mtb-races-backend\\src\\apps\\races\\races.api.ts": {
+		"lines": { "total": 15, "covered": 12, "skipped": 0, "pct": 80 },
+		"functions": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 },
+		"statements": { "total": 15, "covered": 12, "skipped": 0, "pct": 80 },
+		"branches": { "total": 1, "covered": 1, "skipped": 0, "pct": 100 }
+	},
+	"C:\\Users\\llewe\\Documents\\web\\projects\\mtb-races\\mtb-races-backend\\src\\apps\\races\\races.processor.ts": {
+		"lines": { "total": 19, "covered": 19, "skipped": 0, "pct": 100 },
+		"functions": { "total": 1, "covered": 1, "skipped": 0, "pct": 100 },
+		"statements": { "total": 19, "covered": 19, "skipped": 0, "pct": 100 },
+		"branches": { "total": 4, "covered": 4, "skipped": 0, "pct": 100 }
+	},
+	"C:\\Users\\llewe\\Documents\\web\\projects\\mtb-races\\mtb-races-backend\\src\\apps\\races\\races.service.ts": {
+		"lines": { "total": 24, "covered": 24, "skipped": 0, "pct": 100 },
+		"functions": { "total": 3, "covered": 3, "skipped": 0, "pct": 100 },
+		"statements": { "total": 24, "covered": 24, "skipped": 0, "pct": 100 },
+		"branches": { "total": 4, "covered": 4, "skipped": 0, "pct": 100 }
+	},
+	"C:\\Users\\llewe\\Documents\\web\\projects\\mtb-races\\mtb-races-backend\\src\\apps\\revalidate\\revalidate.service.ts": {
+		"lines": { "total": 16, "covered": 16, "skipped": 0, "pct": 100 },
+		"functions": { "total": 1, "covered": 1, "skipped": 0, "pct": 100 },
+		"statements": { "total": 16, "covered": 16, "skipped": 0, "pct": 100 },
+		"branches": { "total": 2, "covered": 1, "skipped": 0, "pct": 50 }
+	},
+	"C:\\Users\\llewe\\Documents\\web\\projects\\mtb-races\\mtb-races-backend\\src\\constants\\queueNames.ts": {
+		"lines": { "total": 1, "covered": 1, "skipped": 0, "pct": 100 },
+		"functions": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 },
+		"statements": { "total": 1, "covered": 1, "skipped": 0, "pct": 100 },
+		"branches": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 }
+	},
+	"C:\\Users\\llewe\\Documents\\web\\projects\\mtb-races\\mtb-races-backend\\src\\db\\index.ts": {
+		"lines": { "total": 11, "covered": 9, "skipped": 0, "pct": 81.81 },
+		"functions": { "total": 1, "covered": 1, "skipped": 0, "pct": 100 },
+		"statements": { "total": 11, "covered": 9, "skipped": 0, "pct": 81.81 },
+		"branches": { "total": 2, "covered": 1, "skipped": 0, "pct": 50 }
+	},
+	"C:\\Users\\llewe\\Documents\\web\\projects\\mtb-races\\mtb-races-backend\\src\\db\\schema.ts": {
+		"lines": { "total": 20, "covered": 20, "skipped": 0, "pct": 100 },
+		"functions": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 },
+		"statements": { "total": 20, "covered": 20, "skipped": 0, "pct": 100 },
+		"branches": { "total": 1, "covered": 1, "skipped": 0, "pct": 100 }
+	},
+	"C:\\Users\\llewe\\Documents\\web\\projects\\mtb-races\\mtb-races-backend\\src\\enums\\RaceTypes.enum.ts": {
+		"lines": { "total": 6, "covered": 6, "skipped": 0, "pct": 100 },
+		"functions": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 },
+		"statements": { "total": 6, "covered": 6, "skipped": 0, "pct": 100 },
+		"branches": { "total": 1, "covered": 1, "skipped": 0, "pct": 100 }
+	},
+	"C:\\Users\\llewe\\Documents\\web\\projects\\mtb-races\\mtb-races-backend\\src\\enums\\Sources.enum.ts": {
+		"lines": { "total": 4, "covered": 4, "skipped": 0, "pct": 100 },
+		"functions": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 },
+		"statements": { "total": 4, "covered": 4, "skipped": 0, "pct": 100 },
+		"branches": { "total": 1, "covered": 1, "skipped": 0, "pct": 100 }
+	},
+	"C:\\Users\\llewe\\Documents\\web\\projects\\mtb-races\\mtb-races-backend\\src\\lib\\queues\\queues.ts": {
+		"lines": { "total": 37, "covered": 31, "skipped": 0, "pct": 83.78 },
+		"functions": { "total": 6, "covered": 5, "skipped": 0, "pct": 83.33 },
+		"statements": {
+			"total": 37,
+			"covered": 31,
+			"skipped": 0,
+			"pct": 83.78
+		},
+		"branches": { "total": 6, "covered": 6, "skipped": 0, "pct": 100 }
+	},
+	"C:\\Users\\llewe\\Documents\\web\\projects\\mtb-races\\mtb-races-backend\\src\\lib\\scrapers\\si-entries\\si-entries-scraper.ts": {
+		"lines": { "total": 95, "covered": 37, "skipped": 0, "pct": 38.94 },
+		"functions": { "total": 4, "covered": 2, "skipped": 0, "pct": 50 },
+		"statements": {
+			"total": 95,
+			"covered": 37,
+			"skipped": 0,
+			"pct": 38.94
+		},
+		"branches": { "total": 7, "covered": 5, "skipped": 0, "pct": 71.42 }
+	},
+	"C:\\Users\\llewe\\Documents\\web\\projects\\mtb-races\\mtb-races-backend\\src\\lib\\utils\\createApp.ts": {
+		"lines": { "total": 17, "covered": 15, "skipped": 0, "pct": 88.23 },
+		"functions": { "total": 1, "covered": 1, "skipped": 0, "pct": 100 },
+		"statements": {
+			"total": 17,
+			"covered": 15,
+			"skipped": 0,
+			"pct": 88.23
+		},
+		"branches": { "total": 1, "covered": 1, "skipped": 0, "pct": 100 }
+	},
+	"C:\\Users\\llewe\\Documents\\web\\projects\\mtb-races\\mtb-races-backend\\src\\lib\\utils\\getEnumValues.ts": {
+		"lines": { "total": 5, "covered": 5, "skipped": 0, "pct": 100 },
+		"functions": { "total": 1, "covered": 1, "skipped": 0, "pct": 100 },
+		"statements": { "total": 5, "covered": 5, "skipped": 0, "pct": 100 },
+		"branches": { "total": 2, "covered": 2, "skipped": 0, "pct": 100 }
+	},
+	"C:\\Users\\llewe\\Documents\\web\\projects\\mtb-races\\mtb-races-backend\\src\\lib\\utils\\stringToMD5.ts": {
+		"lines": { "total": 11, "covered": 11, "skipped": 0, "pct": 100 },
+		"functions": { "total": 2, "covered": 2, "skipped": 0, "pct": 100 },
+		"statements": { "total": 11, "covered": 11, "skipped": 0, "pct": 100 },
+		"branches": { "total": 2, "covered": 2, "skipped": 0, "pct": 100 }
+	},
+	"C:\\Users\\llewe\\Documents\\web\\projects\\mtb-races\\mtb-races-backend\\src\\lib\\utils\\test-helpers\\wait-for-job-status.ts": {
+		"lines": { "total": 18, "covered": 18, "skipped": 0, "pct": 100 },
+		"functions": { "total": 2, "covered": 2, "skipped": 0, "pct": 100 },
+		"statements": { "total": 18, "covered": 18, "skipped": 0, "pct": 100 },
+		"branches": { "total": 3, "covered": 2, "skipped": 0, "pct": 66.66 }
+	},
+	"C:\\Users\\llewe\\Documents\\web\\projects\\mtb-races\\mtb-races-backend\\src\\types\\queue.type.ts": {
+		"lines": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 },
+		"functions": { "total": 1, "covered": 1, "skipped": 0, "pct": 100 },
+		"statements": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 },
+		"branches": { "total": 1, "covered": 1, "skipped": 0, "pct": 100 }
+	},
+	"C:\\Users\\llewe\\Documents\\web\\projects\\mtb-races\\mtb-races-backend\\src\\types\\race.type.ts": {
+		"lines": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 },
+		"functions": { "total": 1, "covered": 1, "skipped": 0, "pct": 100 },
+		"statements": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 },
+		"branches": { "total": 1, "covered": 1, "skipped": 0, "pct": 100 }
+	},
+	"C:\\Users\\llewe\\Documents\\web\\projects\\mtb-races\\mtb-races-backend\\src\\types\\siEntries.type.ts": {
+		"lines": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 },
+		"functions": { "total": 1, "covered": 1, "skipped": 0, "pct": 100 },
+		"statements": { "total": 0, "covered": 0, "skipped": 0, "pct": 100 },
+		"branches": { "total": 1, "covered": 1, "skipped": 0, "pct": 100 }
+	}
+}

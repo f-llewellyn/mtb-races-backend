@@ -17,8 +17,14 @@ export default defineConfig({
 			},
 			reporter: ['text', 'json-summary', 'json'],
 			reportOnFailure: true,
-			include: ['./src/**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-			exclude: ['./src/index.ts'],
+			// include: ['/src/**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+			exclude: [
+				'src/index.ts',
+				'node_modules',
+				'dist',
+				'test',
+				'**/*.config.{js,mjs,cjs,ts,mts,cts}',
+			],
 		},
 	},
 });
