@@ -5,6 +5,7 @@ export async function setup() {
 	initDb();
 	try {
 		await migrate(db, { migrationsFolder: './drizzle' });
+		process.env.TZ = 'UTC';
 	} catch (e) {
 		console.error('Migration Failed', e);
 		throw e;

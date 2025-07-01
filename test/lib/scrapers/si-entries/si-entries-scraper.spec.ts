@@ -113,7 +113,7 @@ describe('Unit - SI Entries Scraper', () => {
 
 		expect(formattedResults).toEqual([
 			expect.objectContaining({
-				date: '2025-05-30T23:00:00.000Z',
+				date: '2025-05-31T00:00:00.000Z',
 				detailsUrl:
 					'https://www.sientries.co.uk/event.php?elid=Y&event_id=15520',
 				hashedId: '9bdfe6ae081d454a2a10e59940d65e9a',
@@ -123,7 +123,7 @@ describe('Unit - SI Entries Scraper', () => {
 				source: Sources.SI_ENTRIES,
 			}),
 			expect.objectContaining({
-				date: '2025-07-03T23:00:00.000Z',
+				date: '2025-07-04T00:00:00.000Z',
 				detailsUrl: null,
 				hashedId: 'ae10d8dc454c103305f8607deb90e956',
 				location: null,

@@ -11,5 +11,20 @@ export default defineConfig({
 				singleThread: true,
 			},
 		},
+		coverage: {
+			thresholds: {
+				// lines: 100,
+			},
+			reporter: ['text', 'json-summary', 'json'],
+			reportOnFailure: true,
+			exclude: [
+				'src/index.ts',
+				'node_modules',
+				'dist',
+				'test',
+				'**/*.config.{js,mjs,cjs,ts,mts,cts}',
+				'**/*.type.ts',
+			],
+		},
 	},
 });
