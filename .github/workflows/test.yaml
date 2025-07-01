@@ -32,6 +32,9 @@ jobs:
             - name: 'Install Dependencies'
               run: pnpm install
 
+            - name: 'Install Puppeteer Dependencies'
+              run: pnpm puppeteer browsers install chrome
+
             - name: 'Create env file'
               run: |
                   touch .env.test
