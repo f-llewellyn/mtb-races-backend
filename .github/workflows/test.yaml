@@ -45,13 +45,9 @@ jobs:
                   echo FRONTEND_BASE_URL=$FRONTEND_BASE_URL
                   echo PORT=$PORT
 
-            - name: 'Run tests'
+            - name: 'Run Tests'
               run: pnpm vitest --coverage.enabled true
 
-    coverage:
-        runs-on: ubuntu-latest
-        needs: test
-        steps:
             - name: 'Report Coverage'
               if: always()
               uses: davelosert/vitest-coverage-report-action@v2
