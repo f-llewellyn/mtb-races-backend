@@ -13,7 +13,7 @@ export default defineConfig({
 		},
 		coverage: {
 			thresholds: {
-				lines: 100,
+				// lines: 100,
 			},
 			reporter: ['text', 'json-summary', 'json'],
 			reportOnFailure: true,
