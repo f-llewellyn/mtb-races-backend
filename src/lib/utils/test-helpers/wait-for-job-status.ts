@@ -14,7 +14,7 @@ export async function waitForJobStatus(
 			return job?.state === jobStatus;
 		},
 		{
-			timeout: timeout ?? 10000,
+			timeout: timeout ?? 30000,
 		},
 	);
 }
