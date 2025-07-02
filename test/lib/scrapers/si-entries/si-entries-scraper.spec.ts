@@ -29,7 +29,7 @@ describe('Unit - SI Entries Scraper', () => {
 
 		expect(consoleErrorMock).toHaveBeenCalledWith(
 			'Error during scraping:',
-			'net::ERR_FILE_NOT_FOUND at file://C:\\Users\\llewe\\Documents\\web\\projects\\mtb-races\\mtb-races-backend\\test\\lib\\scrapers\\si-entries\\doesnt-exist.html',
+			`net::ERR_FILE_NOT_FOUND at file://${path.join(__dirname, 'doesnt-exist.html')}`,
 		);
 	});
 
