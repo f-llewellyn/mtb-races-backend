@@ -36,7 +36,7 @@ describe('E2E - Races Processor', async () => {
 		consoleErrorSpy.mockReset();
 	});
 
-	it('Should queue si entries scrape on startup', async () => {
+	it('Should schedule si entries scrape on startup', async () => {
 		const schedules = await boss.getSchedules();
 		const siSchedule = schedules.find(
 			(schedule) => (schedule.name = SI_SCRAPE_QUEUE),
