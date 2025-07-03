@@ -16,7 +16,7 @@ describe('E2E - POST Races', () => {
 
 	afterEach(async () => {
 		await boss.clearStorage();
-		boss.stop();
+		boss.stop({ graceful: false });
 	});
 
 	describe('POST /api/races/scrape/si-entries', () => {

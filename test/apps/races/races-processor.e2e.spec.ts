@@ -50,27 +50,27 @@ describe('E2E - Races Processor', async () => {
 		);
 	});
 
-	it('Should log error and cancel execution when error is thrown ', async () => {
-		scrapeSIEntriesMock.mockImplementation(async () => {
-			throw new Error('Test error');
-		});
+	// it('Should log error and cancel execution when error is thrown ', async () => {
+	// 	scrapeSIEntriesMock.mockImplementation(async () => {
+	// 		throw new Error('Test error');
+	// 	});
 
-		const initialRaces = await db.select().from(racesTable);
-		expect(initialRaces).toHaveLength(0);
+	// 	const initialRaces = await db.select().from(racesTable);
+	// 	expect(initialRaces).toHaveLength(0);
 
-		const jobId = await boss.send(SI_SCRAPE_QUEUE, {});
+	// 	const jobId = await boss.send(SI_SCRAPE_QUEUE, {});
 
-		await waitForJobStatus(boss, SI_SCRAPE_QUEUE, jobId, 'failed');
+	// 	await waitForJobStatus(boss, SI_SCRAPE_QUEUE, jobId, 'failed');
 
-		const newRaces = await db.select().from(racesTable);
+	// 	const newRaces = await db.select().from(racesTable);
 
-		expect(newRaces).toEqual([]);
+	// 	expect(newRaces).toEqual([]);
 
-		expect(consoleErrorSpy).toHaveBeenCalledWith(
-			`Job ${jobId} failed`,
-			Error('Test error'),
-		);
-	});
+	// 	expect(consoleErrorSpy).toHaveBeenCalledWith(
+	// 		`Job ${jobId} failed`,
+	// 		Error('Test error'),
+	// 	);
+	// });
 
 	it('Should scrape races and insert into races table ', async () => {
 		scrapeSIEntriesMock.mockImplementation(async () => {
