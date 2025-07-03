@@ -5,15 +5,15 @@ export default defineConfig({
 		globalSetup: ['./test/setup.ts'],
 		environment: 'node',
 		globals: true,
-		testTimeout: 10000,
-		poolOptions: {
-			threads: {
-				singleThread: true,
-			},
-		},
+		testTimeout: 60000,
+		// poolOptions: {
+		// 	threads: {
+		// 		singleThread: true,
+		// 	},
+		// },
 		coverage: {
 			thresholds: {
-				// lines: 100,
+				lines: 100,
 			},
 			reporter: ['text', 'json-summary', 'json'],
 			reportOnFailure: true,
@@ -22,8 +22,7 @@ export default defineConfig({
 				'node_modules',
 				'dist',
 				'test',
-				'**/*.config.{js,mjs,cjs,ts,mts,cts}',
-				'**/*.type.ts',
+				'**/*.{config,type,evaluate}.{js,mjs,cjs,ts,mts,cts}',
 			],
 		},
 	},

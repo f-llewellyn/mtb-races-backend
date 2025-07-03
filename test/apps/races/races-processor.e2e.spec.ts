@@ -30,13 +30,13 @@ describe('E2E - Races Processor', async () => {
 
 	afterEach(async () => {
 		await boss.clearStorage();
-		boss.stop();
+		boss.stop({ graceful: false });
 		await db.delete(racesTable);
 		scrapeSIEntriesMock.mockReset();
 		consoleErrorSpy.mockReset();
 	});
 
-	it('Should queue si entries scrape on startup', async () => {
+	it('Should schedule si entries scrape on startup', async () => {
 		const schedules = await boss.getSchedules();
 		const siSchedule = schedules.find(
 			(schedule) => (schedule.name = SI_SCRAPE_QUEUE),
@@ -58,7 +58,7 @@ describe('E2E - Races Processor', async () => {
 		const initialRaces = await db.select().from(racesTable);
 		expect(initialRaces).toHaveLength(0);
 
-		const jobId = await boss.send(SI_SCRAPE_QUEUE, {});
+		const jobId = await boss.send(SI_SCRAPE_QUEUE, {}, { retryLimit: 0 });
 
 		await waitForJobStatus(boss, SI_SCRAPE_QUEUE, jobId, 'failed');
 

@@ -1,80 +1,111 @@
-import { describe, expect, it } from 'vitest';
-import fs from 'fs';
+import { describe, expect, it, MockInstance } from 'vitest';
 import path from 'path';
-import puppeteer from 'puppeteer';
-import {
-	sIEntriesExtractFromDOM,
-	mapRawEvents,
-} from '../../../../src/lib/scrapers/si-entries/si-entries-scraper.ts';
 import { RaceTypes } from '../../../../src/enums/RaceTypes.enum.ts';
 import { Sources } from '../../../../src/enums/Sources.enum.ts';
 
+import { mapRawEvents } from '../../../../src/lib/scrapers/si-entries/si-entries-scraper.ts';
+
 describe('Unit - SI Entries Scraper', () => {
-	it('Should return all races in raw format', async () => {
-		const html = fs.readFileSync(
-			path.join(__dirname, 'si-entries.html'),
-			'utf-8',
+	let consoleErrorMock: MockInstance;
+	beforeEach(() => {
+		vi.resetModules();
+		consoleErrorMock = vi.spyOn(console, 'error');
+	});
+
+	afterEach(async () => {
+		consoleErrorMock.mockReset();
+	});
+
+	it('Should log and throw error when url cannot be found', async () => {
+		vi.doMock('../../../../src/constants/sourceUrls.ts', () => ({
+			SI_ENTRIES_MTB_URL: `file://${path.join(__dirname, 'doesnt-exist.html')}`,
+		}));
+
+		const { scrapeSIEntries } = await import(
+			'../../../../src/lib/scrapers/si-entries/si-entries-scraper.ts'
 		);
 
-		const browser = await puppeteer.launch({ headless: true });
-		const page = await browser.newPage();
+		await expect(scrapeSIEntries()).rejects.toThrow();
 
-		await page.setContent(html);
+		expect(consoleErrorMock).toHaveBeenCalledWith(
+			'Error during scraping:',
+			`net::ERR_FILE_NOT_FOUND at file://${path.join(__dirname, 'doesnt-exist.html')}`,
+		);
+	});
 
-		const text = await page.evaluate(sIEntriesExtractFromDOM);
+	it('Should scrape the stub html page', async () => {
+		vi.doMock('../../../../src/constants/sourceUrls.ts', () => ({
+			SI_ENTRIES_MTB_URL: `file://${path.join(__dirname, 'si-entries.html')}`,
+		}));
 
-		expect(text).toEqual([
+		const { scrapeSIEntries } = await import(
+			'../../../../src/lib/scrapers/si-entries/si-entries-scraper.ts'
+		);
+
+		const races = await scrapeSIEntries();
+
+		expect(races).toEqual([
 			expect.objectContaining({
-				dateText: 'Sat 31 May 2025',
-				locationText: 'Scotland',
-				titleText: 'Scottish Enduro SeriesR1 - Tweed Valley',
-				typeText: 'MTB Enduro',
-				url: 'https://www.sientries.co.uk/event.php?elid=Y&event_id=15520',
+				date: '2025-05-31T00:00:00.000Z',
+				detailsUrl:
+					'https://www.sientries.co.uk/event.php?elid=Y&event_id=15520',
+				hashedId: '39e26bfae729eed00124f8e4d17c5fd8',
+				location: 'Scotland',
+				name: 'Scottish Enduro SeriesR1 - Tweed Valley',
+				source: 'Si Entries',
+				type: 'Enduro',
 			}),
 			expect.objectContaining({
-				dateText: 'Sun 1 Jun 2025',
-				locationText: 'Yorkshire & Humber',
-				titleText: 'Yorkshire Mountain BikeMarathon',
-				typeText: 'Mountain Bike',
-				url: 'https://www.sientries.co.uk/event.php?elid=Y&event_id=14673',
+				date: '2025-06-01T00:00:00.000Z',
+				detailsUrl:
+					'https://www.sientries.co.uk/event.php?elid=Y&event_id=14673',
+				hashedId: 'a771b701c9c27ffd379f0d52e542fe0b',
+				location: 'Yorkshire & Humber',
+				name: 'Yorkshire Mountain BikeMarathon',
+				source: 'Si Entries',
+				type: 'XC',
 			}),
 			expect.objectContaining({
-				dateText: 'Sat 28 Mar 2025',
-				locationText: 'Scotland',
-				titleText: 'MacAvalanche',
-				typeText: 'MTB Enduro',
-				url: 'https://www.sientries.co.uk/event.php?elid=Y&event_id=15402',
+				date: '2025-03-28T00:00:00.000Z',
+				detailsUrl:
+					'https://www.sientries.co.uk/event.php?elid=Y&event_id=15402',
+				hashedId: 'e02769c5b56981d26ce5a814b4d9960a',
+				location: 'Scotland',
+				name: 'MacAvalanche',
+				source: 'Si Entries',
+				type: 'Enduro',
 			}),
 			expect.objectContaining({
-				dateText: 'Sat 9 May 2025',
-				locationText: 'North East',
-				titleText: 'Hamsterley BeastFunduro 3',
-				typeText: 'MTB Enduro',
-				url: 'https://www.sientries.co.uk/event.php?elid=Y&event_id=15704',
+				date: '2025-05-09T00:00:00.000Z',
+				detailsUrl:
+					'https://www.sientries.co.uk/event.php?elid=Y&event_id=15704',
+				hashedId: 'e79e7add4e40eb4c560decc83717992c',
+				location: 'North East',
+				name: 'Hamsterley BeastFunduro 3',
+				source: 'Si Entries',
+				type: 'Enduro',
 			}),
 			expect.objectContaining({
-				dateText: 'Sun 10 May 2025',
-				locationText: 'North East',
-				titleText: 'Hammers Jam',
-				typeText: 'Mountain Bike',
-				url: 'https://www.sientries.co.uk/event.php?elid=Y&event_id=15705',
+				date: '2025-05-10T00:00:00.000Z',
+				detailsUrl:
+					'https://www.sientries.co.uk/event.php?elid=Y&event_id=15705',
+				hashedId: 'e5af3f71372995ef5c13ebed645a897b',
+				location: 'North East',
+				name: 'Hammers Jam',
+				source: 'Si Entries',
+				type: 'XC',
 			}),
 			expect.objectContaining({
-				dateText: 'Sat 16 May 2025',
-				locationText: 'Yorkshire & Humber',
-				titleText: 'Boltby Bash Enduro',
-				typeText: 'MTB Enduro',
-				url: 'https://www.sientries.co.uk/event.php?elid=Y&event_id=15602',
+				date: '2025-05-16T00:00:00.000Z',
+				detailsUrl:
+					'https://www.sientries.co.uk/event.php?elid=Y&event_id=15602',
+				hashedId: '5dae0fb0da8ad14ca276bdcee310559b',
+				location: 'Yorkshire & Humber',
+				name: 'Boltby Bash Enduro',
+				source: 'Si Entries',
+				type: 'Enduro',
 			}),
 		]);
-
-		if (page && !page.isClosed()) {
-			await page.close();
-		}
-
-		if (browser) {
-			await browser.close();
-		}
 	});
 
 	it('Should process raw races and return all with a title and date field in a formatted structure', async () => {
