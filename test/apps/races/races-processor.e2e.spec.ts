@@ -30,7 +30,7 @@ describe('E2E - Races Processor', async () => {
 
 	afterEach(async () => {
 		await boss.clearStorage();
-		boss.stop();
+		boss.stop({ graceful: false });
 		await db.delete(racesTable);
 		scrapeSIEntriesMock.mockReset();
 		consoleErrorSpy.mockReset();

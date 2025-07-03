@@ -11,6 +11,7 @@ export async function waitForJobStatus(
 		async () => {
 			if (!jobId) return;
 			const job = await boss.getJobById(queue, jobId);
+			console.log(job?.state);
 			return job?.state === jobStatus;
 		},
 		{
