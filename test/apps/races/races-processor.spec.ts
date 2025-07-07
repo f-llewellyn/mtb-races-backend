@@ -5,21 +5,17 @@ import { racesTable } from '../../../src/db/schema.ts';
 import { config } from '../../../src/config.ts';
 import { SI_SCRAPE_QUEUE } from '../../../src/constants/queueNames.ts';
 import { createApp } from '../../../src/lib/utils/createApp.ts';
-import { waitForJobStatus } from '../../../src/lib/utils/test-helpers/wait-for-job-status.ts';
 import * as siEntriesScraperModule from '../../../src/lib/scrapers/si-entries/si-entries-scraper.ts';
 import { RaceTypes } from '../../../src/enums/RaceTypes.enum.ts';
 import { Sources } from '../../../src/enums/Sources.enum.ts';
+import { scrapeSiEntriesProcess } from '../../../src/apps/races/races.processor.ts';
 
 describe('E2E - Races Processor', async () => {
-	await createApp();
-	let boss: PgBoss;
+	const testId = '1A2B3C';
 	let scrapeSIEntriesMock: MockInstance;
 	let consoleErrorSpy: MockInstance;
 
 	beforeEach(async () => {
-		boss = new PgBoss(config.DATABASE_URL!);
-		await boss.start();
-
 		scrapeSIEntriesMock = vi.spyOn(
 			siEntriesScraperModule,
 			'scrapeSIEntries',
@@ -29,14 +25,16 @@ describe('E2E - Races Processor', async () => {
 	});
 
 	afterEach(async () => {
-		await boss.clearStorage();
-		boss.stop({ graceful: false });
 		await db.delete(racesTable);
 		scrapeSIEntriesMock.mockReset();
 		consoleErrorSpy.mockReset();
 	});
 
 	it('Should schedule si entries scrape on startup', async () => {
+		await createApp();
+		const boss = new PgBoss(config.DATABASE_URL!);
+		await boss.start();
+
 		const schedules = await boss.getSchedules();
 		const siSchedule = schedules.find(
 			(schedule) => (schedule.name = SI_SCRAPE_QUEUE),
@@ -48,6 +46,9 @@ describe('E2E - Races Processor', async () => {
 				cron: '0 0 * * 1',
 			}),
 		);
+
+		await boss.clearStorage();
+		boss.stop({ graceful: false });
 	});
 
 	it('Should log error and cancel execution when error is thrown ', async () => {
@@ -58,16 +59,14 @@ describe('E2E - Races Processor', async () => {
 		const initialRaces = await db.select().from(racesTable);
 		expect(initialRaces).toHaveLength(0);
 
-		const jobId = await boss.send(SI_SCRAPE_QUEUE, {}, { retryLimit: 0 });
-
-		await waitForJobStatus(boss, SI_SCRAPE_QUEUE, jobId, 'failed');
+		await scrapeSiEntriesProcess(testId);
 
 		const newRaces = await db.select().from(racesTable);
 
 		expect(newRaces).toEqual([]);
 
 		expect(consoleErrorSpy).toHaveBeenCalledWith(
-			`Job ${jobId} failed`,
+			`Job ${testId} failed`,
 			Error('Test error'),
 		);
 	});
@@ -99,9 +98,7 @@ describe('E2E - Races Processor', async () => {
 		const initialRaces = await db.select().from(racesTable);
 		expect(initialRaces).toHaveLength(0);
 
-		const jobId = await boss.send(SI_SCRAPE_QUEUE, {});
-
-		await waitForJobStatus(boss, SI_SCRAPE_QUEUE, jobId, 'completed');
+		await scrapeSiEntriesProcess(testId);
 
 		const newRaces = await db.select().from(racesTable);
 
@@ -154,9 +151,7 @@ describe('E2E - Races Processor', async () => {
 			]);
 		});
 
-		const jobId = await boss.send(SI_SCRAPE_QUEUE, {});
-
-		await waitForJobStatus(boss, SI_SCRAPE_QUEUE, jobId, 'completed');
+		await scrapeSiEntriesProcess(testId);
 
 		const newRecords = await db.select().from(racesTable);
 

@@ -41,7 +41,3 @@ export async function addWorker<T extends object>(
 ) {
 	await pgbInstance.work(queue, callback);
 }
-
-export async function failJob(queue: string, jobId: string) {
-	await pgbInstance.fail(queue, jobId);
-}
