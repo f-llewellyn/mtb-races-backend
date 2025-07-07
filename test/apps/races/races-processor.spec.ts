@@ -1,6 +1,6 @@
 import { MockInstance } from 'vitest';
 import PgBoss from 'pg-boss';
-import { db } from '../../../src/db/index.ts';
+import { db, initDb } from '../../../src/db/index.ts';
 import { racesTable } from '../../../src/db/schema.ts';
 import { config } from '../../../src/config.ts';
 import { SI_SCRAPE_QUEUE } from '../../../src/constants/queueNames.ts';
@@ -11,6 +11,7 @@ import { Sources } from '../../../src/enums/Sources.enum.ts';
 import { scrapeSiEntriesProcess } from '../../../src/apps/races/races.processor.ts';
 
 describe('E2E - Races Processor', async () => {
+	initDb();
 	const testId = '1A2B3C';
 	let scrapeSIEntriesMock: MockInstance;
 	let consoleErrorSpy: MockInstance;
