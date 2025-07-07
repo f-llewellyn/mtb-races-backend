@@ -10,10 +10,11 @@ pgbInstance.on('error', (err) => console.error(err));
 const queues: TQueueInvoker[] = [SiEntriesScrapeProcessor];
 
 export async function startPGBoss() {
-	await pgbInstance.start();
-	queues.forEach(async (invoker) => {
+	const boss = await pgbInstance.start();
+	for (const invoker of queues) {
 		await invoker();
-	});
+	}
+	return boss;
 }
 
 export async function createQueue(queue: string) {
@@ -40,8 +41,4 @@ export async function addWorker<T extends object>(
 	callback: (jobs: Job<T>[]) => Promise<void>,
 ) {
 	await pgbInstance.work(queue, callback);
-}
-
-export async function failJob(queue: string, jobId: string) {
-	await pgbInstance.fail(queue, jobId);
 }

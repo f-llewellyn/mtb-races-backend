@@ -1,12 +1,11 @@
-import puppeteer from 'puppeteer';
+import puppeteer, { PuppeteerError } from 'puppeteer';
 import { TRaceInsert } from '../../../db/schema.ts';
 import { TRaceRaw } from '../../../types/race.type.ts';
 import { hashRace } from '../../utils/stringToMD5.ts';
 import { RaceTypes } from '../../../enums/RaceTypes.enum.ts';
-import { SiEntriesRow } from '../../../types/siEntries.type.ts';
 import { Sources } from '../../../enums/Sources.enum.ts';
-const siEntiresMTBUrl =
-	'https://www.sientries.co.uk/index.php?page=L&af=et_C_MB:Y;et_C_ED:Y;et_C_TQ:Y';
+import { sIEntriesExtractFromDOM } from './si-entries.evaluate.ts';
+import { SI_ENTRIES_MTB_URL } from '../../../constants/sourceUrls.ts';
 
 const siEntriesEventMap = {
 	'MTB Enduro': RaceTypes.Enduro,
@@ -19,12 +18,13 @@ const mapType = (type: string) => {
 };
 
 export const scrapeSIEntries = async (): Promise<TRaceInsert[]> => {
+	const URL = SI_ENTRIES_MTB_URL;
 	let browser;
 	try {
 		browser = await puppeteer.launch({ headless: true });
 		const page = await browser.newPage();
 
-		await page.goto(siEntiresMTBUrl, {
+		await page.goto(URL, {
 			waitUntil: 'networkidle2',
 			timeout: 60000,
 		});
@@ -34,8 +34,9 @@ export const scrapeSIEntries = async (): Promise<TRaceInsert[]> => {
 		);
 
 		return mapRawEvents(rawEvents);
-	} catch (error) {
-		console.error('Error during scraping:', error);
+	} catch (e) {
+		const error = e as PuppeteerError;
+		console.error('Error during scraping:', error.message);
 		throw error;
 	} finally {
 		if (browser) {
@@ -43,47 +44,6 @@ export const scrapeSIEntries = async (): Promise<TRaceInsert[]> => {
 		}
 	}
 };
-
-export function sIEntriesExtractFromDOM() {
-	const tableItems = Array.from(
-		document.querySelector('#index_table')?.children || [],
-	);
-
-	const reducer = (rows: SiEntriesRow[], item: Element, i: number) => {
-		if (i % 2 === 0) {
-			const year = item.querySelector('span')?.textContent || '';
-			const monthRows = Array.from(
-				tableItems[i + 1]?.querySelectorAll('.eti_wrap') || [],
-			);
-			rows.push(...monthRows.map((element) => ({ year, element })));
-		}
-		return rows;
-	};
-
-	return tableItems
-		.reduce(reducer, [] as SiEntriesRow[])
-		.map(({ year, element }) => ({
-			titleText:
-				element
-					.querySelector('.eti_title')
-					?.textContent?.replace(/[\n\r\t]/gm, '') ?? null,
-			url:
-				element.querySelector('.eti_title a')?.getAttribute('href') ??
-				null,
-			dateText: `${element
-				.querySelector('.eti_date')
-				?.textContent?.replace(/[\t]/gm, '')
-				.replace(/[\n\r]/gm, ' ')
-				.trim()} ${year}`,
-			typeText:
-				element
-					.querySelector('.etp_cycling img')
-					?.getAttribute('title') ?? null,
-			locationText:
-				element.querySelector('.eti_map img')?.getAttribute('alt') ??
-				null,
-		}));
-}
 
 export function mapRawEvents(rawEvents: TRaceRaw[]) {
 	return rawEvents.flatMap(

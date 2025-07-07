@@ -1,7 +1,9 @@
 name: Test
 
 on:
-    - pull_request
+    pull_request:
+        branches:
+            - master
 env:
     DATABASE_URL: postgres://postgres:postgres@localhost:5433/mtb_races_test_db
     FRONTEND_BASE_URL: http://localhost:3000
@@ -48,7 +50,7 @@ jobs:
                   echo PORT=$PORT
 
             - name: 'Run Tests'
-              run: pnpm vitest --coverage.enabled true
+              run: pnpm vitest run --coverage.enabled true
 
             - name: 'Report Coverage'
               if: always()
