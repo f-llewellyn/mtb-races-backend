@@ -10,10 +10,11 @@ pgbInstance.on('error', (err) => console.error(err));
 const queues: TQueueInvoker[] = [SiEntriesScrapeProcessor];
 
 export async function startPGBoss() {
-	await pgbInstance.start();
+	const boss = await pgbInstance.start();
 	for (const invoker of queues) {
 		await invoker();
 	}
+	return boss;
 }
 
 export async function createQueue(queue: string) {

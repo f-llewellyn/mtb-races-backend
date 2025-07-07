@@ -5,16 +5,17 @@ import { racesTable } from '../../../src/db/schema.ts';
 import { config } from '../../../src/config.ts';
 import { SI_SCRAPE_QUEUE } from '../../../src/constants/queueNames.ts';
 import * as siEntriesScraperModule from '../../../src/lib/scrapers/si-entries/si-entries-scraper.ts';
-import * as revalidateServiceModule from '../../../src/apps/revalidate/revalidate.service.ts';
 import { RaceTypes } from '../../../src/enums/RaceTypes.enum.ts';
 import { Sources } from '../../../src/enums/Sources.enum.ts';
 import { scrapeSiEntriesProcess } from '../../../src/apps/races/races.processor.ts';
 
 describe('E2E - Races Processor', async () => {
 	initDb();
+	const originalFetch = globalThis.fetch;
 	const testId = '1A2B3C';
 	let scrapeSIEntriesMock: MockInstance;
 	let consoleErrorSpy: MockInstance;
+	let fetchMock: typeof fetch;
 
 	beforeEach(async () => {
 		scrapeSIEntriesMock = vi.spyOn(
@@ -22,18 +23,16 @@ describe('E2E - Races Processor', async () => {
 			'scrapeSIEntries',
 		);
 
-		vi.spyOn(
-			revalidateServiceModule,
-			'revalidateFrontendTag',
-		).mockImplementation(async () => Promise.resolve());
-
 		consoleErrorSpy = vi.spyOn(console, 'error');
+
+		// fetchMock = vi.fn().mockResolvedValue({ ok: true });
+		// globalThis.fetch = fetchMock;
 	});
 
 	afterEach(async () => {
 		await db.delete(racesTable);
-		scrapeSIEntriesMock.mockReset();
-		consoleErrorSpy.mockReset();
+		globalThis.fetch = originalFetch;
+		vi.resetAllMocks();
 	});
 
 	it('Should schedule si entries scrape on startup', async () => {
@@ -73,6 +72,44 @@ describe('E2E - Races Processor', async () => {
 		expect(consoleErrorSpy).toHaveBeenCalledWith(
 			`Job ${testId} failed`,
 			Error('Test error'),
+		);
+	});
+
+	it('Should log error when tag revalidate fails ', async () => {
+		scrapeSIEntriesMock.mockImplementation(async () => {
+			return Promise.resolve([
+				{
+					name: 'Race 1',
+					date: '2004-01-30',
+					hashedId: '39e8836d7bd1cb0c46a70f0f1f6d6016',
+					location: 'Chesterfield',
+					detailsUrl: 'https://races.com/race1',
+					type: RaceTypes.XC,
+					source: Sources.SI_ENTRIES,
+				},
+				{
+					name: 'Race 2',
+					date: '2002-02-02',
+					hashedId: '516d5f5393ffb53c12f058b9cdca7dd0',
+					location: 'Chesterfield',
+					detailsUrl: 'https://races.com/race2',
+					type: RaceTypes.Enduro,
+					source: Sources.SI_ENTRIES,
+				},
+			]);
+		});
+
+		const error = new Error('Netwrok Error');
+		fetchMock = vi.fn().mockImplementation(async () => {
+			throw error;
+		});
+		globalThis.fetch = fetchMock;
+
+		await scrapeSiEntriesProcess(testId);
+
+		expect(consoleErrorSpy).toHaveBeenCalledWith(
+			'Error while revalidating tag: races',
+			error,
 		);
 	});
 
