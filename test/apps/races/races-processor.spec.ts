@@ -38,7 +38,7 @@ describe('E2E - Races Processor', async () => {
 		const siSchedule = schedules.find(
 			(schedule) => (schedule.name = SI_SCRAPE_QUEUE),
 		);
-
+		expect(siSchedule).toBeDefined();
 		expect(siSchedule).toEqual(
 			expect.objectContaining({
 				name: SI_SCRAPE_QUEUE,
