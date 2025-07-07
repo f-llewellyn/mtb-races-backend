@@ -5,6 +5,7 @@ import { racesTable } from '../../../src/db/schema.ts';
 import { config } from '../../../src/config.ts';
 import { SI_SCRAPE_QUEUE } from '../../../src/constants/queueNames.ts';
 import * as siEntriesScraperModule from '../../../src/lib/scrapers/si-entries/si-entries-scraper.ts';
+import * as revalidateServiceModule from '../../../src/apps/revalidate/revalidate.service.ts';
 import { RaceTypes } from '../../../src/enums/RaceTypes.enum.ts';
 import { Sources } from '../../../src/enums/Sources.enum.ts';
 import { scrapeSiEntriesProcess } from '../../../src/apps/races/races.processor.ts';
@@ -20,6 +21,11 @@ describe('E2E - Races Processor', async () => {
 			siEntriesScraperModule,
 			'scrapeSIEntries',
 		);
+
+		vi.spyOn(
+			revalidateServiceModule,
+			'revalidateFrontendTag',
+		).mockImplementation(async () => Promise.resolve());
 
 		consoleErrorSpy = vi.spyOn(console, 'error');
 	});
