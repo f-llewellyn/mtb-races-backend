@@ -11,7 +11,6 @@ import { scrapeSiEntriesProcess } from '../../../src/apps/races/races.processor.
 import { createApp } from '../../../src/lib/utils/createApp.ts';
 
 describe('E2E - Races Processor', async () => {
-	await createApp();
 	const testId = '1A2B3C';
 	let scrapeSIEntriesMock: MockInstance;
 	let consoleErrorSpy: MockInstance;
@@ -32,6 +31,7 @@ describe('E2E - Races Processor', async () => {
 	});
 
 	it('Should schedule si entries scrape on startup', async () => {
+		await createApp();
 		const boss = new PgBoss(config.DATABASE_URL!);
 		await boss.start();
 
