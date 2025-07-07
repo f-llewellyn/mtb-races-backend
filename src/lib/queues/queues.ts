@@ -11,9 +11,9 @@ const queues: TQueueInvoker[] = [SiEntriesScrapeProcessor];
 
 export async function startPGBoss() {
 	await pgbInstance.start();
-	queues.forEach(async (invoker) => {
+	for (const invoker of queues) {
 		await invoker();
-	});
+	}
 }
 
 export async function createQueue(queue: string) {
