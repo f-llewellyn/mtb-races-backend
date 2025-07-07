@@ -6,11 +6,11 @@ export default defineConfig({
 		environment: 'node',
 		globals: true,
 		testTimeout: 10000,
-		// poolOptions: {
-		// 	threads: {
-		// 		singleThread: true,
-		// 	},
-		// },
+		poolOptions: {
+			threads: {
+				singleThread: true,
+			},
+		},
 		coverage: {
 			thresholds: {
 				lines: 100,
