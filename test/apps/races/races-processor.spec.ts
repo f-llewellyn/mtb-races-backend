@@ -9,7 +9,6 @@ import * as revalidateServiceModule from '../../../src/apps/revalidate/revalidat
 import { RaceTypes } from '../../../src/enums/RaceTypes.enum.ts';
 import { Sources } from '../../../src/enums/Sources.enum.ts';
 import { scrapeSiEntriesProcess } from '../../../src/apps/races/races.processor.ts';
-import { createApp } from '../../../src/lib/utils/createApp.ts';
 
 describe('E2E - Races Processor', async () => {
 	const testId = '1A2B3C';
@@ -37,7 +36,6 @@ describe('E2E - Races Processor', async () => {
 	});
 
 	it('Should schedule si entries scrape on startup', async () => {
-		await createApp();
 		const boss = new PgBoss(config.DATABASE_URL!);
 		await boss.start();
 
