@@ -2,24 +2,24 @@
 
 > A lightning-fast Node.js backend service that scrapes and aggregates mountain bike race information from across the web.
 
-[![Node.js](https://img.shields.io/badge/Node.js-v24-green.svg)](https://nodejs.org/) [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/) [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Ready-336791.svg)](https://www.postgresql.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-v24-green.svg)](https://nodejs.org/) [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/) [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Ready-336791.svg)](https://www.postgresql.org/) ![Code Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
 
 ## 🎯 Current Sources
 
--   **SI Entries**
+- **SI Entries**
 
 ## ✨ Features
 
--   🕷️ **Smart Web Scraping** - Automated race information extraction from SI Entries
--   🚀 **RESTful API** - Clean, fast endpoints for aggregated race data
--   🧪 **Comprehensive Testing** - Extensive test suite with Vitest
--   🐳 **Docker Ready** - Containerized development and testing environments
+- 🕷️ **Smart Web Scraping** - Automated race information extraction from SI Entries
+- 🚀 **RESTful API** - Clean, fast endpoints for aggregated race data
+- 🧪 **Comprehensive Testing** - Extensive test suite with Vitest
+- 🐳 **Docker Ready** - Containerized development and testing environments
 
 ## 🛠 Prerequisites
 
--   **Node.js** v24+
--   **pnpm** package manager
--   **Docker** & Docker Compose
+- **Node.js** v24+
+- **pnpm** package manager
+- **Docker** & Docker Compose
 
 ## 🚀 Quick Start
 
