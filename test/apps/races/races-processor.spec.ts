@@ -8,6 +8,7 @@ import * as siEntriesScraperModule from '../../../src/lib/scrapers/si-entries/si
 import { RaceTypes } from '../../../src/enums/RaceTypes.enum.ts';
 import { Sources } from '../../../src/enums/Sources.enum.ts';
 import { scrapeSiEntriesProcess } from '../../../src/apps/races/races.processor.ts';
+import { createApp } from '../../../src/lib/utils/createApp.ts';
 
 describe('E2E - Races Processor', async () => {
 	initDb();
@@ -31,6 +32,7 @@ describe('E2E - Races Processor', async () => {
 	});
 
 	it('Should schedule si entries scrape on startup', async () => {
+		await createApp();
 		const boss = new PgBoss(config.DATABASE_URL!);
 		await boss.start();
 
