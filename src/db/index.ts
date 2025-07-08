@@ -1,18 +1,39 @@
 import { drizzle } from 'drizzle-orm/node-postgres';
-
 import { config } from '../config.ts';
 
-export let db: ReturnType<typeof drizzle>;
+export type DB = ReturnType<typeof drizzle>;
+let db: DB | undefined;
+let DBPromise: Promise<DB> | undefined;
 
-export function initDb() {
+export async function getDB(): Promise<ReturnType<typeof drizzle>> {
+	if (db) return db;
+
+	if (!DBPromise) {
+		DBPromise = initDB();
+	}
+
+	return DBPromise;
+}
+
+async function initDB() {
 	try {
 		const dbURL = config.DATABASE_URL!;
 		db = drizzle({
-			connection: { connectionString: dbURL, max: 1 },
+			connection: dbURL,
 			casing: 'snake_case',
 		});
-		console.log('Succesfully connected to the DB');
+		console.log('Successfully connected to the DB');
+
+		return db;
 	} catch (error) {
 		console.error('Error connecting to DB', error);
+		db = undefined;
+		DBPromise = undefined;
+		throw error;
 	}
+}
+
+export function resetDB(): void {
+	db = undefined;
+	DBPromise = undefined;
 }

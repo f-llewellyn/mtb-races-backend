@@ -8,7 +8,8 @@
 		"start": "node dist/index.js",
 		"dev": "pnpm drizzle-kit migrate && nodemon -r ts-node/register --esm src/index.ts",
 		"build": "tsc",
-		"test": "vitest",
+		"test": "vitest run",
+		"test:coverage": "vitest run --coverage.enabled true",
 		"migrate:generate": "pnpm drizzle-kit generate",
 		"migrate:up": "pnpm drizzle-kit migrate",
 		"prepare": "husky"
