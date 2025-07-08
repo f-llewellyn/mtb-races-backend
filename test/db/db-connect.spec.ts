@@ -1,5 +1,5 @@
 import { MockInstance } from 'vitest';
-import { initDb } from '../../src/db/index.ts';
+import { getDB, resetDB } from '../../src/db/index.ts';
 import * as drizzlePostgres from 'drizzle-orm/node-postgres';
 
 describe('Unit - DB Connection', () => {
@@ -16,14 +16,15 @@ describe('Unit - DB Connection', () => {
 
 	afterEach(() => {
 		vi.resetAllMocks();
+		resetDB();
 	});
 
-	it('Logs error when theres an error connecting to the DB', () => {
+	it('Logs error when theres an error connecting to the DB', async () => {
 		drizzleMock.mockImplementation(() => {
 			throw new Error('Drizzle Error');
 		});
 
-		initDb();
+		await expect(getDB()).rejects.toThrow('Drizzle Error');
 
 		expect(consoleErrorSpy).toHaveBeenCalledWith(
 			'Error connecting to DB',
@@ -31,11 +32,21 @@ describe('Unit - DB Connection', () => {
 		);
 	});
 
-	it('Logs success message when connection is successful', () => {
-		initDb();
+	it('Logs success message when connection is successful', async () => {
+		const db = await getDB();
 
+		expect(db).toBeDefined();
 		expect(consoleLogSpy).toHaveBeenCalledWith(
-			'Succesfully connected to the DB',
+			'Successfully connected to the DB',
 		);
+	});
+
+	it('Does not create multiple connection instances', async () => {
+		await getDB();
+
+		const db = await getDB();
+
+		expect(db).toBeDefined();
+		expect(drizzleMock).toHaveBeenCalledTimes(1);
 	});
 });

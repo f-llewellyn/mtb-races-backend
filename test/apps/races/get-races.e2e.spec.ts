@@ -1,12 +1,15 @@
 import request from 'supertest';
 import { Express } from 'express';
-import { db } from '../../../src/db/index.ts';
+import { DB, getDB } from '../../../src/db/index.ts';
 import { racesTable } from '../../../src/db/schema.ts';
 import { createApp } from '../../../src/lib/utils/createApp.ts';
 
 describe('E2E - GET Races', () => {
 	let app: Express;
+	let db: DB;
+
 	beforeEach(async () => {
+		db = await getDB();
 		app = await createApp();
 	});
 

@@ -1,9 +1,5 @@
 import { SI_SCRAPE_QUEUE } from '../../constants/queueNames.ts';
-import {
-	createQueue,
-	addWorker,
-	scheduleJob,
-} from '../../lib/queues/queues.ts';
+import { createQueue, addWorker, scheduleJob } from '../../pgboss/index.ts';
 import { revalidateFrontendTag } from '../revalidate/revalidate.service.ts';
 import { scrapeRaces } from './races.service.ts';
 

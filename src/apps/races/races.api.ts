@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { getRaces } from './races.service.ts';
-import { sendJob } from '../../lib/queues/queues.ts';
+import { sendJob } from '../../pgboss/index.ts';
 import { SI_SCRAPE_QUEUE } from '../../constants/queueNames.ts';
 
 const racesRouter = Router();

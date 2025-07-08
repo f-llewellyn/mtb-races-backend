@@ -1,10 +1,10 @@
-import { db, initDb } from '../src/db/index.ts';
+import { getDB } from '../src/db/index.ts';
 import { migrate } from 'drizzle-orm/node-postgres/migrator';
-import { startPGBoss } from '../src/lib/queues/queues.ts';
+import { getBoss } from '../src/pgboss/index.ts';
 
 export async function setup() {
-	const boss = await startPGBoss();
-	initDb();
+	const boss = await getBoss();
+	const db = await getDB();
 	try {
 		await migrate(db, { migrationsFolder: './drizzle' });
 		process.env.TZ = 'UTC';

@@ -1,7 +1,10 @@
 import { scrapeSIEntries } from '../../lib/scrapers/si-entries/si-entries-scraper.ts';
-import { db } from '../../db/index.ts';
+
 import { racesTable, TRace } from '../../db/schema.ts';
 import { desc, sql } from 'drizzle-orm';
+import { getDB } from '../../db/index.ts';
+
+const db = await getDB();
 
 export const getRaces = async (): Promise<TRace[]> => {
 	return await getAllRaces();

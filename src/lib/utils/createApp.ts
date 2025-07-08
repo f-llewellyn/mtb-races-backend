@@ -1,11 +1,11 @@
 import express, { Express } from 'express';
 import apiRouter from '../../router.ts';
-import { startPGBoss } from '../queues/queues.ts';
-import { initDb } from '../../db/index.ts';
+import { getBoss } from '../../pgboss/index.ts';
+import { getDB } from '../../db/index.ts';
 
 export async function createApp(): Promise<Express> {
-	await startPGBoss();
-	initDb();
+	await getBoss();
+	await getDB();
 	const app = express();
 
 	app.get('/', (_, res) => {
