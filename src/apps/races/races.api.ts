@@ -2,8 +2,11 @@ import { Router } from 'express';
 import { getRaces } from './races.service.ts';
 import { sendJob } from '../../pgboss/index.ts';
 import { SI_SCRAPE_QUEUE } from '../../constants/queueNames.ts';
+import { apiKeyGuard } from '../../lib/guards/apiKey.guard.ts';
 
 const racesRouter = Router();
+
+racesRouter.use(apiKeyGuard);
 
 racesRouter.get('/', async (req, res) => {
 	const races = await getRaces();

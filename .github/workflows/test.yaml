@@ -8,6 +8,8 @@ env:
     DATABASE_URL: postgres://postgres:postgres@localhost:5433/mtb_races_test_db
     FRONTEND_BASE_URL: http://localhost:3000
     PORT: 8002
+    API_KEY: test-api-key
+    TZ: UTC
 jobs:
     test:
         runs-on: ubuntu-latest
@@ -48,6 +50,8 @@ jobs:
                   echo DATABASE_URL=$DATABASE_URL
                   echo FRONTEND_BASE_URL=$FRONTEND_BASE_URL
                   echo PORT=$PORT
+                  echo TZ=$TZ
+                  echo API_KEY=$API_KEY
 
             - name: 'Run Tests'
               run: pnpm vitest run --coverage.enabled true

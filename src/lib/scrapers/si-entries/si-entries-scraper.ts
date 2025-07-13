@@ -57,7 +57,7 @@ export function mapRawEvents(rawEvents: TRaceRaw[]) {
 			return [
 				{
 					name: titleText,
-					date: new Date(dateText).toISOString(),
+					date: date.toISOString(),
 					type: typeText ? mapType(typeText) : null,
 					location: locationText,
 					detailsUrl: url,
