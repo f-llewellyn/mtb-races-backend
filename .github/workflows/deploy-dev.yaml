@@ -28,7 +28,7 @@ jobs:
 
             - name: Install dependencies and build
               run: |
-                  pnpm ci
+                  pnpm install
                   pnpm build
 
             - name: Upload artifact for deployment
