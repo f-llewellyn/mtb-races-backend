@@ -3,10 +3,12 @@ import { Express } from 'express';
 import { DB, getDB } from '../../../src/db/index.ts';
 import { racesTable } from '../../../src/db/schema.ts';
 import { createApp } from '../../../src/lib/utils/createApp.ts';
+import { config } from '../../../src/config.ts';
 
 describe('E2E - GET Races', () => {
 	let app: Express;
 	let db: DB;
+	const apiKey = config.API_KEY;
 
 	beforeEach(async () => {
 		db = await getDB();
@@ -18,8 +20,26 @@ describe('E2E - GET Races', () => {
 	});
 
 	describe('GET /api/races', () => {
+		it('Returns 401 when no api key is given', async () => {
+			await request(app)
+				.get('/api/races')
+				.expect(401)
+				.expect({ error: 'API key required' });
+		});
+
+		it('Returns 401 when api key is incorrect', async () => {
+			await request(app)
+				.get('/api/races')
+				.set({ 'x-api-key': 'testKey' })
+				.expect(401)
+				.expect({ error: 'Invalid API key' });
+		});
+
 		it('Returns 200 and an empty array when no races are stored', async () => {
-			const { body } = await request(app).get('/api/races').expect(200);
+			const { body } = await request(app)
+				.get('/api/races')
+				.set({ 'x-api-key': apiKey })
+				.expect(200);
 
 			expect(body).toEqual([]);
 		});
@@ -42,7 +62,10 @@ describe('E2E - GET Races', () => {
 				},
 			]);
 
-			const { body } = await request(app).get('/api/races').expect(200);
+			const { body } = await request(app)
+				.get('/api/races')
+				.set({ 'x-api-key': apiKey })
+				.expect(200);
 
 			expect(body).toEqual([
 				expect.objectContaining({

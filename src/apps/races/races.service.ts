@@ -1,7 +1,7 @@
 import { scrapeSIEntries } from '../../lib/scrapers/si-entries/si-entries-scraper.ts';
 
 import { racesTable, TRace } from '../../db/schema.ts';
-import { desc, sql } from 'drizzle-orm';
+import { desc, notInArray, sql } from 'drizzle-orm';
 import { getDB } from '../../db/index.ts';
 
 const db = await getDB();
@@ -24,6 +24,12 @@ export const scrapeRaces = async (): Promise<void> => {
 				detailsUrl: sql`excluded.details_url`,
 			},
 		});
+
+	const raceHashes = races.map((race) => race.hashedId);
+
+	await db
+		.delete(racesTable)
+		.where(notInArray(racesTable.hashedId, raceHashes));
 };
 
 async function getAllRaces() {

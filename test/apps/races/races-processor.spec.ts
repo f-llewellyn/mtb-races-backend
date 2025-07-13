@@ -211,4 +211,48 @@ describe('E2E - Races Processor', async () => {
 			}),
 		]);
 	});
+
+	it('Should scrape siEntries and delete races that are no longer present from db', async () => {
+		await db.insert(racesTable).values([
+			{
+				name: 'Race 1',
+				date: '2004-01-30',
+				hashedId: '39e8836d7bd1cb0c46a70f0f1f6d6016',
+				location: 'Chesterfield',
+				detailsUrl: 'https://races.com/race1',
+				type: RaceTypes.Enduro,
+				source: Sources.SI_ENTRIES,
+			},
+		]);
+
+		scrapeSIEntriesMock.mockImplementation(async () => {
+			return Promise.resolve([
+				{
+					name: 'Race 2',
+					date: '2026-01-30',
+					hashedId: 'hashedId2',
+					location: 'High Wycombe',
+					detailsUrl: 'https://races.com/race1#new',
+					type: RaceTypes.Enduro,
+					source: Sources.SI_ENTRIES,
+				},
+			]);
+		});
+
+		await scrapeSiEntriesProcess(testId);
+
+		const newRecords = await db.select().from(racesTable);
+
+		expect(newRecords).toEqual([
+			expect.objectContaining({
+				name: 'Race 2',
+				date: '2026-01-30',
+				hashedId: 'hashedId2',
+				location: 'High Wycombe',
+				detailsUrl: 'https://races.com/race1#new',
+				type: RaceTypes.Enduro,
+				source: Sources.SI_ENTRIES,
+			}),
+		]);
+	});
 });
