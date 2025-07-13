@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { config } from '../../config.ts';
+import { config } from '../../config.js';
 
 export function apiKeyGuard(req: Request, res: Response, next: NextFunction) {
 	const reqApiKey = req.headers['x-api-key'];

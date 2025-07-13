@@ -1,8 +1,8 @@
-import { scrapeSIEntries } from '../../lib/scrapers/si-entries/si-entries-scraper.ts';
+import { scrapeSIEntries } from '../../lib/scrapers/si-entries/si-entries-scraper.js';
 
-import { racesTable, TRace } from '../../db/schema.ts';
+import { racesTable, TRace } from '../../db/schema.js';
 import { desc, notInArray, sql } from 'drizzle-orm';
-import { getDB } from '../../db/index.ts';
+import { getDB } from '../../db/index.js';
 
 const db = await getDB();
 

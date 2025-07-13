@@ -1,7 +1,7 @@
 import express, { Express } from 'express';
-import apiRouter from '../../router.ts';
-import { getBoss } from '../../pgboss/index.ts';
-import { getDB } from '../../db/index.ts';
+import apiRouter from '../../router.js';
+import { getBoss } from '../../pgboss/index.js';
+import { getDB } from '../../db/index.js';
 
 export async function createApp(): Promise<Express> {
 	await getBoss();

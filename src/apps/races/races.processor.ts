@@ -1,7 +1,7 @@
-import { SI_SCRAPE_QUEUE } from '../../constants/queueNames.ts';
-import { createQueue, addWorker, scheduleJob } from '../../pgboss/index.ts';
-import { revalidateFrontendTag } from '../revalidate/revalidate.service.ts';
-import { scrapeRaces } from './races.service.ts';
+import { SI_SCRAPE_QUEUE } from '../../constants/queueNames.js';
+import { createQueue, addWorker, scheduleJob } from '../../pgboss/index.js';
+import { revalidateFrontendTag } from '../revalidate/revalidate.service.js';
+import { scrapeRaces } from './races.service.js';
 
 export async function scrapeSiEntriesProcess(id: string) {
 	console.log(`Started job ${id}`);

@@ -1,6 +1,6 @@
 import { MockInstance } from 'vitest';
 import PgBoss from 'pg-boss';
-import { getBoss, resetBoss } from '../../src/pgboss/index.ts';
+import { getBoss, resetBoss } from '../../src/pgboss/index.js';
 
 describe('Unit - DB Connection', () => {
 	let consoleErrorSpy: MockInstance;

@@ -6,8 +6,8 @@ import {
 	timestamp,
 	varchar,
 } from 'drizzle-orm/pg-core';
-import { RaceTypes } from '../enums/RaceTypes.enum.ts';
-import { Sources } from '../enums/Sources.enum.ts';
+import { RaceTypes } from '../enums/RaceTypes.enum.js';
+import { Sources } from '../enums/Sources.enum.js';
 
 export const raceTypesEnum = pgEnum('race_types', RaceTypes);
 export const sourcesEnum = pgEnum('sources', Sources);

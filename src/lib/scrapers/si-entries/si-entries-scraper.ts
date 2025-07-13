@@ -1,11 +1,11 @@
 import puppeteer, { PuppeteerError } from 'puppeteer';
-import { TRaceInsert } from '../../../db/schema.ts';
-import { TRaceRaw } from '../../../types/race.type.ts';
-import { hashRace } from '../../utils/stringToMD5.ts';
-import { RaceTypes } from '../../../enums/RaceTypes.enum.ts';
-import { Sources } from '../../../enums/Sources.enum.ts';
-import { sIEntriesExtractFromDOM } from './si-entries.evaluate.ts';
-import { SI_ENTRIES_MTB_URL } from '../../../constants/sourceUrls.ts';
+import { TRaceInsert } from '../../../db/schema.js';
+import { TRaceRaw } from '../../../types/race.type.js';
+import { hashRace } from '../../utils/stringToMD5.js';
+import { RaceTypes } from '../../../enums/RaceTypes.enum.js';
+import { Sources } from '../../../enums/Sources.enum.js';
+import { sIEntriesExtractFromDOM } from './si-entries.evaluate.js';
+import { SI_ENTRIES_MTB_URL } from '../../../constants/sourceUrls.js';
 
 const siEntriesEventMap = {
 	'MTB Enduro': RaceTypes.Enduro,
