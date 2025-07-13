@@ -1,5 +1,5 @@
-import { config } from './config.ts';
-import { createApp } from './lib/utils/createApp.ts';
+import { config } from './config.js';
+import { createApp } from './lib/utils/createApp.js';
 
 const app = await createApp();
 

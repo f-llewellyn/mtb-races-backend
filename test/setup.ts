@@ -1,6 +1,6 @@
-import { getDB } from '../src/db/index.ts';
+import { getDB } from '../src/db/index.js';
 import { migrate } from 'drizzle-orm/node-postgres/migrator';
-import { getBoss } from '../src/pgboss/index.ts';
+import { getBoss } from '../src/pgboss/index.js';
 
 export async function setup() {
 	const boss = await getBoss();

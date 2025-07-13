@@ -1,7 +1,7 @@
 import PgBoss, { Job } from 'pg-boss';
-import { SiEntriesScrapeProcessor } from '../apps/races/races.processor.ts';
-import { TQueueInvoker } from '../types/queue.type.ts';
-import { config } from '../config.ts';
+import { SiEntriesScrapeProcessor } from '../apps/races/races.processor.js';
+import { TQueueInvoker } from '../types/queue.type.js';
+import { config } from '../config.js';
 
 const queues: TQueueInvoker[] = [SiEntriesScrapeProcessor];
 

@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { getRaces } from './races.service.ts';
-import { sendJob } from '../../pgboss/index.ts';
-import { SI_SCRAPE_QUEUE } from '../../constants/queueNames.ts';
-import { apiKeyGuard } from '../../lib/guards/apiKey.guard.ts';
+import { getRaces } from './races.service.js';
+import { sendJob } from '../../pgboss/index.js';
+import { SI_SCRAPE_QUEUE } from '../../constants/queueNames.js';
+import { apiKeyGuard } from '../../lib/guards/apiKey.guard.js';
 
 const racesRouter = Router();
 

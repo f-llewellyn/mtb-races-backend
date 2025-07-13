@@ -1,5 +1,5 @@
 import { MockInstance } from 'vitest';
-import { getDB, resetDB } from '../../src/db/index.ts';
+import { getDB, resetDB } from '../../src/db/index.js';
 import * as drizzlePostgres from 'drizzle-orm/node-postgres';
 
 describe('Unit - DB Connection', () => {

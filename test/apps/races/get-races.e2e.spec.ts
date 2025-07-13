@@ -1,9 +1,9 @@
 import request from 'supertest';
 import { Express } from 'express';
-import { DB, getDB } from '../../../src/db/index.ts';
-import { racesTable } from '../../../src/db/schema.ts';
-import { createApp } from '../../../src/lib/utils/createApp.ts';
-import { config } from '../../../src/config.ts';
+import { DB, getDB } from '../../../src/db/index.js';
+import { racesTable } from '../../../src/db/schema.js';
+import { createApp } from '../../../src/lib/utils/createApp.js';
+import { config } from '../../../src/config.js';
 
 describe('E2E - GET Races', () => {
 	let app: Express;

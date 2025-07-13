@@ -1,9 +1,9 @@
 import { describe, expect, it, MockInstance } from 'vitest';
 import path from 'path';
-import { RaceTypes } from '../../../../src/enums/RaceTypes.enum.ts';
-import { Sources } from '../../../../src/enums/Sources.enum.ts';
+import { RaceTypes } from '../../../../src/enums/RaceTypes.enum.js';
+import { Sources } from '../../../../src/enums/Sources.enum.js';
 
-import { mapRawEvents } from '../../../../src/lib/scrapers/si-entries/si-entries-scraper.ts';
+import { mapRawEvents } from '../../../../src/lib/scrapers/si-entries/si-entries-scraper.js';
 
 describe('Unit - SI Entries Scraper', () => {
 	let consoleErrorMock: MockInstance;
@@ -17,12 +17,12 @@ describe('Unit - SI Entries Scraper', () => {
 	});
 
 	it('Should log and throw error when url cannot be found', async () => {
-		vi.doMock('../../../../src/constants/sourceUrls.ts', () => ({
+		vi.doMock('../../../../src/constants/sourceUrls.js', () => ({
 			SI_ENTRIES_MTB_URL: `file://${path.join(__dirname, 'doesnt-exist.html')}`,
 		}));
 
 		const { scrapeSIEntries } = await import(
-			'../../../../src/lib/scrapers/si-entries/si-entries-scraper.ts'
+			'../../../../src/lib/scrapers/si-entries/si-entries-scraper.js'
 		);
 
 		await expect(scrapeSIEntries()).rejects.toThrow();
@@ -34,12 +34,12 @@ describe('Unit - SI Entries Scraper', () => {
 	});
 
 	it('Should scrape the stub html page', async () => {
-		vi.doMock('../../../../src/constants/sourceUrls.ts', () => ({
+		vi.doMock('../../../../src/constants/sourceUrls.js', () => ({
 			SI_ENTRIES_MTB_URL: `file://${path.join(__dirname, 'si-entries.html')}`,
 		}));
 
 		const { scrapeSIEntries } = await import(
-			'../../../../src/lib/scrapers/si-entries/si-entries-scraper.ts'
+			'../../../../src/lib/scrapers/si-entries/si-entries-scraper.js'
 		);
 
 		const races = await scrapeSIEntries();

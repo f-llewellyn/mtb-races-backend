@@ -1,13 +1,13 @@
 import { MockInstance } from 'vitest';
 import PgBoss from 'pg-boss';
-import { DB, getDB } from '../../../src/db/index.ts';
-import { racesTable } from '../../../src/db/schema.ts';
-import { config } from '../../../src/config.ts';
-import { SI_SCRAPE_QUEUE } from '../../../src/constants/queueNames.ts';
-import * as siEntriesScraperModule from '../../../src/lib/scrapers/si-entries/si-entries-scraper.ts';
-import { RaceTypes } from '../../../src/enums/RaceTypes.enum.ts';
-import { Sources } from '../../../src/enums/Sources.enum.ts';
-import { scrapeSiEntriesProcess } from '../../../src/apps/races/races.processor.ts';
+import { DB, getDB } from '../../../src/db/index.js';
+import { racesTable } from '../../../src/db/schema.js';
+import { config } from '../../../src/config.js';
+import { SI_SCRAPE_QUEUE } from '../../../src/constants/queueNames.js';
+import * as siEntriesScraperModule from '../../../src/lib/scrapers/si-entries/si-entries-scraper.js';
+import { RaceTypes } from '../../../src/enums/RaceTypes.enum.js';
+import { Sources } from '../../../src/enums/Sources.enum.js';
+import { scrapeSiEntriesProcess } from '../../../src/apps/races/races.processor.js';
 
 describe('E2E - Races Processor', async () => {
 	const originalFetch = globalThis.fetch;

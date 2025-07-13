@@ -1,9 +1,9 @@
 import request from 'supertest';
 import PgBoss from 'pg-boss';
 import { Express } from 'express';
-import { config } from '../../../src/config.ts';
-import { createApp } from '../../../src/lib/utils/createApp.ts';
-import { SI_SCRAPE_QUEUE } from '../../../src/constants/queueNames.ts';
+import { config } from '../../../src/config.js';
+import { createApp } from '../../../src/lib/utils/createApp.js';
+import { SI_SCRAPE_QUEUE } from '../../../src/constants/queueNames.js';
 
 describe('E2E - POST Races', () => {
 	let app: Express;

@@ -1,4 +1,4 @@
-import { SiEntriesRow } from '../../../types/siEntries.type.ts';
+import { SiEntriesRow } from '../../../types/siEntries.type.js';
 
 export function sIEntriesExtractFromDOM() {
 	const tableItems = Array.from(

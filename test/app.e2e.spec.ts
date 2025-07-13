@@ -1,6 +1,6 @@
 import request from 'supertest';
 import { Express } from 'express';
-import { createApp } from '../src/lib/utils/createApp.ts';
+import { createApp } from '../src/lib/utils/createApp.js';
 
 describe('E2E - App default routes', () => {
 	let app: Express;

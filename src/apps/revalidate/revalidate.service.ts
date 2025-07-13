@@ -1,4 +1,4 @@
-import { config } from '../../config.ts';
+import { config } from '../../config.js';
 
 export async function revalidateFrontendTag(tag: string): Promise<void> {
 	try {
