@@ -1,10 +1,10 @@
 version: '3.8'
 
-name: mtb-races-backend-develop
+name: mtb-races-backend-dist
 services:
     postgres:
         image: postgres:16
-        container_name: mtb-races-backend-develop-db
+        container_name: mtb-races-backend-dist-db
         environment:
             POSTGRES_USER: postgres
             POSTGRES_PASSWORD: postgres
@@ -21,8 +21,8 @@ services:
     app:
         build:
             context: .
-            dockerfile: Dockerfile.dev
-        container_name: mtb-races-backend-develop-app
+            dockerfile: Dockerfile
+        container_name: mtb-races-backend-dist-app
         ports:
             - '8002:8002'
         env_file:
@@ -36,7 +36,7 @@ services:
         depends_on:
             postgres:
                 condition: service_healthy
-        command: pnpm run dev
+        command: pnpm run start
 
 volumes:
     postgres_data:

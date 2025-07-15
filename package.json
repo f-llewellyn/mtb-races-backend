@@ -5,13 +5,13 @@
 	"main": "dist/index.js",
 	"type": "module",
 	"scripts": {
-		"start": "node dist/index.js",
-		"dev": "pnpm drizzle-kit migrate && nodemon -r ts-node/register --esm src/index.ts",
+		"start": "pnpm migrate:up && node dist/index.js",
+		"dev": "pnpm migrate:up && nodemon -r ts-node/register --esm src/index.ts",
 		"build": "tsc -p tsconfig.build.json",
 		"test": "vitest run",
 		"test:coverage": "vitest run --coverage.enabled true",
-		"migrate:generate": "pnpm drizzle-kit generate",
-		"migrate:up": "pnpm drizzle-kit migrate",
+		"migrate:generate": "pnpm dlx drizzle-kit generate",
+		"migrate:up": "pnpm dlx drizzle-kit migrate",
 		"prepare": "husky"
 	},
 	"husky": {
@@ -32,6 +32,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"drizzle-kit": "^0.31.4",
 		"drizzle-orm": "^0.43.1",
 		"express": "^4.18.3",
 		"pg": "^8.16.0",
@@ -45,7 +46,6 @@
 		"@types/pg": "^8.15.2",
 		"@types/supertest": "^6.0.3",
 		"@vitest/coverage-v8": "^3.2.4",
-		"drizzle-kit": "^0.31.1",
 		"eslint": "^9.29.0",
 		"eslint-config-prettier": "^10.1.5",
 		"eslint-plugin-prettier": "^5.4.1",

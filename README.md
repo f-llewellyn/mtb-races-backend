@@ -39,23 +39,26 @@ cp .sample.env .env
 pnpm install
 ```
 
-### 3. Spin Up Database
+### 3. Spin Up Development Environment
 
 ```bash
 docker compose -f docker-compose-develop.yml up
 ```
 
-### 4. Launch Development Server
+### 4. Changes To Non-Source Files
+
+When making changes to non-source files (e.g., `.env`, `docker-compose.yml`), you need to rebuild the Docker container to apply the changes.
 
 ```bash
-pnpm dev
+docker compose -f docker-compose-develop.yml up --build
 ```
 
-### 5. Production Build
+## Production
+
+### 1. Build Production Image
 
 ```bash
-pnpm build
-pnpm start
+docker compose -f docker-compose-dist.yml --build
 ```
 
 ## 🧪 Running Tests
