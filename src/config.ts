@@ -10,7 +10,7 @@ if (nodeEnv !== 'production') {
 const configSchema = z.object({
 	DATABASE_URL: z.string(),
 	FRONTEND_BASE_URL: z.string().url(),
-	PORT: z.string().nullable(),
+	PORT: z.string().nullish(),
 	API_KEY: z.string(),
 });
 
