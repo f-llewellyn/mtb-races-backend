@@ -45,25 +45,23 @@ pnpm install
 docker compose -f docker-compose-develop.yml up
 ```
 
-### 4. Changes To Non-Source Files
-
-When making changes to non-source files (e.g., `.env`, `docker-compose.yml`), you need to rebuild the Docker container to apply the changes.
+### 4. Start Development Server
 
 ```bash
-docker compose -f docker-compose-develop.yml up --build
+pnpm dev
 ```
 
-## Production
+## 🌐 Production
 
-### 1. Build Production Image
+### Start Production Server
 
 ```bash
-docker compose -f docker-compose-dist.yml --build
+pnpm start
 ```
 
 ## 🧪 Running Tests
 
-### Setup Test Environment
+### 1. Setup Test Environment
 
 ```bash
 # Start test database
@@ -73,7 +71,7 @@ docker compose -f docker-compose-test.yml up
 cp .sample.env .env.test
 ```
 
-### Run Test Suite
+### 2. Run Test Suite
 
 ```bash
 pnpm test
