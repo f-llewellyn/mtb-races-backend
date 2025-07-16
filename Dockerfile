@@ -19,7 +19,7 @@ COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile --prod --ignore-scripts
 
 COPY drizzle.config.js ./
-COPY drizzle/ /drizzle/
+COPY drizzle/ ./drizzle/
 COPY --from=builder /app/dist ./dist
 
 RUN chown -R pptruser:pptruser /home/pptruser
