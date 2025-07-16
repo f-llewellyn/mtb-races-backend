@@ -10,8 +10,8 @@
 		"build": "tsc -p tsconfig.build.json",
 		"test": "vitest run",
 		"test:coverage": "vitest run --coverage.enabled true",
-		"migrate:generate": "pnpm dlx drizzle-kit generate",
-		"migrate:up": "pnpm dlx drizzle-kit migrate",
+		"migrate:generate": "pnpm drizzle-kit generate",
+		"migrate:up": "pnpm drizzle-kit migrate",
 		"prepare": "husky"
 	},
 	"husky": {
