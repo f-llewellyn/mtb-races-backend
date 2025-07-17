@@ -1,7 +1,6 @@
-name: Deploy to Azure - Dev
+name: Deploy to Azure - Production
 on:
-    push:
-        branches: [master]
+    workflow_dispatch:
 
 permissions:
     id-token: write
@@ -31,12 +30,12 @@ jobs:
 
             - name: Build and push
               run: |
-                  docker build -t mtbracesdev.azurecr.io/switchback-backend:${{ github.sha }} .
-                  docker push mtbracesdev.azurecr.io/switchback-backend:${{ github.sha }}
+                  docker build -t mtbracesdev.azurecr.io/switchback-backend-prod:${{ github.sha }} .
+                  docker push mtbracesdev.azurecr.io/switchback-backend-prod:${{ github.sha }}
 
             - name: Deploy to Container Apps
               uses: azure/container-apps-deploy-action@v1
               with:
-                  containerAppName: switchback-dev-env
-                  resourceGroup: switchback-dev
-                  imageToDeploy: mtbracesdev.azurecr.io/switchback-backend:${{ github.sha }}
+                  containerAppName: switchback-backend-prod
+                  resourceGroup: switchback-prod
+                  imageToDeploy: mtbracesdev.azurecr.io/switchback-backend-prod:${{ github.sha }}
