@@ -7,7 +7,7 @@ import { SI_SCRAPE_QUEUE } from '../../../src/constants/queueNames.js';
 import * as siEntriesScraperModule from '../../../src/lib/scrapers/si-entries/si-entries-scraper.js';
 import { RaceTypes } from '../../../src/enums/RaceTypes.enum.js';
 import { Sources } from '../../../src/enums/Sources.enum.js';
-import { scrapeSiEntriesProcess } from '../../../src/apps/races/races.processor.js';
+import { scrapeProcess } from '../../../src/apps/races/races.processor.js';
 
 describe('E2E - Races Processor', async () => {
 	const originalFetch = globalThis.fetch;
@@ -65,7 +65,7 @@ describe('E2E - Races Processor', async () => {
 		const initialRaces = await db.select().from(racesTable);
 		expect(initialRaces).toHaveLength(0);
 
-		await scrapeSiEntriesProcess(testId);
+		await scrapeProcess(testId);
 
 		const newRaces = await db.select().from(racesTable);
 
@@ -107,7 +107,7 @@ describe('E2E - Races Processor', async () => {
 		});
 		globalThis.fetch = fetchMock;
 
-		await scrapeSiEntriesProcess(testId);
+		await scrapeProcess(testId);
 
 		expect(consoleErrorSpy).toHaveBeenCalledWith(
 			'Error while revalidating tag: races',
@@ -142,7 +142,7 @@ describe('E2E - Races Processor', async () => {
 		const initialRaces = await db.select().from(racesTable);
 		expect(initialRaces).toHaveLength(0);
 
-		await scrapeSiEntriesProcess(testId);
+		await scrapeProcess(testId);
 
 		const newRaces = await db.select().from(racesTable);
 
@@ -195,7 +195,7 @@ describe('E2E - Races Processor', async () => {
 			]);
 		});
 
-		await scrapeSiEntriesProcess(testId);
+		await scrapeProcess(testId);
 
 		const newRecords = await db.select().from(racesTable);
 
@@ -239,7 +239,7 @@ describe('E2E - Races Processor', async () => {
 			]);
 		});
 
-		await scrapeSiEntriesProcess(testId);
+		await scrapeProcess(testId);
 
 		const newRecords = await db.select().from(racesTable);
 

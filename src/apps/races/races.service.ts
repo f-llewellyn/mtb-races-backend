@@ -1,18 +1,34 @@
 import { scrapeSIEntries } from '../../lib/scrapers/si-entries/si-entries-scraper.js';
 
-import { racesTable, TRace } from '../../db/schema.js';
-import { desc, notInArray, sql } from 'drizzle-orm';
+import { racesTable, TRace, TRaceInsert } from '../../db/schema.js';
+import { and, desc, eq, notInArray, sql } from 'drizzle-orm';
 import { getDB } from '../../db/index.js';
+import { Sources } from '../../enums/Sources.enum.js';
+import { scrapeBritichCycling } from '../../lib/scrapers/british-cycling/british-cycing.scraper.js';
 
 const db = await getDB();
+
+const sourcesToScraperMap = {
+	[Sources.SI_ENTRIES]: scrapeSIEntries,
+	[Sources.BRITICH_CYCLING]: scrapeBritichCycling,
+};
 
 export const getRaces = async (): Promise<TRace[]> => {
 	return await getAllRaces();
 };
 
-export const scrapeRaces = async (): Promise<void> => {
-	const races = await scrapeSIEntries();
+export const scrapeRaces = async (source: Sources): Promise<void> => {
+	const scraperFunction = sourcesToScraperMap[source];
+	const races = await scraperFunction();
 
+	await manageScrapedRaces(races, source);
+};
+
+async function getAllRaces() {
+	return await db.select().from(racesTable).orderBy(desc(racesTable.date));
+}
+
+async function manageScrapedRaces(races: TRaceInsert[], source: Sources) {
 	await db
 		.insert(racesTable)
 		.values(races)
@@ -29,9 +45,10 @@ export const scrapeRaces = async (): Promise<void> => {
 
 	await db
 		.delete(racesTable)
-		.where(notInArray(racesTable.hashedId, raceHashes));
-};
-
-async function getAllRaces() {
-	return await db.select().from(racesTable).orderBy(desc(racesTable.date));
+		.where(
+			and(
+				eq(racesTable.source, source),
+				notInArray(racesTable.hashedId, raceHashes),
+			),
+		);
 }
