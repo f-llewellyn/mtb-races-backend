@@ -1,12 +1,16 @@
-import { SI_SCRAPE_QUEUE } from '../../constants/queueNames.js';
+import {
+	BC_SCRAPE_QUEUE,
+	SI_SCRAPE_QUEUE,
+} from '../../constants/queueNames.js';
+import { Sources } from '../../enums/Sources.enum.js';
 import { createQueue, addWorker, scheduleJob } from '../../pgboss/index.js';
 import { revalidateFrontendTag } from '../revalidate/revalidate.service.js';
 import { scrapeRaces } from './races.service.js';
 
-export async function scrapeSiEntriesProcess(id: string) {
+export async function scrapeProcess(id: string, source: Sources) {
 	console.log(`Started job ${id}`);
 	try {
-		await scrapeRaces();
+		await scrapeRaces(source);
 		await revalidateFrontendTag('races');
 		console.log(`Finished job ${id}`);
 	} catch (error) {
@@ -18,8 +22,18 @@ export async function SiEntriesScrapeProcessor() {
 	await createQueue(SI_SCRAPE_QUEUE);
 	await addWorker(
 		SI_SCRAPE_QUEUE,
-		async ([job]) => await scrapeSiEntriesProcess(job.id),
+		async ([job]) => await scrapeProcess(job.id, Sources.SI_ENTRIES),
 	);
-	// Runs every at 00:00 UTC every Monday
+	// Runs  at 00:00 UTC every Monday
 	await scheduleJob(SI_SCRAPE_QUEUE, '0 0 * * 1', {});
+}
+
+export async function BCScrapeProcessor() {
+	await createQueue(BC_SCRAPE_QUEUE);
+	await addWorker(
+		BC_SCRAPE_QUEUE,
+		async ([job]) => await scrapeProcess(job.id, Sources.BRITISH_CYCLING),
+	);
+	// Runs every at 00:00 UTC every Tuesday
+	await scheduleJob(BC_SCRAPE_QUEUE, '0 0 * * 2', {});
 }

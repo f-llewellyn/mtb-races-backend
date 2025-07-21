@@ -1,9 +1,12 @@
 import PgBoss, { Job } from 'pg-boss';
-import { SiEntriesScrapeProcessor } from '../apps/races/races.processor.js';
+import {
+	BCScrapeProcessor,
+	SiEntriesScrapeProcessor,
+} from '../apps/races/races.processor.js';
 import { TQueueInvoker } from '../types/queue.type.js';
 import { config } from '../config.js';
 
-const queues: TQueueInvoker[] = [SiEntriesScrapeProcessor];
+const queues: TQueueInvoker[] = [SiEntriesScrapeProcessor, BCScrapeProcessor];
 
 let boss: PgBoss | undefined;
 let bossPromise: Promise<PgBoss> | undefined;

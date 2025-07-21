@@ -1,1 +1,2 @@
 export const SI_SCRAPE_QUEUE = 'SI_SCRAPER_QUEUE';
+export const BC_SCRAPE_QUEUE = 'BC_SCRAPE_QUEUE';

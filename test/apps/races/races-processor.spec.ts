@@ -3,69 +3,67 @@ import PgBoss from 'pg-boss';
 import { DB, getDB } from '../../../src/db/index.js';
 import { racesTable } from '../../../src/db/schema.js';
 import { config } from '../../../src/config.js';
-import { SI_SCRAPE_QUEUE } from '../../../src/constants/queueNames.js';
-import * as siEntriesScraperModule from '../../../src/lib/scrapers/si-entries/si-entries-scraper.js';
+import {
+	BC_SCRAPE_QUEUE,
+	SI_SCRAPE_QUEUE,
+} from '../../../src/constants/queueNames.js';
+import * as baseScraperModule from '../../../src/lib/scrapers/base.scraper.js';
 import { RaceTypes } from '../../../src/enums/RaceTypes.enum.js';
 import { Sources } from '../../../src/enums/Sources.enum.js';
-import { scrapeSiEntriesProcess } from '../../../src/apps/races/races.processor.js';
+import { scrapeProcess } from '../../../src/apps/races/races.processor.js';
+import { createApp } from '../../../src/lib/utils/createApp.js';
 
 describe('E2E - Races Processor', async () => {
 	const originalFetch = globalThis.fetch;
 	const testId = '1A2B3C';
+	const boss = new PgBoss(config.DATABASE_URL!);
 	let db: DB;
-	let scrapeSIEntriesMock: MockInstance;
+	let baseScraperMock: MockInstance;
 	let consoleErrorSpy: MockInstance;
 	let fetchMock: typeof fetch;
 
 	beforeEach(async () => {
+		await boss.start();
 		db = await getDB();
 
-		scrapeSIEntriesMock = vi.spyOn(
-			siEntriesScraperModule,
-			'scrapeSIEntries',
-		);
+		baseScraperMock = vi.spyOn(baseScraperModule, 'baseScraper');
 
 		consoleErrorSpy = vi.spyOn(console, 'error');
-
-		// fetchMock = vi.fn().mockResolvedValue({ ok: true });
-		// globalThis.fetch = fetchMock;
 	});
 
 	afterEach(async () => {
 		await db.delete(racesTable);
+		await boss.clearStorage();
+		boss.stop({ graceful: false });
 		globalThis.fetch = originalFetch;
 		vi.resetAllMocks();
 	});
 
-	it('Should schedule si entries scrape on startup', async () => {
-		const boss = new PgBoss(config.DATABASE_URL!);
-		await boss.start();
-
+	it('Should schedule si entries and BC scrape on startup', async () => {
+		await createApp();
 		const schedules = await boss.getSchedules();
-		const siSchedule = schedules.find(
-			(schedule) => (schedule.name = SI_SCRAPE_QUEUE),
-		);
-		expect(siSchedule).toBeDefined();
-		expect(siSchedule).toEqual(
+		expect(schedules).toBeDefined();
+		expect(schedules).toEqual([
 			expect.objectContaining({
 				name: SI_SCRAPE_QUEUE,
 				cron: '0 0 * * 1',
 			}),
-		);
-
-		await boss.clearStorage();
-		boss.stop({ graceful: false });
+			expect.objectContaining({
+				name: BC_SCRAPE_QUEUE,
+				cron: '0 0 * * 2',
+			}),
+		]);
 	});
 
 	it('Should log error and cancel execution when error is thrown ', async () => {
-		scrapeSIEntriesMock.mockImplementation(async () => {
+		baseScraperMock.mockImplementation(async () => {
 			throw new Error('Test error');
 		});
 
 		const initialRaces = await db.select().from(racesTable);
 		expect(initialRaces).toHaveLength(0);
 
-		await scrapeSiEntriesProcess(testId);
+		await scrapeProcess(testId, Sources.SI_ENTRIES);
 
 		const newRaces = await db.select().from(racesTable);
 
@@ -78,7 +76,7 @@ describe('E2E - Races Processor', async () => {
 	});
 
 	it('Should log error when tag revalidate fails ', async () => {
-		scrapeSIEntriesMock.mockImplementation(async () => {
+		baseScraperMock.mockImplementation(async () => {
 			return Promise.resolve([
 				{
 					name: 'Race 1',
@@ -107,7 +105,7 @@ describe('E2E - Races Processor', async () => {
 		});
 		globalThis.fetch = fetchMock;
 
-		await scrapeSiEntriesProcess(testId);
+		await scrapeProcess(testId, Sources.SI_ENTRIES);
 
 		expect(consoleErrorSpy).toHaveBeenCalledWith(
 			'Error while revalidating tag: races',
@@ -116,7 +114,7 @@ describe('E2E - Races Processor', async () => {
 	});
 
 	it('Should scrape races and insert into races table ', async () => {
-		scrapeSIEntriesMock.mockImplementation(async () => {
+		baseScraperMock.mockImplementation(async () => {
 			return Promise.resolve([
 				{
 					name: 'Race 1',
@@ -142,7 +140,7 @@ describe('E2E - Races Processor', async () => {
 		const initialRaces = await db.select().from(racesTable);
 		expect(initialRaces).toHaveLength(0);
 
-		await scrapeSiEntriesProcess(testId);
+		await scrapeProcess(testId, Sources.SI_ENTRIES);
 
 		const newRaces = await db.select().from(racesTable);
 
@@ -181,7 +179,7 @@ describe('E2E - Races Processor', async () => {
 			},
 		]);
 
-		scrapeSIEntriesMock.mockImplementation(async () => {
+		baseScraperMock.mockImplementation(async () => {
 			return Promise.resolve([
 				{
 					name: 'Race 1',
@@ -195,7 +193,7 @@ describe('E2E - Races Processor', async () => {
 			]);
 		});
 
-		await scrapeSiEntriesProcess(testId);
+		await scrapeProcess(testId, Sources.SI_ENTRIES);
 
 		const newRecords = await db.select().from(racesTable);
 
@@ -212,7 +210,7 @@ describe('E2E - Races Processor', async () => {
 		]);
 	});
 
-	it('Should scrape siEntries and delete races that are no longer present from db', async () => {
+	it('Should scrape siEntries and only delete races from same source that are no longer present from db', async () => {
 		await db.insert(racesTable).values([
 			{
 				name: 'Race 1',
@@ -223,14 +221,23 @@ describe('E2E - Races Processor', async () => {
 				type: RaceTypes.Enduro,
 				source: Sources.SI_ENTRIES,
 			},
+			{
+				name: 'Race 2',
+				date: '2004-01-30',
+				hashedId: 'hashedId2',
+				location: 'Chesterfield',
+				detailsUrl: 'https://races.com/race1',
+				type: RaceTypes.Enduro,
+				source: Sources.BRITISH_CYCLING,
+			},
 		]);
 
-		scrapeSIEntriesMock.mockImplementation(async () => {
+		baseScraperMock.mockImplementation(async () => {
 			return Promise.resolve([
 				{
 					name: 'Race 2',
 					date: '2026-01-30',
-					hashedId: 'hashedId2',
+					hashedId: 'hashedId3',
 					location: 'High Wycombe',
 					detailsUrl: 'https://races.com/race1#new',
 					type: RaceTypes.Enduro,
@@ -239,20 +246,31 @@ describe('E2E - Races Processor', async () => {
 			]);
 		});
 
-		await scrapeSiEntriesProcess(testId);
+		await scrapeProcess(testId, Sources.SI_ENTRIES);
 
 		const newRecords = await db.select().from(racesTable);
 
-		expect(newRecords).toEqual([
-			expect.objectContaining({
-				name: 'Race 2',
-				date: '2026-01-30',
-				hashedId: 'hashedId2',
-				location: 'High Wycombe',
-				detailsUrl: 'https://races.com/race1#new',
-				type: RaceTypes.Enduro,
-				source: Sources.SI_ENTRIES,
-			}),
-		]);
+		expect(newRecords).toEqual(
+			expect.arrayContaining([
+				expect.objectContaining({
+					name: 'Race 2',
+					date: '2026-01-30',
+					hashedId: 'hashedId3',
+					location: 'High Wycombe',
+					detailsUrl: 'https://races.com/race1#new',
+					type: RaceTypes.Enduro,
+					source: Sources.SI_ENTRIES,
+				}),
+				expect.objectContaining({
+					name: 'Race 2',
+					date: '2004-01-30',
+					hashedId: 'hashedId2',
+					location: 'Chesterfield',
+					detailsUrl: 'https://races.com/race1',
+					type: RaceTypes.Enduro,
+					source: Sources.BRITISH_CYCLING,
+				}),
+			]),
+		);
 	});
 });

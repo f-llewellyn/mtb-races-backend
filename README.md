@@ -7,6 +7,7 @@
 ## 🎯 Current Sources
 
 - **SI Entries**
+- **British Cycling**
 
 ## ✨ Features
 
@@ -97,18 +98,12 @@ pnpm migrate:up
 pnpm dev
 ```
 
-## 🛣️ API Endpoints
-
-| Endpoint     | Method | Description                           |
-| ------------ | ------ | ------------------------------------- |
-| `/api/races` | GET    | 📋 Fetch upcoming mountain bike races |
-| `/health`    | GET    | ❤️ Service health check               |
-
 ## ⚒️ Jobs
 
-| Queue Name         | Schedule           | Description                     |
-| ------------------ | ------------------ | ------------------------------- |
-| `SI_SCRAPER_QUEUE` | 00:00 every monday | 📋 Scrape races from SI Entries |
+| Queue Name         | Schedule            | Description                          |
+| ------------------ | ------------------- | ------------------------------------ |
+| `SI_SCRAPER_QUEUE` | 00:00 every monday  | 📋 Scrape races from SI Entries      |
+| `BC_SCRAPER_QUEUE` | 00:00 every tuesday | 📋 Scrape races from British Cycling |
 
 ## 🏗️ Tech Stack
 
@@ -121,6 +116,7 @@ pnpm dev
 | **Testing**          | Vitest               |
 | **Scraping**         | Puppeteer            |
 | **Containerization** | Docker               |
+| **Hosting**          | Azure                |
 
 ## 📁 Project Architecture
 

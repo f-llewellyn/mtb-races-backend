@@ -2,8 +2,7 @@ import { describe, expect, it, MockInstance } from 'vitest';
 import path from 'path';
 import { RaceTypes } from '../../../../src/enums/RaceTypes.enum.js';
 import { Sources } from '../../../../src/enums/Sources.enum.js';
-
-import { mapRawEvents } from '../../../../src/lib/scrapers/si-entries/si-entries-scraper.js';
+import { mapRawEvents } from '../../../../src/lib/scrapers/base.scraper.js';
 
 describe('Unit - SI Entries Scraper', () => {
 	let consoleErrorMock: MockInstance;
@@ -19,16 +18,17 @@ describe('Unit - SI Entries Scraper', () => {
 	it('Should log and throw error when url cannot be found', async () => {
 		vi.doMock('../../../../src/constants/sourceUrls.js', () => ({
 			SI_ENTRIES_MTB_URL: `file://${path.join(__dirname, 'doesnt-exist.html')}`,
+			BRITISH_CYCLING_MTB_URL: '',
 		}));
 
 		const { scrapeSIEntries } = await import(
-			'../../../../src/lib/scrapers/si-entries/si-entries-scraper.js'
+			'../../../../src/lib/scrapers/si-entries/si-entries.scraper.js'
 		);
 
 		await expect(scrapeSIEntries()).rejects.toThrow();
 
 		expect(consoleErrorMock).toHaveBeenCalledWith(
-			'Error during scraping:',
+			'Error during scraping of Si Entries:',
 			`net::ERR_FILE_NOT_FOUND at file://${path.join(__dirname, 'doesnt-exist.html')}`,
 		);
 	});
@@ -36,10 +36,11 @@ describe('Unit - SI Entries Scraper', () => {
 	it('Should scrape the stub html page', async () => {
 		vi.doMock('../../../../src/constants/sourceUrls.js', () => ({
 			SI_ENTRIES_MTB_URL: `file://${path.join(__dirname, 'si-entries.html')}`,
+			BRITISH_CYCLING_MTB_URL: '',
 		}));
 
 		const { scrapeSIEntries } = await import(
-			'../../../../src/lib/scrapers/si-entries/si-entries-scraper.js'
+			'../../../../src/lib/scrapers/si-entries/si-entries.scraper.js'
 		);
 
 		const races = await scrapeSIEntries();
@@ -140,7 +141,7 @@ describe('Unit - SI Entries Scraper', () => {
 			},
 		];
 
-		const formattedResults = mapRawEvents(rawRaces);
+		const formattedResults = mapRawEvents(rawRaces, Sources.SI_ENTRIES);
 
 		expect(formattedResults).toEqual([
 			expect.objectContaining({
