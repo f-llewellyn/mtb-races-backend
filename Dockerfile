@@ -8,7 +8,7 @@ COPY . .
 RUN pnpm build
 
 # Production stage
-FROM ghcr.io/puppeteer/puppeteer:latest
+FROM ghcr.io/puppeteer/puppeteer:24.13.0
 USER root
 WORKDIR /home/pptruser
 ENV NODE_ENV=production
