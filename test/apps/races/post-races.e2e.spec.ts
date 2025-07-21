@@ -3,7 +3,10 @@ import PgBoss from 'pg-boss';
 import { Express } from 'express';
 import { config } from '../../../src/config.js';
 import { createApp } from '../../../src/lib/utils/createApp.js';
-import { SI_SCRAPE_QUEUE } from '../../../src/constants/queueNames.js';
+import {
+	BC_SCRAPE_QUEUE,
+	SI_SCRAPE_QUEUE,
+} from '../../../src/constants/queueNames.js';
 
 describe('E2E - POST Races', () => {
 	let app: Express;
@@ -44,6 +47,34 @@ describe('E2E - POST Races', () => {
 				.expect(201);
 
 			const jobs = await boss.fetch(SI_SCRAPE_QUEUE);
+
+			expect(jobs).toHaveLength(1);
+		});
+	});
+
+	describe('POST /api/races/scrape/british-cycling', () => {
+		it('Should return 401 when no api key is given', async () => {
+			await request(app)
+				.post('/api/races/scrape/british-cycling')
+				.expect(401)
+				.expect({ error: 'API key required' });
+		});
+
+		it('Should return 401 when incorrect api key is given', async () => {
+			await request(app)
+				.post('/api/races/scrape/british-cycling')
+				.set({ 'x-api-key': 'testKey' })
+				.expect(401)
+				.expect({ error: 'Invalid API key' });
+		});
+
+		it('Should queue si entries scrape job', async () => {
+			await request(app)
+				.post('/api/races/scrape/british-cycling')
+				.set({ 'x-api-key': apiKey })
+				.expect(201);
+
+			const jobs = await boss.fetch(BC_SCRAPE_QUEUE);
 
 			expect(jobs).toHaveLength(1);
 		});

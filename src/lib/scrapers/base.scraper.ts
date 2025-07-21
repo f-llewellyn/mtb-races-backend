@@ -15,17 +15,17 @@ import { britishCyclingEventMap } from './british-cycling/british-cycling-event-
 
 const sourceToUrlMap: Record<Sources, string> = {
 	[Sources.SI_ENTRIES]: SI_ENTRIES_MTB_URL,
-	[Sources.BRITICH_CYCLING]: BRITISH_CYCLING_MTB_URL,
+	[Sources.BRITISH_CYCLING]: BRITISH_CYCLING_MTB_URL,
 };
 
 const sourceToParserMap: Record<Sources, () => TRaceRaw[]> = {
 	[Sources.SI_ENTRIES]: sIEntriesExtractFromDOM,
-	[Sources.BRITICH_CYCLING]: britishCyclingExtractFromDOM,
+	[Sources.BRITISH_CYCLING]: britishCyclingExtractFromDOM,
 };
 
 const sourceToEventMap: Record<Sources, Record<string, RaceTypes>> = {
 	[Sources.SI_ENTRIES]: siEntriesEventMap,
-	[Sources.BRITICH_CYCLING]: britishCyclingEventMap,
+	[Sources.BRITISH_CYCLING]: britishCyclingEventMap,
 };
 
 export async function baseScraper(source: Sources): Promise<TRaceInsert[]> {
@@ -51,7 +51,7 @@ export async function baseScraper(source: Sources): Promise<TRaceInsert[]> {
 			'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.3',
 		);
 		await page.goto(URL, {
-			waitUntil: 'networkidle0',
+			waitUntil: 'networkidle2',
 			timeout: 60000,
 		});
 
@@ -62,7 +62,7 @@ export async function baseScraper(source: Sources): Promise<TRaceInsert[]> {
 		return mapRawEvents(rawEvents, source);
 	} catch (e) {
 		const error = e as PuppeteerError;
-		console.error(`Error during scraping of ${source}: ${error.message}`);
+		console.error(`Error during scraping of ${source}:`, error.message);
 		throw error;
 	} finally {
 		if (browser) {

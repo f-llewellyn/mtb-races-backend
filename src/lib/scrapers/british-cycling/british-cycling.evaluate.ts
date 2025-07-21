@@ -39,7 +39,7 @@ export function britishCyclingExtractFromDOM(): TRaceRaw[] {
 				) ?? null,
 			typeText:
 				element
-					.querySelector('event--type__row')
+					.querySelector('.event--type__row')
 					?.textContent?.trim() ?? null,
 			locationText:
 				element.querySelector('td:not([class])')?.textContent?.trim() ??

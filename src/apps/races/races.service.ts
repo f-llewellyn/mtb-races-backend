@@ -1,16 +1,16 @@
-import { scrapeSIEntries } from '../../lib/scrapers/si-entries/si-entries-scraper.js';
+import { scrapeSIEntries } from '../../lib/scrapers/si-entries/si-entries.scraper.js';
 
 import { racesTable, TRace, TRaceInsert } from '../../db/schema.js';
 import { and, desc, eq, notInArray, sql } from 'drizzle-orm';
 import { getDB } from '../../db/index.js';
 import { Sources } from '../../enums/Sources.enum.js';
-import { scrapeBritichCycling } from '../../lib/scrapers/british-cycling/british-cycing.scraper.js';
+import { scrapeBritichCycling } from '../../lib/scrapers/british-cycling/british-cycling.scraper.js';
 
 const db = await getDB();
 
 const sourcesToScraperMap = {
 	[Sources.SI_ENTRIES]: scrapeSIEntries,
-	[Sources.BRITICH_CYCLING]: scrapeBritichCycling,
+	[Sources.BRITISH_CYCLING]: scrapeBritichCycling,
 };
 
 export const getRaces = async (): Promise<TRace[]> => {
@@ -38,6 +38,7 @@ async function manageScrapedRaces(races: TRaceInsert[], source: Sources) {
 				date: sql`excluded.date`,
 				location: sql`excluded.location`,
 				detailsUrl: sql`excluded.details_url`,
+				type: sql`excluded.type`,
 			},
 		});
 

@@ -32,8 +32,8 @@ export async function BCScrapeProcessor() {
 	await createQueue(BC_SCRAPE_QUEUE);
 	await addWorker(
 		BC_SCRAPE_QUEUE,
-		async ([job]) => await scrapeProcess(job.id, Sources.BRITICH_CYCLING),
+		async ([job]) => await scrapeProcess(job.id, Sources.BRITISH_CYCLING),
 	);
 	// Runs every at 00:00 UTC every Tuesday
-	await scheduleJob(SI_SCRAPE_QUEUE, '0 0 * * 2', {});
+	await scheduleJob(BC_SCRAPE_QUEUE, '0 0 * * 2', {});
 }
