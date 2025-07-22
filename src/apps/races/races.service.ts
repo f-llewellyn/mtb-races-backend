@@ -1,7 +1,7 @@
 import { scrapeSIEntries } from '../../lib/scrapers/si-entries/si-entries.scraper.js';
 
 import { racesTable, TRace, TRaceInsert } from '../../db/schema.js';
-import { and, desc, eq, notInArray, sql } from 'drizzle-orm';
+import { and, desc, eq, gte, notInArray, sql } from 'drizzle-orm';
 import { getDB } from '../../db/index.js';
 import { Sources } from '../../enums/Sources.enum.js';
 import { scrapeBritichCycling } from '../../lib/scrapers/british-cycling/british-cycling.scraper.js';
@@ -13,8 +13,8 @@ const sourcesToScraperMap = {
 	[Sources.BRITISH_CYCLING]: scrapeBritichCycling,
 };
 
-export const getRaces = async (): Promise<TRace[]> => {
-	return await getAllRaces();
+export const getRaces = async (date: string): Promise<TRace[]> => {
+	return await getRacesFromDate(date);
 };
 
 export const scrapeRaces = async (source: Sources): Promise<void> => {
@@ -24,8 +24,12 @@ export const scrapeRaces = async (source: Sources): Promise<void> => {
 	await manageScrapedRaces(races, source);
 };
 
-async function getAllRaces() {
-	return await db.select().from(racesTable).orderBy(desc(racesTable.date));
+async function getRacesFromDate(date: string) {
+	return await db
+		.select()
+		.from(racesTable)
+		.where(gte(racesTable.date, date))
+		.orderBy(desc(racesTable.date));
 }
 
 async function manageScrapedRaces(races: TRaceInsert[], source: Sources) {
