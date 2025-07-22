@@ -35,16 +35,39 @@ describe('E2E - GET Races', () => {
 				.expect({ error: 'Invalid API key' });
 		});
 
+		it('Returns 400 when no from date is given', async () => {
+			await request(app)
+				.get('/api/races')
+				.set({ 'x-api-key': apiKey })
+				.expect(400)
+				.expect({
+					error: {
+						issues: [
+							{
+								code: 'invalid_type',
+								expected: 'string',
+								message: 'Required',
+								path: ['from'],
+								received: 'undefined',
+							},
+						],
+						name: 'ZodError',
+					},
+					message: 'Invalid query parameters',
+				});
+		});
+
 		it('Returns 200 and an empty array when no races are stored', async () => {
 			const { body } = await request(app)
 				.get('/api/races')
 				.set({ 'x-api-key': apiKey })
+				.query({ from: new Date('2020-03-19').toISOString() })
 				.expect(200);
 
 			expect(body).toEqual([]);
 		});
 
-		it('Returns 200 and an array of saved events', async () => {
+		it('Returns 200 and an array of saved events from the given date', async () => {
 			await db.insert(racesTable).values([
 				{
 					name: 'Race 1',
@@ -65,6 +88,7 @@ describe('E2E - GET Races', () => {
 			const { body } = await request(app)
 				.get('/api/races')
 				.set({ 'x-api-key': apiKey })
+				.query({ from: new Date('2004-01-01').toISOString() })
 				.expect(200);
 
 			expect(body).toEqual([
@@ -74,13 +98,6 @@ describe('E2E - GET Races', () => {
 					hashedId: 'hashedid1',
 					location: 'Chesterfield',
 					detailsUrl: 'https://races.com/race1',
-				}),
-				expect.objectContaining({
-					name: 'Race 2',
-					date: '2002-02-02',
-					hashedId: 'hashedid2',
-					location: 'Chesterfield',
-					detailsUrl: 'https://races.com/race2',
 				}),
 			]);
 		});
